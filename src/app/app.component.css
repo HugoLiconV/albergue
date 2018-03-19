@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700');
+
+/* Texto nav */
+/* .main .menu-container a,
+.main-scrolled .menu-container a {
+  font-family: "Rubik-Light", sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  letter-spacing: 1.5px;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+} */
+
+.main {
+  padding: 0;
+  width: 100%;
+  height: 120px;
+  background-color: #345cd7;
+  z-index: 90;
+}
+
+/* Links navbar */
+.main .menu-container {
+  float: right;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  padding-top: 52px;
+  position: relative;
+}
+
+
+li {
+  float: left;
+  display: inline;
+  margin-right: 32px;
+  opacity: 0.7;
+}
+
+li a {
+  /* display: block; */
+  /* text-align: center; */
+  text-decoration: none;
+
+  font-family: "Rubik-Light", sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  letter-spacing: 1.5px;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.main .menu-container li:hover {
+  opacity: 1;
+}
+
+ul {
+  /* overflow: hidden; */
+  background-color: #345cd7;
+}
+
+/* .main .menu-container li {
+}
+*/
+
+
+/* when the browser window is 1200px wide or less */
+/* @media screen and (max-width: 1200px) {
+  .main .menu-container li {
+    margin-right: 24px;
+  }
+
+  .main .menu-container .border-button {
+    margin-right: 40px;
+  }
+} */
+
+/* @media screen and (max-width: 1023px) {
+  .main {
+    height: 50px;
+  }
+  .main .menu-container {
+    display: none;
+  }
+  .main .nav-logo {
+    width: 108px;
+    margin-left: 18px;
+    margin-top: 11px;
+  }
+} */
+
+
+/* a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+} */
