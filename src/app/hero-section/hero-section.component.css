@@ -1,4 +1,43 @@
+.ml-intro {
+  background-color: #345cd7;
+  padding-bottom: 80px;
+}
 
+
+.ml-intro .graphic-container {
+  padding-top: 80px;
+  text-align: center;
+}
+
+.ml-intro .graphic-container img {
+  width: 1090px;
+}
+
+.ml-intro .strapline-container {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ml-intro .strapline-container p {
+  margin-top: 60px;
+}
+
+.ml-intro .strapline-container p {
+  font-family: "Rubik-Light", sans-serif;
+  font-size: 26px;
+  line-height: 1.31;
+  text-align: center;
+  color: #fff;
+}
+
+.ml-intro .strapline-container img {
+  margin-top: 60px;
+  transform: rotate(90deg);
+}
+
+
+/* 
 .pimg1 {
   position: relative;
   opacity: 0.70;
@@ -129,7 +168,7 @@
 
 .video-content h4 {
     line-height: 1.3em;
-}
+} */
 /* @media(max-width 568px){
   .pimg1, .pimg2, .pimg3{
     background-attachment: scroll;
