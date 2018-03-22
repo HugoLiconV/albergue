@@ -1,6 +1,5 @@
 .main {
   background-color: #fff;
-  padding-top: 120px;
   padding-bottom: 120px;
   padding-left: 11.5vw;
   padding-right: 11.5vw;
@@ -9,10 +8,21 @@
 }
 
 .demo-tab-group {
-  border: 1px solid #e8e8e8;
   justify-content: center;
   align-items: center;
+  background-color: bisque;
+  /* border-top: solid 3px #345cd7; */
 }
+
+.demo-tab-group:before{
+  width: 40px;
+  height: 3px;
+  background-color: #345cd7;
+  content: "";
+  display: block;
+  margin-bottom: 20px;
+}
+
 
 .demo-tab-content {
   padding: 16px;
