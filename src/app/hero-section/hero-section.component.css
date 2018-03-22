@@ -1,29 +1,29 @@
-.ml-intro {
+.intro {
   background-color: #345cd7;
   padding-bottom: 80px;
 }
 
 
-.ml-intro .graphic-container {
+.intro .graphic-container {
   padding-top: 80px;
   text-align: center;
 }
 
-.ml-intro .graphic-container img {
+.intro .graphic-container img {
   width: 1090px;
 }
 
-.ml-intro .strapline-container {
+.intro .strapline-container {
   max-width: 620px;
   margin: 0 auto;
   text-align: center;
 }
 
-.ml-intro .strapline-container p {
+.intro .strapline-container p {
   margin-top: 60px;
 }
 
-.ml-intro .strapline-container p {
+.intro .strapline-container p {
   font-family: "Rubik-Light", sans-serif;
   font-size: 26px;
   line-height: 1.31;
@@ -31,7 +31,7 @@
   color: #fff;
 }
 
-.ml-intro .strapline-container img {
+.intro .strapline-container img {
   margin-top: 60px;
   transform: rotate(90deg);
 }

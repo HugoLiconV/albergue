@@ -1,22 +1,20 @@
-
-
-.ml-products {
+.services {
   background-color: #fff;
 }
 
-.ml-products {
+.services {
   padding-top: 120px;
   padding-bottom: 120px;
   padding-left: 11.5vw;
   padding-right: 11.5vw;
 }
 
-.ml-products h1.header-center
+.services h1.header-center
 {
   text-align: center;
 }
 
-.ml-products h1 {
+.services h1 {
   font-family: "Rubik-Light", sans-serif;
   font-size: 40px;
   font-weight: 300;
@@ -24,7 +22,7 @@
   margin: 0;
 }
 
-.ml-products h2 {
+.services h2 {
   font-family: "Roboto", sans-serif;
   font-weight: 100;
   font-size: 26px;
@@ -36,13 +34,13 @@
 
 
 header.header-center:before,
-.ml-products h1.header-center:before{
+.services h1.header-center:before{
   margin-left: auto;
   margin-right: auto;
 }
 
 header:before,
-.ml-products h1:before {
+.services h1:before {
   width: 40px;
   height: 3px;
   background-color: #345cd7;
@@ -51,11 +49,11 @@ header:before,
   margin-bottom: 20px;
 }
 
-.product {
+.service {
   text-align: center;
 }
 
-.product h4 {
+.service h4 {
   color: #434345;
   margin: 1em 0;
   font-size: 1.3em;
@@ -68,6 +66,6 @@ header:before,
   text-align: center;
 } */
 
-.product .image-block img{
+.service .image-block img{
   width: 50%;
 }
