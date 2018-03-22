@@ -8,6 +8,11 @@ import { DetailsSectionComponent } from './details-section/details-section.compo
 import { MainSectionComponent } from './main-section/main-section.component';
 import { FooterSectionComponent } from './footer-section/footer-section.component';
 
+// Material
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule, MatCard } from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
@@ -15,12 +20,15 @@ import { FooterSectionComponent } from './footer-section/footer-section.componen
     HeroSectionComponent,
     DetailsSectionComponent,
     MainSectionComponent,
-    FooterSectionComponent
+    FooterSectionComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    NoopAnimationsModule,
+    MatTabsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
