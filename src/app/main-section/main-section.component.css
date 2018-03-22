@@ -7,3 +7,14 @@
   font-family: "Rubik-Light",sans-serif;
   color: #121212;
 }
+
+.demo-tab-group {
+  border: 1px solid #e8e8e8;
+  justify-content: center;
+  align-items: center;
+}
+
+.demo-tab-content {
+  padding: 16px;
+}
+
