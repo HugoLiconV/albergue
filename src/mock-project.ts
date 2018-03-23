@@ -11,4 +11,17 @@ export const PROJECTS: Project[] = [
   area: 'Electrónica, Sistemas',
   resumenSolucion: 'Crear un control de acceso con arduino'
   },
+  {
+  id: 2,
+  nombre: 'consequuntur inventore ab',
+  descripcion: `Vel sit id consequatur. Illo et quibusdam optio culpa culpa enim
+   error. In consectetur et provident pariatur. Et consequuntur minus ut quos.`,
+  fechaPublicacion: new Date(),
+  numPersonas: 3,
+  solucion: `Aut impedit et totam sunt. Et doloribus minus sit. Facere fuga quo
+  eveniet distinctio labore aliquid`,
+  area: 'Electrónica, Sistemas',
+  resumenSolucion: `Ipsum harum sed. Culpa porro inventore non dolorem consectetur
+   nulla. Asperiores non ut. Omnis fuga autem qui assumenda in.`
+  }
 ];

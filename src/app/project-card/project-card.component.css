@@ -2,7 +2,43 @@
   max-width: 400px;
 }
 
-.example-header-image {
+.left{
+  float: right;
+}
+
+.acent{
+  color: #e91e63;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.card mat-card{
+  margin-bottom: 20px;
+  display: inline-block;
+  margin-left: 20px;
+}
+/* .card mat-card-title {
+  font-family: "Rubik-Light", sans-serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: #121212;
+  margin: 0;
+} */
+
+.card h2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-size: 26px;
+  line-height: 60px;
+  margin-top: 15px;
+  margin-bottom: 30px;
+  color: #434345;
+}
+
+/* .example-header-image {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
-}
+} */

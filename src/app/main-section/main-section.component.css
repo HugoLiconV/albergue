@@ -1,16 +1,17 @@
 .main {
   background-color: #fff;
   padding-bottom: 120px;
-  padding-left: 11.5vw;
-  padding-right: 11.5vw;
+  /* padding-left: 11.5vw; */
+  /* padding-right: 11.5vw; */
   font-family: "Rubik-Light",sans-serif;
   color: #121212;
 }
 
 .demo-tab-group {
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
   background-color: bisque;
+  width: 100%;
   /* border-top: solid 3px #345cd7; */
 }
 
