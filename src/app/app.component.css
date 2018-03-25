@@ -1,5 +1,24 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700');
 
+/* Variables CSS */
+::ng-deep :root {
+  --base-font-size: 16px;
+  --main-color: #345cd7;
+  --main-font: "Rubik-Light", sans-serif;
+  --secondary-font: "Roboto", sans-serif;
+  --padding-top-section: 120px;
+  --padding-bottom-section: 120px;
+  --padding-left-section: 11.5vw;
+  --padding-right-section: 11.5vw;
+  --title-color: #121212;
+  --body-color: #434345;
+  --acent-color: #e91e63;
+  --margin: 20px;
+}
+
+html {
+  font-size: 16px;
+}
 /* Texto nav */
 /* .main .menu-container a,
 .main-scrolled .menu-container a {
@@ -11,7 +30,7 @@
   color: #fff;
   text-transform: uppercase;
 } */
-
+/* 
 .main {
   padding: 0;
   width: 100%;
@@ -21,27 +40,27 @@
 }
 
 /* Links navbar */
-.main .menu-container {
+/* .main .menu-container {
   float: right;
   list-style-type: none;
   margin: 0;
   padding: 0;
   padding-top: 52px;
   position: relative;
-}
+} */
 
-
+/* 
 li {
   float: left;
   display: inline;
   margin-right: 32px;
   opacity: 0.7;
-}
+} */
 
-li a {
+/* li a { */
   /* display: block; */
   /* text-align: center; */
-  text-decoration: none;
+  /* text-decoration: none;
   font-family: "Rubik-Light", sans-serif;
   font-size: 12px;
   font-weight: normal;
@@ -49,20 +68,20 @@ li a {
   text-align: center;
   color: #fff;
   text-transform: uppercase;
-}
+} */
 
-.main .menu-container li:hover {
+/* .main .menu-container li:hover {
   opacity: 1;
-}
+} */
 
-ul {
+/* ul {
   /* overflow: hidden; */
-  background-color: #345cd7;
-}
+  /* background-color: #345cd7;
+} */
 
 /* .main .menu-container li {
-}
-*/
+} */
+
 
 
 /* when the browser window is 1200px wide or less */
@@ -97,4 +116,4 @@ a:hover,
 a:active {
   text-decoration: none;
   color: inherit;
-} */
+} */ 
