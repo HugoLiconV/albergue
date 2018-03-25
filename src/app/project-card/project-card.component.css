@@ -1,9 +1,10 @@
 .example-card {
-  max-width: 400px;
-}
-
-.left{
-  float: right;
+  /* max-width: 400px;
+  max-height: 250px;
+  min-width: 400px;
+  min-height: 250px; */
+  width: calc(100% - 70px);
+  height: calc(100% - 70px);
 }
 
 .acent{

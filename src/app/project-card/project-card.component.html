@@ -1,17 +1,70 @@
-<div class="card">
-  <div class='md-padding' layout="row" layout-wrap>
-    <!-- <mat-card style="width: 350px;" >
-      <img src="http://placehold.it/150x150" class="mat-card-image" alt="user avatar">
-      <mat-card-content>
-        <h2>Usuario</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-        <div class="md-actions" layout="row" layout-align="end center">
-          <button mat-button>Save</button>
-          <button mat-button>View</button>
-        </div>
-      </mat-card-content>
-    </mat-card> -->
-    <mat-card style="width: 350px;" class="example-card" *ngFor="let project of projects">
+<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+  <!-- <mat-card fxFlex="33%;" fxFlex.xs="80%">
+    <mat-card-content>
+      <h2>Left Card 1</h2>
+    </mat-card-content>
+  </mat-card> -->
+
+<mat-card fxFlex="33%;" fxFlex.xs="80%" class="example-card" *ngFor="let project of projects">
+  <mat-card-title>{{ project.nombre }}</mat-card-title>
+  <mat-card-subtitle>
+    <span class="acent">Area: </span> {{ project.area }}
+    <br>
+    <span>
+      <span class="acent">Fecha: </span>{{ formatDate(project.fechaPublicacion) }}
+    </span>
+  </mat-card-subtitle>
+  <mat-card-content>
+    <p>
+      {{ project.resumenSolucion }}
+    </p>
+    <br> Numero de personas: {{ project.numPersonas }} personas
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary">Detalles</button>
+  </mat-card-actions>
+</mat-card>
+
+  <!-- <mat-card fxFlex="33%;" fxFlex.xs="80%">
+    <mat-card-content>
+      <h2>Left Card 2</h2>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card fxFlex="33%;" fxFlex.xs="80%">
+    <mat-card-content>
+      <h2>Right Column </h2>
+    </mat-card-content>
+  </mat-card> -->
+</div>
+
+
+<!-- <div class="card">
+  <mat-grid-list cols="3" rowHeight="450px">
+    <mat-grid-tile *ngFor="let project of projects">
+      <mat-card class="example-card" >
+            <mat-card-title>{{ project.nombre }}</mat-card-title>
+            <mat-card-subtitle>
+              <span class="acent">Area: </span> {{ project.area }}
+              <br>
+              <span>
+                <span class="acent">Fecha: </span>{{ formatDate(project.fechaPublicacion) }}
+              </span>
+            </mat-card-subtitle>
+            <mat-card-content>
+              <p>
+                {{ project.resumenSolucion }}
+              </p>
+              <br> Numero de personas: {{ project.numPersonas }} personas
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button color="primary">Detalles</button>
+            </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list> -->
+<!-- <div class='md-padding' layout="row" layout-wrap>
+    <mat-card class="example-card" *ngFor="let project of projects">
       <mat-card-title>{{ project.nombre }}</mat-card-title>
       <mat-card-subtitle>
         <span class="acent">Area: </span> {{ project.area }}
@@ -30,7 +83,7 @@
         <button mat-raised-button color="primary">Detalles</button>
       </mat-card-actions>
     </mat-card>
-  </div>  
+  </div>   -->
 
 
       <!-- <mat-card class="example-card">
@@ -75,6 +128,6 @@
       </mat-card> -->
 
 
-</div>
+<!-- </div> -->
 
 <!--  *ngFor="let project of projects" -->

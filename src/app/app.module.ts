@@ -16,6 +16,10 @@ import { MatCardModule, MatCard } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 
+import { ObservableMedia } from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +32,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
   imports: [
     BrowserModule,
     NoopAnimationsModule,
+    FlexLayoutModule,
     MatTabsModule,
     MatCardModule,
     MatButtonModule,
