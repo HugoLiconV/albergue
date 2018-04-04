@@ -1,29 +1,26 @@
 <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
-  <!-- <mat-card fxFlex="33%;" fxFlex.xs="80%">
+  <mat-card fxFlex="33%;" fxFlex.xs="80%" class="example-card" *ngFor="let project of projects">
+    <mat-card-title>{{ project.nombre }}</mat-card-title>
+    <mat-card-subtitle>
+      <span class="acent">Area: </span> {{ project.area }}
+      <br>
+      <span>
+        <span class="acent">Fecha: </span>{{ formatDate(project.fechaPublicacion) }}
+      </span>
+      <br>
+      <span>
+        <span class="acent">Numero de personas: </span> {{ project.numPersonas }} personas
+      </span>
+    </mat-card-subtitle>
     <mat-card-content>
-      <h2>Left Card 1</h2>
+      <p>
+        {{ project.resumenSolucion }}
+      </p>
     </mat-card-content>
-  </mat-card> -->
-
-<mat-card fxFlex="33%;" fxFlex.xs="80%" class="example-card" *ngFor="let project of projects">
-  <mat-card-title>{{ project.nombre }}</mat-card-title>
-  <mat-card-subtitle>
-    <span class="acent">Area: </span> {{ project.area }}
-    <br>
-    <span>
-      <span class="acent">Fecha: </span>{{ formatDate(project.fechaPublicacion) }}
-    </span>
-  </mat-card-subtitle>
-  <mat-card-content>
-    <p>
-      {{ project.resumenSolucion }}
-    </p>
-    <br> Numero de personas: {{ project.numPersonas }} personas
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button color="primary">Detalles</button>
-  </mat-card-actions>
-</mat-card>
+    <mat-card-actions>
+      <button mat-raised-button color="primary">Detalles</button>
+    </mat-card-actions>
+  </mat-card>
 
   <!-- <mat-card fxFlex="33%;" fxFlex.xs="80%">
     <mat-card-content>

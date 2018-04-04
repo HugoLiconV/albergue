@@ -24,7 +24,12 @@ export const PROJECTS: Project[] = [
   resumenSolucion: `Ipsum harum sed. Culpa porro inventore non dolorem consectetur
    nulla. Asperiores non ut. Omnis fuga autem qui assumenda in. Omnis fuga autem qui assumenda in.
    lorem lorem Asperiores non ut. Omnis fuga autem qui assumenda in. Omnis fuga autem qui assumenda in.
-   lorem lorem `
+   lorem lorem 
+   Ipsum harum sed. Culpa porro inventore non dolorem consectetur
+   nulla. Asperiores non ut. 1 Ipsum harum sed. Culpa porro inventore non dolorem consectetur
+   nulla. Asperiores non ut. 2 Ipsum harum sed. Culpa porro inventore non dolorem consectetur
+   nulla. Asperiores non ut. 3 Ipsum harum sed. Culpa porro inventore non dolorem consectetur
+   nulla. Asperiores non ut. 4`
   },
   {
   id: 3,
