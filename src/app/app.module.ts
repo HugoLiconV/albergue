@@ -19,11 +19,13 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
 import {MatIconModule, MatIcon} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { ObservableMedia } from '@angular/flex-layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DonationCardComponent } from './donation-card/donation-card.component';
 import { LoginComponent } from './login/login.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import { LoginComponent } from './login/login.component';
     FooterSectionComponent,
     ProjectCardComponent,
     DonationCardComponent,
-    LoginComponent
+    LoginComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { LoginComponent } from './login/login.component';
     MatGridListModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
