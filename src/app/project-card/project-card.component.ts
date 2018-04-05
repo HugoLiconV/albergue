@@ -8,13 +8,7 @@ import { PROJECTS } from '../../mock-project';
 })
 export class ProjectCardComponent implements OnInit {
   projects = PROJECTS;
-  // project = this.projects[0];
-  tiles = [
-    { text: 'One', cols: 2, rows: 2, color: 'lightblue' },
-    { text: 'Two', cols: 2, rows: 2, color: 'lightgreen' },
-    { text: 'Three', cols: 2, rows: 2, color: 'lightpink' },
-    { text: 'Four', cols: 2, rows: 2, color: '#DDBDF1' }
-  ];
+
   constructor() {}
 
   ngOnInit() {}

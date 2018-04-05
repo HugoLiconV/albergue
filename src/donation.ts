@@ -1,7 +1,7 @@
 export class Donation {
   id: number;
   name: string;
-  descripcion: string;
+  description: string;
 }
 
 /*

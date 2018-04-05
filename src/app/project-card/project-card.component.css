@@ -1,7 +1,3 @@
-:root{
-  --margin-elements: 16px;
-}
-
 .acent{
   color: var(--acent-color);
 }

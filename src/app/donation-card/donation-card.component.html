@@ -1,3 +1,12 @@
-<p>
-  donation-card works!
-</p>
+<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+  <mat-card fxFlex="33%;" fxFlex.xs="80%" class="example-card" *ngFor="let donation of donations">
+    <mat-card-title>{{ donation.name }}</mat-card-title>
+    <mat-card-content>
+      <p>
+        {{ donation.description }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary">Detalles</button>
+    </mat-card-actions>
+  </mat-card>
