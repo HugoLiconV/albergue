@@ -18,6 +18,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 import { ObservableMedia } from '@angular/flex-layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DonationCardComponent } from './donation-card/donation-card.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     DetailsSectionComponent,
     MainSectionComponent,
     FooterSectionComponent,
-    ProjectCardComponent
+    ProjectCardComponent,
+    DonationCardComponent
   ],
   imports: [
     BrowserModule,
