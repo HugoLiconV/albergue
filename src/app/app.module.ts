@@ -11,21 +11,14 @@ import { FooterSectionComponent } from './footer-section/footer-section.componen
 import { ProjectCardComponent } from './project-card/project-card.component';
 
 // Material
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatCardModule, MatCard } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatGridListModule } from '@angular/material/grid-list';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material';
-import {MatIconModule, MatIcon} from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
+
 
 import { ObservableMedia } from '@angular/flex-layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DonationCardComponent } from './donation-card/donation-card.component';
 import { LoginComponent } from './login/login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { CustomMaterialModuleModule } from './custom-material-module.module';
 
 
 @NgModule({
@@ -44,16 +37,8 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    NoopAnimationsModule,
     FlexLayoutModule,
-    MatTabsModule,
-    MatCardModule,
-    MatButtonModule,
-    MatGridListModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatMenuModule
+    CustomMaterialModuleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
