@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -15,10 +16,14 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule, MatCard } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material';
+import {MatIconModule, MatIcon} from '@angular/material/icon';
 
 import { ObservableMedia } from '@angular/flex-layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DonationCardComponent } from './donation-card/donation-card.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -29,16 +34,22 @@ import { DonationCardComponent } from './donation-card/donation-card.component';
     MainSectionComponent,
     FooterSectionComponent,
     ProjectCardComponent,
-    DonationCardComponent
+    DonationCardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     NoopAnimationsModule,
     FlexLayoutModule,
     MatTabsModule,
     MatCardModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

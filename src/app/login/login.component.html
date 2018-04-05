@@ -1,0 +1,23 @@
+<!-- TODO: crear componente de nav -->
+<!-- TODO: Agregar nombre de página -->
+<nav class="main" id="main">
+  <ul class="menu-container">
+    <li>
+      <a href="#about">Página Principal</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container">
+  <mat-form-field>
+    <input matInput placeholder="Enter your email" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary">Iniciar Sesión</button>
+</div>
