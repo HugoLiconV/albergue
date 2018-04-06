@@ -1,0 +1,25 @@
+<app-container>
+  <mat-form-field>
+    <input matInput placeholder="Nombre" required>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Descripción" matTextareaAutosize matAutosizeMinRows="2"
+            matAutosizeMaxRows="5" required></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Solución" matTextareaAutosize matAutosizeMinRows="2"
+            matAutosizeMaxRows="5" required></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <input type="number" matInput placeholder="Número de personas">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Area">
+      <mat-option value="option">Sistemas</mat-option>
+      <mat-option value="option">Arquitectura</mat-option>
+      <mat-option value="option">Administración</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary">Guardar</button>
+</app-container>
