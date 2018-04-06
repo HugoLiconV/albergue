@@ -1,21 +1,21 @@
 <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="10px">
   <mat-card *ngFor="let project of projects" class="example-card"
   fxFlex.xs="100%" fxFlex.sm="48%" fxFlex.md="48%" fxFlex.lg="32%" fxFlex.xl="24%">
-    <mat-card-title>{{ project.nombre }}</mat-card-title>
+    <mat-card-title>{{ project.name }}</mat-card-title>
     <mat-card-subtitle>
       <span class="acent">Area: </span> {{ project.area }}
       <br>
       <span>
-        <span class="acent">Fecha: </span>{{ formatDate(project.fechaPublicacion) }}
+        <span class="acent">Fecha: </span>{{ formatDate(project.publicationDate) }}
       </span>
       <br>
       <span>
-        <span class="acent">Numero de personas: </span> {{ project.numPersonas }} personas
+        <span class="acent">Numero de personas: </span> {{ project.numberOfPeople }} personas
       </span>
     </mat-card-subtitle>
     <mat-card-content>
       <p>
-        {{ project.solucion }}
+        {{ project.solution }}
       </p>
     </mat-card-content>
     <mat-card-actions>

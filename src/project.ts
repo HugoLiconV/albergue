@@ -1,10 +1,10 @@
 export class Project {
   id: number;
-  nombre: string;
-  descripcion: string;
-  fechaPublicacion: Date;
-  numPersonas: number;
-  solucion: string;
+  name: string;
+  description: string;
+  publicationDate: Date;
+  numberOfPeople: number;
+  solution: string;
   area: string;
 }
 

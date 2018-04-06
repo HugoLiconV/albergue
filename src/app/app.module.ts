@@ -24,6 +24,7 @@ import { ContainerComponent } from './shared/container/container.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { EventCardComponent } from './event-card/event-card.component';
 import { MAT_DATE_LOCALE } from '@angular/material';
+import { NavbarAdminComponent } from './shared/navbar-admin/navbar-admin.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { MAT_DATE_LOCALE } from '@angular/material';
     ProjectFormComponent,
     ContainerComponent,
     NavbarComponent,
-    EventCardComponent
+    EventCardComponent,
+    NavbarAdminComponent
   ],
   imports: [
     BrowserModule,
