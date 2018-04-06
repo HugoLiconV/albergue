@@ -26,6 +26,9 @@ import { EventCardComponent } from './event-card/event-card.component';
 import { MAT_DATE_LOCALE } from '@angular/material';
 import { NavbarAdminComponent } from './shared/navbar-admin/navbar-admin.component';
 import { AppRoutingModule } from './app-routing.module';
+import { TabsSectionComponent } from './tabs-section/tabs-section.component';
+import { DonationFormComponent } from './donation-form/donation-form.component';
+import { EventFormComponent } from './event-form/event-form.component';
 
 
 @NgModule({
@@ -43,7 +46,10 @@ import { AppRoutingModule } from './app-routing.module';
     ContainerComponent,
     NavbarComponent,
     EventCardComponent,
-    NavbarAdminComponent
+    NavbarAdminComponent,
+    TabsSectionComponent,
+    DonationFormComponent,
+    EventFormComponent
   ],
   imports: [
     BrowserModule,

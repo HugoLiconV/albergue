@@ -1,12 +1,3 @@
-app-navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  color: #fff;
-}
-
 .main {
   background-color: #fff;
   padding-bottom: var(--padding-bottom-section);
@@ -15,6 +6,7 @@ app-navbar {
   font-family: var(--main-font);
   color: var(--title);
 }
+
 
 .tab-group {
   /* display: flex;

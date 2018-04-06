@@ -1,12 +1,16 @@
-<!-- TODO: crear componente de nav -->
-<!-- TODO: Agregar nombre de página -->
-<nav class="main" id="main">
-  <ul class="menu-container">
-    <li>
-      <a href="#about">Página Principal</a>
-    </li>
-  </ul>
-</nav>
+<div class="app-navbar mat-elevation-z6">
+  <nav class="docs-navbar-header">
+    <!-- TODO: Agregar ícono -->
+    <a mat-button class="docs-button" routerLink="/login">
+    <span>Panel de Administración</span>
+    </a>
+    <a mat-button class="docs-navbar-hide-small docs-button" routerLink="/home">Página Principal</a>
+    <div class="flex-spacer"></div>
+  </nav>
+  <nav class="docs-navbar docs-navbar-show-small">
+    <a mat-button class="docs-navbar-link" routerLink="/home">Página Principal</a>
+  </nav>
+</div>
 
 <app-container>
   <mat-form-field>
