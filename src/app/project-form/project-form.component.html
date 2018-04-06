@@ -13,13 +13,20 @@
   <mat-form-field>
     <input type="number" matInput placeholder="Número de personas">
   </mat-form-field>
-  <mat-form-field>
+  <!-- <mat-form-field>
     <mat-select placeholder="Area">
       <mat-option value="option">Sistemas</mat-option>
       <mat-option value="option">Arquitectura</mat-option>
       <mat-option value="option">Administración</mat-option>
     </mat-select>
+  </mat-form-field> -->
+  <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Área" matInput [formControl]="myControl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
   </mat-form-field>
-
   <button mat-raised-button color="primary">Guardar</button>
 </app-container>
