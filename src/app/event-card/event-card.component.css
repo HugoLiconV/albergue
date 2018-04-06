@@ -24,7 +24,7 @@ mat-card-subtitle{
   font-family: var(--main-font);
   font-size: 1rem;
   width: 100%;
-  height: calc(20% - 16px);
+  height: calc(25% - 16px);
   box-sizing: border-box;
   border: 2px solid mediumaquamarine;
 }
@@ -35,7 +35,7 @@ mat-card-content{
   color: var(--body-color);
   font-size: 1rem;
   width: 100%;
-  height: calc(50% - 16px);
+  height: calc(45% - 16px);
   line-height: 1.5rem;
   overflow: hidden;
   box-sizing: border-box;

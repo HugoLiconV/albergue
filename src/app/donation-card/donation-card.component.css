@@ -3,10 +3,10 @@
 }
 
 .example-card {
-  max-height: 450px;
-  min-height: 350px;
-  position: relative;
+  height: 450px;
+  /* position: relative; */
   border-radius: 10px;
+  margin-bottom: 16px;
 }
 
 mat-card-title{
@@ -15,10 +15,19 @@ mat-card-title{
   color: var(--title-color);
   text-align: center;
   width: 100%;
-  height: 20%;
+  height: 15%;
   box-sizing: border-box;
   border: 2px solid mediumvioletred;
 }
+
+/* mat-card-subtitle{
+  font-family: var(--main-font);
+  font-size: 1rem;
+  width: 100%;
+  height: calc(20% - 16px);
+  box-sizing: border-box;
+  border: 2px solid mediumaquamarine;
+} */
 
 mat-card-content{
   font-family: var(--main-font);
@@ -26,7 +35,7 @@ mat-card-content{
   color: var(--body-color);
   font-size: 1rem;
   width: 100%;
-  height: calc(60% - 16px);
+  height: calc(70% - 16px);
   line-height: 1.5rem;
   overflow: hidden;
   box-sizing: border-box;
@@ -39,7 +48,7 @@ mat-card-actions {
   margin-left: 0px;
   align-items: center;
   width: 100%;
-  height: calc(20% - 16px);
+  height: calc(15% - 16px);
   box-sizing: border-box;
   border: 2px solid mediumaquamarine;
 }
@@ -65,4 +74,3 @@ mat-card-actions {
   margin-bottom: 30px;
   color: #434345;
 }
-

@@ -1,21 +1,22 @@
 <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="10px">
-  <mat-card *ngFor="let project of projects" class="example-card"
+  <mat-card *ngFor="let event of events" class="example-card"
   fxFlex.xs="100%" fxFlex.sm="48%" fxFlex.md="48%" fxFlex.lg="32%" fxFlex.xl="24%">
-    <mat-card-title>{{ project.nombre }}</mat-card-title>
+    <mat-card-title>{{ event.name }}</mat-card-title>
     <mat-card-subtitle>
-      <span class="acent">Area: </span> {{ project.area }}
+      <span class="acent">Costo: </span> {{ event.cost }}
       <br>
       <span>
-        <span class="acent">Fecha: </span>{{ formatDate(project.fechaPublicacion) }}
+        <!-- TODO: Crear funcion para dar formato a hora -->
+        <span class="acent">Fecha: </span>{{ formatDate(event.date) }} a las {{event.hour}}
       </span>
       <br>
       <span>
-        <span class="acent">Numero de personas: </span> {{ project.numPersonas }} personas
+        <span class="acent">Ubicación: </span> {{ event.location }}
       </span>
     </mat-card-subtitle>
     <mat-card-content>
       <p>
-        {{ project.solucion }}
+        {{ event.description }}
       </p>
     </mat-card-content>
     <mat-card-actions>

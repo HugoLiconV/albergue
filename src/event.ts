@@ -1,11 +1,11 @@
 export class Event {
   id: number;
-  nombre: string;
-  descripcion: string;
-  lugar: string;
-  fecha: string;
-  hora: string;
-  costo: string;
+  name: string;
+  description: string;
+  location: string;
+  date: Date;
+  hour: string;
+  cost: string;
 }
 
 

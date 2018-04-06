@@ -1,5 +1,6 @@
-<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
-  <mat-card fxFlex="33%;" fxFlex.xs="80%" class="example-card" *ngFor="let donation of donations">
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="10px">
+  <mat-card class="example-card" *ngFor="let donation of donations"
+    fxFlex.xs="100%" fxFlex.sm="48%" fxFlex.md="48%" fxFlex.lg="32%" fxFlex.xl="24%">
     <mat-card-title>{{ donation.name }}</mat-card-title>
     <mat-card-content>
       <p>

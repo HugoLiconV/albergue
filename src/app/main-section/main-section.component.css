@@ -7,10 +7,12 @@
   color: var(--title);
 }
 
+
 .tab-group {
-  /* justify-content: center; */
-  /* align-items: center; */
-  background-color: bisque;
+  /* display: flex;
+  justify-content: center; */
+  align-items: center;
+  /* background-color: bisque; */
   width: 100%;
   /* border-top: solid 3px #345cd7; */
 }
