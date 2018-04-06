@@ -25,6 +25,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { EventCardComponent } from './event-card/event-card.component';
 import { MAT_DATE_LOCALE } from '@angular/material';
 import { NavbarAdminComponent } from './shared/navbar-admin/navbar-admin.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { NavbarAdminComponent } from './shared/navbar-admin/navbar-admin.compone
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    CustomMaterialModuleModule
+    CustomMaterialModuleModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
