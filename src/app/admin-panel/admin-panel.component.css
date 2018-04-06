@@ -1,16 +1,13 @@
-.main-container{
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  flex-direction: column;
-  position: absolute;
-  top: 56px;
-  bottom: 0;
-  left: 0;
-  right: 0;
+body{
+  height: 100%;
+  width: 100%;
 }
 
-.app-navbar {
+.navbar-wrapper{
+  padding-top: 70px;
+}
+
+app-navbar-admin {
   position: fixed;
   top: 0;
   left: 0;
@@ -19,58 +16,13 @@
   color: #fff;
 }
 
-.app-navbar .docs-navbar, 
-.app-navbar .docs-navbar-header {
-  background-color: var(--main-color);
-}
-
-.docs-navbar-header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 8px 16px;
-}
-
-.docs-navbar-header > .mat-button:last-child {
-  margin-left: auto;
-}
-
-.flex-spacer {
-  flex-grow: 1;
-}
-
-.docs-navbar-link {
-  text-decoration: inherit;
-  flex: 1;
-}
-
-.docs-navbar {
-  display: none;
-}
-
-.docs-navbar-show-small {
-  display: none;
-}
-
 /**
   * Rules for when the device is detected to be a small screen.
   * Moves content two rows instead of one.
   */
 @media (max-width: 720px) {
-  .docs-navbar-hide-small {
-    display: none;
-  }
-
-  .docs-navbar-show-small {
-    display: block;
-  }
-
-  .docs-navbar {
-    display: flex;
-  }
-
-  .docs-navbar--github-logo {
-    margin: 0;
+  .navbar-wrapper{
+    padding-top: 100px;
   }
 }
 
@@ -78,29 +30,15 @@
 .main {
   background-color: #fff;
   padding-bottom: var(--padding-bottom-section);
-  padding-left: 11.5vw;
-  padding-right: 11.5vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
   font-family: var(--main-font);
   color: var(--title);
-  /* display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;*/
-  /* position: absolute; 
-  top: 56px;
-  bottom: 0;
-  left: 0;
-  right: 0; */
 }
 
 .tab-group {
-  /* justify-content: center; */
-  /* align-items: center; */
+  align-items: center;
   width: 100%;
-  /* border-top: solid 3px #345cd7; */
 }
 
 .tab-content {

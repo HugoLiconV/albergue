@@ -1,0 +1,39 @@
+<!-- TODO: Quitar sombra en pagina ppal -->
+<div class="app-navbar mat-elevation-z6">
+  <nav class="docs-navbar-header">
+    <!-- TODO: Agregar ícono -->
+    <a mat-button class="docs-button" routerLink="/">
+    <span>Panel de Administración</span>
+    </a>
+    <a mat-button class="docs-navbar-hide-small docs-button">Página Principal</a>
+    <a mat-button class="docs-navbar-hide-small docs-button" routerLink="guides">Registro Lavadaras</a>
+    <div class="flex-spacer"></div>
+    <button mat-icon-button [matMenuTriggerFor]="menu" id="add-menu">
+      <mat-icon>add</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <span>Proyecto</span>
+      </button>
+      <button mat-menu-item>
+        <span>Donación</span>
+      </button>
+      <button mat-menu-item>
+        <span>Evento</span>
+      </button>
+  </mat-menu>
+    <a mat-button class="docs-button docs-navbar-hide-small" href="/"
+      aria-label="GitHub Repository">
+      <mat-icon>input</mat-icon>
+      Cerrar Sesión
+    </a>
+    <a mat-icon-button class="docs-button docs-navbar-show-small" href="/" 
+      aria-label="GitHub Repository">
+      <mat-icon>input</mat-icon>
+    </a>
+  </nav>
+  <nav class="docs-navbar docs-navbar-show-small">
+    <a mat-button class="docs-navbar-link">Página Principal</a>
+    <a mat-button class="docs-navbar-link">Registro Lavadoras</a>
+  </nav>
+</div>
