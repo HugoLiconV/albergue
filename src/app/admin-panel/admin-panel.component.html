@@ -1,95 +1,98 @@
-<div class="app-navbar">
-  <nav class="docs-navbar-header">
-    <!-- TODO: Agregar ícono -->
-    <a mat-button class="docs-button" routerLink="/">
+<div class="main-container">
+  <!-- TODO: Quitar sombra en pagina ppal -->
+  <div class="app-navbar mat-elevation-z6">
+    <nav class="docs-navbar-header">
+      <!-- TODO: Agregar ícono -->
+      <a mat-button class="docs-button" routerLink="/">
       <span>Panel de Administración</span>
-    </a>
-    <a mat-button class="docs-navbar-hide-small docs-button">Página Principal</a>
-    <a mat-button class="docs-navbar-hide-small docs-button" routerLink="guides">Registro Lavadaras</a>
-    <div class="flex-spacer"></div>
+      </a>
+      <a mat-button class="docs-navbar-hide-small docs-button">Página Principal</a>
+      <a mat-button class="docs-navbar-hide-small docs-button" routerLink="guides">Registro Lavadaras</a>
+      <div class="flex-spacer"></div>
 
-    <button mat-icon-button [matMenuTriggerFor]="menu" id="add-menu">
-      <mat-icon>add</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <span>Proyecto</span>
+      <button mat-icon-button [matMenuTriggerFor]="menu" id="add-menu">
+        <mat-icon>add</mat-icon>
       </button>
-      <button mat-menu-item>
-        <span>Donación</span>
-      </button>
-      <button mat-menu-item>
-        <span>Evento</span>
-      </button>
-    </mat-menu>
-    <a mat-button class="docs-button docs-navbar-hide-small" href="/"
-      aria-label="GitHub Repository">
-      <mat-icon>input</mat-icon>
-      Cerrar Sesión
-    </a>
-    <a mat-icon-button class="docs-button docs-navbar-show-small" href="/" 
-      aria-label="GitHub Repository">
-      <mat-icon>input</mat-icon>
-    </a>
-  </nav>
-  <nav class="docs-navbar docs-navbar-show-small">
-    <a mat-button class="docs-navbar-link">Página Principal</a>
-    <a mat-button class="docs-navbar-link">Registro Lavadoras</a>
-  </nav>
-</div>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <span>Proyecto</span>
+        </button>
+        <button mat-menu-item>
+          <span>Donación</span>
+        </button>
+        <button mat-menu-item>
+          <span>Evento</span>
+        </button>
+      </mat-menu>
+      <a mat-button class="docs-button docs-navbar-hide-small" href="/"
+        aria-label="GitHub Repository">
+        <mat-icon>input</mat-icon>
+        Cerrar Sesión
+      </a>
+      <a mat-icon-button class="docs-button docs-navbar-show-small" href="/" 
+        aria-label="GitHub Repository">
+        <mat-icon>input</mat-icon>
+      </a>
+    </nav>
+    <nav class="docs-navbar docs-navbar-show-small">
+      <a mat-button class="docs-navbar-link">Página Principal</a>
+      <a mat-button class="docs-navbar-link">Registro Lavadoras</a>
+    </nav>
+  </div>
 
-<section class="main">
-  <mat-tab-group class="tab-group" layout="row" layout-align="center center">
-    <mat-tab label="Proyectos">
-      <div class="tab-content">
-        <div class="example-container mat-elevation-z8">
-          <mat-table #table [dataSource]="dataSource" matSort>
+  <section class="main">
+    <mat-tab-group class="tab-group" layout="row" layout-align="center center">
+      <mat-tab label="Proyectos">
+        <div class="tab-content">
+          <div class="example-container mat-elevation-z8">
+            <mat-table #table [dataSource]="dataSource" matSort>
 
-            <!-- Nombre Column -->
-            <ng-container matColumnDef="nombre">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
-            </ng-container>
+              <!-- Nombre Column -->
+              <ng-container matColumnDef="nombre">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
+              </ng-container>
 
-            <!-- Name Column -->
-            <ng-container matColumnDef="descripcion">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.descripcion}} </mat-cell>
-            </ng-container>
+              <!-- Name Column -->
+              <ng-container matColumnDef="descripcion">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.descripcion}} </mat-cell>
+              </ng-container>
 
-            <!-- Weight Column -->
-            <ng-container matColumnDef="fechaPublicacion">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{formatDate(element.fechaPublicacion)}} </mat-cell>
-            </ng-container>
+              <!-- Weight Column -->
+              <ng-container matColumnDef="fechaPublicacion">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{formatDate(element.fechaPublicacion)}} </mat-cell>
+              </ng-container>
 
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="numPersonas">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Núm. Personas </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.numPersonas}} </mat-cell>
-            </ng-container>
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="numPersonas">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Núm. Personas </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.numPersonas}} </mat-cell>
+              </ng-container>
 
-            <!-- Area Column -->
-            <ng-container matColumnDef="area">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Área </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.area}} </mat-cell>
-            </ng-container>
+              <!-- Area Column -->
+              <ng-container matColumnDef="area">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Área </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.area}} </mat-cell>
+              </ng-container>
 
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-          </mat-table>
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+          </div>
         </div>
-      </div>
-    </mat-tab>
-    <mat-tab label="Donaciones">
-      <div class="tab-content">
-        tabla donaciones
-      </div>
-    </mat-tab>
-    <mat-tab label="Eventos">
-      <div class="tab-content">
-        Tabla eventos
-      </div>
-    </mat-tab>
-  </mat-tab-group>
-</section>
+      </mat-tab>
+      <mat-tab label="Donaciones">
+        <div class="tab-content">
+          tabla donaciones
+        </div>
+      </mat-tab>
+      <mat-tab label="Eventos">
+        <div class="tab-content">
+          Tabla eventos
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </section>
+</div>

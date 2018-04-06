@@ -21,6 +21,7 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { CustomMaterialModuleModule } from './custom-material-module.module';
 import { ProjectFormComponent } from './project-form/project-form.component';
 import { ContainerComponent } from './shared/container/container.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ContainerComponent } from './shared/container/container.component';
     LoginComponent,
     AdminPanelComponent,
     ProjectFormComponent,
-    ContainerComponent
+    ContainerComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

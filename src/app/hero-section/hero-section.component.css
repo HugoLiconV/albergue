@@ -1,4 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700');
+
+.main-container{
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  position: absolute;
+  top: 56px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 /* Landing container */
 #landing {
   height: 100vh;
@@ -55,7 +68,12 @@ ul {
   background-color: var(--main-color);
 };
 
+header {
+  display: grid;
+}
+
 .intro {
+  display: grid;
   background-color: var(--main-color);
   padding-bottom: 80px;
 }
@@ -100,6 +118,14 @@ ul {
   transform: rotate(90deg);
 }
 
+app-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  color: #fff;
+}
 
 /* 
 .pimg1 {
