@@ -1,5 +1,6 @@
-<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
-  <mat-card fxFlex="33%;" fxFlex.xs="80%" class="example-card" *ngFor="let project of projects">
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="10px">
+  <mat-card *ngFor="let project of projects" class="example-card"
+  fxFlex.xs="100%" fxFlex.sm="48%" fxFlex.md="48%" fxFlex.lg="32%" fxFlex.xl="24%">
     <mat-card-title>{{ project.nombre }}</mat-card-title>
     <mat-card-subtitle>
       <span class="acent">Area: </span> {{ project.area }}
@@ -21,110 +22,34 @@
       <button mat-raised-button color="primary">Detalles</button>
     </mat-card-actions>
   </mat-card>
+  <!-- <mat-card fxFlex="31" fxFlex.xs="80%">
+		<mat-card-content>
+			<h2>Card 1</h2>
+		</mat-card-content>
+	</mat-card>
 
-  <!-- <mat-card fxFlex="33%;" fxFlex.xs="80%">
-    <mat-card-content>
-      <h2>Left Card 2</h2>
-    </mat-card-content>
-  </mat-card>
+	<mat-card fxFlex="31" fxFlex.xs="80%">
+		<mat-card-content>
+			<h2>Card 2</h2>
+		</mat-card-content>
+	</mat-card>
 
-  <mat-card fxFlex="33%;" fxFlex.xs="80%">
-    <mat-card-content>
-      <h2>Right Column </h2>
-    </mat-card-content>
-  </mat-card> -->
+	<mat-card fxFlex="31" fxFlex.xs="80%">
+		<mat-card-content>
+			<h2>Card 3</h2>
+		</mat-card-content>
+	</mat-card>
+
+  <mat-card fxFlex="31" fxFlex.xs="80%">
+		<mat-card-content>
+			<h2>Card 4</h2>
+		</mat-card-content>
+	</mat-card>
+
+  <mat-card fxFlex="31" fxFlex.xs="80%">
+		<mat-card-content>
+			<h2>Card 5</h2>
+		</mat-card-content>
+	</mat-card> -->
+
 </div>
-
-
-<!-- <div class="card">
-  <mat-grid-list cols="3" rowHeight="450px">
-    <mat-grid-tile *ngFor="let project of projects">
-      <mat-card class="example-card" >
-            <mat-card-title>{{ project.nombre }}</mat-card-title>
-            <mat-card-subtitle>
-              <span class="acent">Area: </span> {{ project.area }}
-              <br>
-              <span>
-                <span class="acent">Fecha: </span>{{ formatDate(project.fechaPublicacion) }}
-              </span>
-            </mat-card-subtitle>
-            <mat-card-content>
-              <p>
-                {{ project.resumenSolucion }}
-              </p>
-              <br> Numero de personas: {{ project.numPersonas }} personas
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-raised-button color="primary">Detalles</button>
-            </mat-card-actions>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list> -->
-<!-- <div class='md-padding' layout="row" layout-wrap>
-    <mat-card class="example-card" *ngFor="let project of projects">
-      <mat-card-title>{{ project.nombre }}</mat-card-title>
-      <mat-card-subtitle>
-        <span class="acent">Area: </span> {{ project.area }}
-        <br>
-        <span>
-          <span class="acent">Fecha: </span>{{ formatDate(project.fechaPublicacion) }}
-        </span>
-      </mat-card-subtitle>
-      <mat-card-content>
-        <p>
-          {{ project.resumenSolucion }}
-        </p>
-        <br> Numero de personas: {{ project.numPersonas }} personas
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button color="primary">Detalles</button>
-      </mat-card-actions>
-    </mat-card>
-  </div>   -->
-
-
-      <!-- <mat-card class="example-card">
-          <mat-card-title>{{  project.nombre }}</mat-card-title>
-          <mat-card-subtitle>
-            <span class="acent">Area: </span> {{ project.area }}
-            <br>  
-            <span>
-              <span class="acent">Fecha: </span>{{ formatDate(project.fechaPublicacion) }}
-            </span>
-          </mat-card-subtitle>
-        <mat-card-content>
-          <p>
-            {{ project.resumenSolucion }}
-          </p>
-          <br>
-          Numero de personas: {{ project.numPersonas }} personas
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button color="primary">Detalles</button>
-        </mat-card-actions>
-      </mat-card> -->
-          
-      <!-- <mat-card class="example-card">
-            <mat-card-title>{{ project.nombre }}</mat-card-title>
-            <mat-card-subtitle>
-              <span class="acent">Area: </span> {{ project.area }}
-              <br>
-              <span>
-                <span class="acent">Fecha: </span>{{ formatDate(project.fechaPublicacion) }}
-              </span>
-            </mat-card-subtitle>
-            <mat-card-content>
-              <p>
-                {{ project.resumenSolucion }}
-              </p>
-              <br> Numero de personas: {{ project.numPersonas }} personas
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-raised-button color="primary">Detalles</button>
-            </mat-card-actions>
-      </mat-card> -->
-
-
-<!-- </div> -->
-
-<!--  *ngFor="let project of projects" -->

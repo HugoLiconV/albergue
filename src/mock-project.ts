@@ -41,5 +41,15 @@ export const PROJECTS: Project[] = [
   solucion: `Aut impedit et totam sunt. Et doloribus minus sit. Facere fuga quo
   eveniet distinctio labore aliquid`,
   area: 'Electrónica, Sistemas'
+  }, {
+  id: 5,
+  nombre: 'consequuntur inventore ab',
+  descripcion: `Vel sit id consequatur. Illo et quibusdam optio culpa culpa enim
+   error. In consectetur et provident pariatur. Et consequuntur minus ut quos.`,
+  fechaPublicacion: new Date(),
+  numPersonas: 3,
+  solucion: `Aut impedit et totam sunt. Et doloribus minus sit. Facere fuga quo
+  eveniet distinctio labore aliquid`,
+  area: 'Electrónica, Sistemas'
   }
 ];
