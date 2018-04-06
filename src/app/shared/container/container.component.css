@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  margin: 100px auto;
+  padding: 20px;
+  position: relative;
+  border-radius: 6px;
+}
+
+.container > * {
+  width: 100%;
+}

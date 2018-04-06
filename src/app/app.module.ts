@@ -19,6 +19,8 @@ import { DonationCardComponent } from './donation-card/donation-card.component';
 import { LoginComponent } from './login/login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { CustomMaterialModuleModule } from './custom-material-module.module';
+import { ProjectFormComponent } from './project-form/project-form.component';
+import { ContainerComponent } from './shared/container/container.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { CustomMaterialModuleModule } from './custom-material-module.module';
     ProjectCardComponent,
     DonationCardComponent,
     LoginComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    ProjectFormComponent,
+    ContainerComponent
   ],
   imports: [
     BrowserModule,
