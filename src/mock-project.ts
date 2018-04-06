@@ -9,7 +9,6 @@ export const PROJECTS: Project[] = [
   numPersonas: 4,
   solucion: 'Crear un control de acceso con arduino',
   area: 'Electrónica, Sistemas',
-  resumenSolucion: 'Crear un control de acceso con arduino'
   },
   {
   id: 2,
@@ -21,15 +20,6 @@ export const PROJECTS: Project[] = [
   solucion: `Aut impedit et totam sunt. Et doloribus minus sit. Facere fuga quo
   eveniet distinctio labore aliquid `,
   area: 'Electrónica, Sistemas',
-  resumenSolucion: `Ipsum harum sed. Culpa porro inventore non dolorem consectetur
-   nulla. Asperiores non ut. Omnis fuga autem qui assumenda in. Omnis fuga autem qui assumenda in.
-   lorem lorem Asperiores non ut. Omnis fuga autem qui assumenda in. Omnis fuga autem qui assumenda in.
-   lorem lorem 
-   Ipsum harum sed. Culpa porro inventore non dolorem consectetur
-   nulla. Asperiores non ut. 1 Ipsum harum sed. Culpa porro inventore non dolorem consectetur
-   nulla. Asperiores non ut. 2 Ipsum harum sed. Culpa porro inventore non dolorem consectetur
-   nulla. Asperiores non ut. 3 Ipsum harum sed. Culpa porro inventore non dolorem consectetur
-   nulla. Asperiores non ut. 4`
   },
   {
   id: 3,
@@ -40,9 +30,7 @@ export const PROJECTS: Project[] = [
   numPersonas: 3,
   solucion: `Aut impedit et totam sunt. Et doloribus minus sit. Facere fuga quo
   eveniet distinctio labore aliquid`,
-  area: 'Electrónica, Sistemas',
-  resumenSolucion: `Ipsum harum sed. Culpa porro inventore non dolorem consectetur
-   nulla. Asperiores non ut. Omnis fuga autem qui assumenda in.`
+  area: 'Electrónica, Sistemas'
   }, {
   id: 4,
   nombre: 'consequuntur inventore ab',
@@ -52,8 +40,6 @@ export const PROJECTS: Project[] = [
   numPersonas: 3,
   solucion: `Aut impedit et totam sunt. Et doloribus minus sit. Facere fuga quo
   eveniet distinctio labore aliquid`,
-  area: 'Electrónica, Sistemas',
-  resumenSolucion: `Ipsum harum sed. Culpa porro inventore non dolorem consectetur
-   nulla. Asperiores non ut. Omnis fuga autem qui assumenda in.`
+  area: 'Electrónica, Sistemas'
   }
 ];

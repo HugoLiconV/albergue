@@ -6,7 +6,6 @@ export class Project {
   numPersonas: number;
   solucion: string;
   area: string;
-  resumenSolucion: string;
 }
 
 /*
