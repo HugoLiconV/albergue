@@ -53,7 +53,7 @@ ul {
 } */
 
 .app-navbar {
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0;
   right: 0;
@@ -128,4 +128,52 @@ ul {
   .docs-navbar--github-logo {
     margin: 0;
   }
+}
+
+
+.main {
+  background-color: #fff;
+  padding-bottom: var(--padding-bottom-section);
+  padding-left: 11.5vw;
+  padding-right: 11.5vw;
+  font-family: var(--main-font);
+  color: var(--title);
+  /* display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;*/
+  /* position: absolute; 
+  top: 56px;
+  bottom: 0;
+  left: 0;
+  right: 0; */
+}
+
+.tab-group {
+  /* justify-content: center; */
+  /* align-items: center; */
+  width: 100%;
+  /* border-top: solid 3px #345cd7; */
+}
+
+.tab-content {
+  padding: 16px;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.mat-header-cell.mat-sort-header-sorted {
+  color: black;
 }
