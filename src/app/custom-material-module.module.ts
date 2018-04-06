@@ -13,6 +13,7 @@ import {
   MatIconModule,
   MatIcon,
   MatMenuModule,
+  MatTableModule,
 } from '@angular/material';
 
 @NgModule({
@@ -27,6 +28,7 @@ import {
     MatInputModule,
     MatIconModule,
     MatMenuModule,
+    MatTableModule,
   ],
   exports: [
     CommonModule,
@@ -39,7 +41,7 @@ import {
     MatInputModule,
     MatIconModule,
     MatMenuModule,
+    MatTableModule,
   ]
-  declarations: []
 })
 export class CustomMaterialModuleModule { }
