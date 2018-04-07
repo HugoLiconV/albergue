@@ -1,3 +1,10 @@
-<p>
-  donation-form works!
-</p>
+<app-container>
+  <mat-form-field>
+    <input matInput placeholder="Nombre" required>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Descripción" matTextareaAutosize matAutosizeMinRows="2"
+            matAutosizeMaxRows="5" required></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="primary">Guardar</button>
+</app-container>

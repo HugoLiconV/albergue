@@ -13,20 +13,28 @@
   <mat-form-field>
     <input type="number" matInput placeholder="Número de personas">
   </mat-form-field>
-  <!-- <mat-form-field>
-    <mat-select placeholder="Area">
-      <mat-option value="option">Sistemas</mat-option>
-      <mat-option value="option">Arquitectura</mat-option>
-      <mat-option value="option">Administración</mat-option>
-    </mat-select>
-  </mat-form-field> -->
-  <mat-form-field class="example-full-width">
+
+  <mat-form-field>
+    <mat-chip-list #chipList>
+      <mat-chip *ngFor="let element of elements" [selectable]="selectable"
+              [removable]="removable" (remove)="remove(element)">
+        {{element.name}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input placeholder="Area"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="add($event)" />
+    </mat-chip-list>
+  </mat-form-field>
+  <!-- <mat-form-field class="example-full-width">
     <input type="text" placeholder="Área" matInput [formControl]="myControl" [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let option of options" [value]="option">
         {{ option }}
       </mat-option>
     </mat-autocomplete>
-  </mat-form-field>
+  </mat-form-field> -->
   <button mat-raised-button color="primary">Guardar</button>
 </app-container>

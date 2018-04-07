@@ -16,7 +16,9 @@ import {
   MatTableModule,
   MatSelectModule,
   MatDatepickerModule,
+  MatNativeDateModule,
   MatAutocompleteModule,
+  MatChipsModule
 } from '@angular/material';
 
 @NgModule({
@@ -34,7 +36,9 @@ import {
     MatTableModule,
     MatSelectModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatAutocompleteModule,
+    MatChipsModule,
   ],
   exports: [
     CommonModule,
@@ -50,7 +54,9 @@ import {
     MatTableModule,
     MatSelectModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatAutocompleteModule,
+    MatChipsModule,
   ]
 })
 export class CustomMaterialModuleModule { }
