@@ -7,6 +7,7 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ProjectFormComponent } from './project-form/project-form.component';
 import { DonationFormComponent } from './donation-form/donation-form.component';
 import { EventFormComponent } from './event-form/event-form.component';
+import { DonationsDetailsComponent } from './donations-details/donations-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'project-form', component: ProjectFormComponent },
   { path: 'donation-form', component: DonationFormComponent },
   { path: 'event-form', component: EventFormComponent },
+  { path: 'donations-details', component: DonationsDetailsComponent },
 ];
 
 @NgModule({

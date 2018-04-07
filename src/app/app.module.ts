@@ -15,6 +15,7 @@ import { ProjectCardComponent } from './project-card/project-card.component';
 
 import { ObservableMedia } from '@angular/flex-layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatDividerModule} from '@angular/material/divider';
 import { DonationCardComponent } from './donation-card/donation-card.component';
 import { LoginComponent } from './login/login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
@@ -29,6 +30,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { TabsSectionComponent } from './tabs-section/tabs-section.component';
 import { DonationFormComponent } from './donation-form/donation-form.component';
 import { EventFormComponent } from './event-form/event-form.component';
+import { DonationsDetailsComponent } from './donations-details/donations-details.component';
+import { EventsDetailsComponent } from './events-details/events-details.component';
+import { ProjectsDetailsComponent } from './projects-details/projects-details.component';
+
 
 
 @NgModule({
@@ -49,7 +54,10 @@ import { EventFormComponent } from './event-form/event-form.component';
     NavbarAdminComponent,
     TabsSectionComponent,
     DonationFormComponent,
-    EventFormComponent
+    EventFormComponent,
+    DonationsDetailsComponent,
+    EventsDetailsComponent,
+    ProjectsDetailsComponent
   ],
   imports: [
     BrowserModule,
