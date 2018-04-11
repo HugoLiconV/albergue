@@ -7,7 +7,9 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ProjectFormComponent } from './project-form/project-form.component';
 import { DonationFormComponent } from './donation-form/donation-form.component';
 import { EventFormComponent } from './event-form/event-form.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component'
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { DonationsDetailsComponent } from './donations-details/donations-details.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: MainSectionComponent },
@@ -21,6 +23,7 @@ const routes: Routes = [
       { path: 'event-form', component: EventFormComponent },
     ]
   },
+  { path: 'donations-details', component: DonationsDetailsComponent },
 ];
 
 @NgModule({
