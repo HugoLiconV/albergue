@@ -1,0 +1,55 @@
+ <section class="main">
+    <mat-tab-group class="tab-group" layout="row" layout-align="center center">
+      <mat-tab label="Proyectos">
+        <div class="tab-content">
+          <div class="example-container mat-elevation-z8">
+            <mat-table #table [dataSource]="dataSource" matSort>
+
+              <!-- Nombre Column -->
+              <ng-container matColumnDef="nombre">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="descripcion">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.descripcion}} </mat-cell>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="fechaPublicacion">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{formatDate(element.fechaPublicacion)}} </mat-cell>
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="numPersonas">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Núm. Personas </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.numPersonas}} </mat-cell>
+              </ng-container>
+
+              <!-- Area Column -->
+              <ng-container matColumnDef="area">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Área </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.area}} </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Donaciones">
+        <div class="tab-content">
+          tabla donaciones
+        </div>
+      </mat-tab>
+      <mat-tab label="Eventos">
+        <div class="tab-content">
+          Tabla eventos
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </section>

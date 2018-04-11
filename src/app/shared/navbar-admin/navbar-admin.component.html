@@ -12,13 +12,13 @@
       <mat-icon>add</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/project-form">
+      <button mat-menu-item [routerLink]="['project-form']">
           <span>Proyecto</span>
       </button>
-      <button mat-menu-item routerLink="/donation-form">
+      <button mat-menu-item routerLink="donation-form">
         <span>Donación</span>
       </button>
-      <button mat-menu-item routerLink="/event-form">
+      <button mat-menu-item routerLink="event-form">
         <span>Evento</span>
       </button>
   </mat-menu>

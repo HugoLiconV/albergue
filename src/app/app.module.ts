@@ -29,6 +29,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { TabsSectionComponent } from './tabs-section/tabs-section.component';
 import { DonationFormComponent } from './donation-form/donation-form.component';
 import { EventFormComponent } from './event-form/event-form.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { EventFormComponent } from './event-form/event-form.component';
     NavbarAdminComponent,
     TabsSectionComponent,
     DonationFormComponent,
-    EventFormComponent
+    EventFormComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,

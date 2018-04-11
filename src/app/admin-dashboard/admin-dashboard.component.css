@@ -1,0 +1,61 @@
+body{
+  height: 100%;
+  width: 100%;
+}
+
+.navbar-wrapper{
+  padding-top: 70px;
+}
+
+app-navbar-admin {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  color: #fff;
+}
+
+/**
+  * Rules for when the device is detected to be a small screen.
+  * Moves content two rows instead of one.
+  */
+@media (max-width: 720px) {
+  .navbar-wrapper{
+    padding-top: 100px;
+  }
+}
+
+
+.main {
+  background-color: #fff;
+  padding-bottom: var(--padding-bottom-section);
+  padding-left: 5vw;
+  padding-right: 5vw;
+  font-family: var(--main-font);
+  color: var(--title);
+}
+
+.tab-group {
+  align-items: center;
+  width: 100%;
+}
+
+.tab-content {
+  padding: 16px;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.mat-header-cell.mat-sort-header-sorted {
+  color: black;
+}

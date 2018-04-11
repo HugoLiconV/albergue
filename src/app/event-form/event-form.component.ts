@@ -4,7 +4,8 @@ import {FormControl} from '@angular/forms';
 import {MomentDateAdapter} from '@angular/material-moment-adapter';
 
 import * as _moment from 'moment';
-import {default as _rollupMoment} from 'moment';
+// tslint:disable-next-line:no-duplicate-imports
+import {default as _rollupMoment, Moment} from 'moment';
 const moment = _rollupMoment || _moment;
 
 // See the Moment.js docs for the meaning of these formats:
