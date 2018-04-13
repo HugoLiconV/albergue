@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DONATIONS } from '../../mock-donation';
+import { DonationService } from '../donation.service';
+import { Donation } from '../../donation';
 
 @Component({
   selector: 'app-donation-card',
@@ -7,11 +8,15 @@ import { DONATIONS } from '../../mock-donation';
   styleUrls: ['./donation-card.component.css']
 })
 export class DonationCardComponent implements OnInit {
-  donations = DONATIONS;
+  donations: Donation[];
 
-  constructor() { }
+  constructor(private donationService: DonationService) { }
 
   ngOnInit() {
+    this.getDonations();
   }
 
+  getDonations(): void {
+    this.donationService.getDonations().subscribe(donations => this.donations = donations);
+  }
 }

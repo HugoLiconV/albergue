@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../project.service';
 import { Project } from '../../project';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-project-card',
