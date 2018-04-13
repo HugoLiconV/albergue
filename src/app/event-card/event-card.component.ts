@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EVENTS } from '../../mock-events';
+import { EventService } from '../event.service';
+import { Event } from '../../event';
+import { EventsService } from '../events.service';
 
 @Component({
   selector: 'app-event-card',
@@ -7,11 +9,16 @@ import { EVENTS } from '../../mock-events';
   styleUrls: ['./event-card.component.css']
 })
 export class EventCardComponent implements OnInit {
-  events = EVENTS;
+  events: Event[];
 
-  constructor() { }
+  constructor(private eventService: EventsService) { }
 
   ngOnInit() {
+    this.getEvents();
+  }
+
+  getEvents(): void {
+    this.eventService.getEvents().subscribe(events => this.events = events);
   }
 
   formatDate(date) {
@@ -30,9 +37,10 @@ export class EventCardComponent implements OnInit {
       'Deciembre'
     ];
 
-    const day = date.getDate();
-    const monthIndex = date.getMonth();
-    const year = date.getFullYear();
+    const myDate = new Date(date);
+    const day = myDate.getDate();
+    const monthIndex = myDate.getMonth();
+    const year = myDate.getFullYear();
 
     return day + ' ' + monthNames[monthIndex] + ' ' + year;
   }
