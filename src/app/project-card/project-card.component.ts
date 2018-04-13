@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PROJECTS } from '../../mock-project';
+import { ProjectService } from '../project.service';
+import { Project } from '../../project';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-project-card',
@@ -7,11 +9,17 @@ import { PROJECTS } from '../../mock-project';
   styleUrls: ['./project-card.component.css']
 })
 export class ProjectCardComponent implements OnInit {
-  projects = PROJECTS;
+  projects: Project[];
 
-  constructor() {}
+  constructor(private projectService: ProjectService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getProjects();
+  }
+
+  getProjects(): void {
+    this.projectService.getProjects().subscribe(projects => this.projects = projects);
+  }
 
   formatDate(date) {
     const monthNames = [
@@ -28,10 +36,10 @@ export class ProjectCardComponent implements OnInit {
       'Noviembre',
       'Deciembre'
     ];
-
-    const day = date.getDate();
-    const monthIndex = date.getMonth();
-    const year = date.getFullYear();
+    const myDate = new Date(date);
+    const day = myDate.getDate();
+    const monthIndex = myDate.getMonth();
+    const year = myDate.getFullYear();
 
     return day + ' ' + monthNames[monthIndex] + ' ' + year;
   }

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeroSectionComponent } from './hero-section/hero-section.component';
@@ -11,7 +11,7 @@ import { FooterSectionComponent } from './footer-section/footer-section.componen
 import { ProjectCardComponent } from './project-card/project-card.component';
 
 // Material
-
+// TODO: Cambiar los import de material al modulo custom-material-module
 import { ObservableMedia } from '@angular/flex-layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatDividerModule} from '@angular/material/divider';
@@ -33,6 +33,7 @@ import { DonationsDetailsComponent } from './donations-details/donations-details
 import { EventsDetailsComponent } from './events-details/events-details.component';
 import { ProjectsDetailsComponent } from './projects-details/projects-details.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { ProjectService } from './project.service';
 
 
 @NgModule({
@@ -65,9 +66,10 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     ReactiveFormsModule,
     FlexLayoutModule,
     CustomMaterialModuleModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ProjectService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,12 +1,22 @@
+:root{
+  --width-card: 0px;
+}
+
 .acent{
   color: var(--acent-color);
 }
-
+.mat-tab-body-wrapper {
+  width: var(--width-card);
+}
 .example-card {
   height: 450px;
   /* position: relative; */
   border-radius: 10px;
   margin-bottom: 16px;
+  width: var(--width-card);
+  /* width: 100%;
+  min-width: 100%;
+  max-width: 100%; */
 }
 
 mat-card-title{
@@ -73,4 +83,28 @@ mat-card-actions {
   margin-top: 15px;
   margin-bottom: 30px;
   color: #434345;
+}
+
+@media only screen and (max-width: 599px) {
+  :root{
+  --width-card: 100%;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1279){
+  :root{
+  --width-card: 48%;
+  }
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1919px){
+  :root{
+  --width-card: 32%;
+  }
+}
+
+@media only screen and (min-width: 1920px) and (max-width: 5000px){
+  :root{
+  --width-card: 24%;
+  }
 }
