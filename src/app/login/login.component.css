@@ -32,6 +32,10 @@
   display: none;
 }
 
+form {
+  display: grid;
+}
+
 /**
   * Rules for when the device is detected to be a small screen.
   * Moves content two rows instead of one.
