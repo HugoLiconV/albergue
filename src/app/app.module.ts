@@ -36,6 +36,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { ProjectService } from './project.service';
 import { DonationService } from './donation.service';
 import { EventsService } from './events.service';
+import { AuthenticationService } from './auth.service';
 
 
 @NgModule({
@@ -71,7 +72,7 @@ import { EventsService } from './events.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ProjectService, DonationService, EventsService],
+  providers: [ProjectService, DonationService, EventsService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

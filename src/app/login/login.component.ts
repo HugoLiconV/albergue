@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import { AuthenticationService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,6 +9,7 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
+  constructor(private authService: AuthenticationService) { }
   email = new FormControl('', [Validators.required, Validators.email]);
   hide = true;
 
@@ -21,7 +23,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(username, password) {
-    console.log(`username: ${username} password: ${password}`)
+    this.authService.login('hugo@example.com', '123456').subscribe(gotToken => {
+      console.log(`Got Token? ${gotToken}`);
+    });
   }
-
 }
