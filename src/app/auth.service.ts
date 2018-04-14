@@ -15,7 +15,7 @@ export class AuthenticationService {
     return localStorage.getItem('token');
   }
 
-  login(username: string, password: string): Observable<boolean> {
+  login(username: string, password: string): Observable <any> {
     const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -29,26 +29,24 @@ export class AuthenticationService {
         encoded_data,
         httpOptions
       )
-      .map((response: Response) => {
-        const token = response.token && response.user;
-        if (token) {
-          localStorage.setItem(
-            'currentUser',
-            JSON.stringify({ username: username, token: token })
-          );
-
-          // return true to indicate successful login
-          return true;
-        } else {
-          // return false to indicate failed login
-          return false;
+      .map((user) => {
+        // const token = response.token && response.user;
+        if (user && user.token) {
+          localStorage.setItem('currentUser', JSON.stringify(user));
         }
+        return user;
+        //   // return true to indicate successful login
+        //   return true;
+        // } else {
+        //   // return false to indicate failed login
+        //   return false;
+        // }
       });
   }
 
   logout(): void {
     // clear token remove user from local storage to log user out
-    this.token = null;
+    // this.token = null;
     localStorage.removeItem('currentUser');
   }
 }

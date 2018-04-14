@@ -18,7 +18,10 @@ import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatAutocompleteModule,
-  MatChipsModule
+  MatChipsModule,
+  MatDividerModule,
+  MatProgressBarModule,
+  MatSnackBarModule,
 } from '@angular/material';
 
 @NgModule({
@@ -39,6 +42,9 @@ import {
     MatNativeDateModule,
     MatAutocompleteModule,
     MatChipsModule,
+    MatDividerModule,
+    MatProgressBarModule,
+    MatSnackBarModule,
   ],
   exports: [
     CommonModule,
@@ -57,6 +63,9 @@ import {
     MatNativeDateModule,
     MatAutocompleteModule,
     MatChipsModule,
+    MatDividerModule,
+    MatProgressBarModule,
+    MatSnackBarModule,
   ]
 })
 export class CustomMaterialModuleModule { }

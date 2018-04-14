@@ -11,7 +11,6 @@
     <a mat-button class="docs-navbar-link" routerLink="/home">Página Principal</a>
   </nav>
 </div>
-
 <app-container>
   <form #loginForm="ngForm" (ngSubmit)="onSubmit(Email.value, Password.value)">
     <mat-form-field>
@@ -24,5 +23,6 @@
       <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit">Iniciar Sesión</button>
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
   </form>
 </app-container>

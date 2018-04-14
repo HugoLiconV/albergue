@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { AuthenticationService } from '../auth.service';
+import { AlertService } from '../services/alert.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,10 @@ export class LoginComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthenticationService) {}
+    private authService: AuthenticationService,
+    private alertService: AlertService,
+    public snackBar: MatSnackBar) {
+    }
 
   email = new FormControl('', [Validators.required, Validators.email]);
   hide = true;
@@ -33,13 +38,16 @@ export class LoginComponent implements OnInit {
 
   onSubmit(username, password) {
     this.loading = true;
-    this.authService.login('hugo@example.com', '123456').subscribe(gotToken => {
-      if (gotToken) {
+    this.authService.login('hugo@example.com', '1234567').subscribe(
+      data => {
         this.router.navigate(['/admin']);
-      } else {
-        this.error = 'Username or password is incorrect';
+      }, error => {
+        console.log(error.statusText);
+        // this.snackBar.open(error.statusText, 'cerrar', {
+        //   duration: 2000
+        // });
+        this.alertService.error(error.statusText);
         this.loading = false;
-      }
-    });
+      });
   }
 }
