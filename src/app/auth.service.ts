@@ -3,20 +3,19 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import { JwtHelper } from 'angular2-jwt';
+import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class AuthenticationService {
-  public token: string;
 
-  constructor(private http: HttpClient) {
-    // set token if saved in local storage
-    // const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    // this.token = currentUser && currentUser.token;
+  constructor(private http: HttpClient) { }
+
+  public getToken(): string {
+    return localStorage.getItem('token');
   }
 
-
   login(username: string, password: string): Observable<boolean> {
-    console.log(`username: ${username} password: ${password}`);
     const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -31,14 +30,8 @@ export class AuthenticationService {
         httpOptions
       )
       .map((response: Response) => {
-        // login successful if there's a jwt token in the response
-        console.log(response);
-        const token = response.token;
+        const token = response.token && response.user;
         if (token) {
-          // set token property
-          this.token = token;
-
-          // store username and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem(
             'currentUser',
             JSON.stringify({ username: username, token: token })
@@ -53,9 +46,9 @@ export class AuthenticationService {
       });
   }
 
-  // logout(): void {
-  //   // clear token remove user from local storage to log user out
-  //   this.token = null;
-  //   localStorage.removeItem('currentUser');
-  // }
+  logout(): void {
+    // clear token remove user from local storage to log user out
+    this.token = null;
+    localStorage.removeItem('currentUser');
+  }
 }

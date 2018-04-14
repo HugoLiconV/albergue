@@ -10,11 +10,13 @@ import { EventFormComponent } from './event-form/event-form.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { DonationsDetailsComponent } from './donations-details/donations-details.component';
 
+import { AuthGuard } from './guards/auth-guard';
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: MainSectionComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'admin', component: AdminPanelComponent,
+  { path: 'admin', component: AdminPanelComponent, canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: AdminDashboardComponent },

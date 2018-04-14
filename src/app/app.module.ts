@@ -3,6 +3,11 @@ import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+// JWT
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './guards/token.interceptor';
+
 import { AppComponent } from './app.component';
 import { HeroSectionComponent } from './hero-section/hero-section.component';
 import { DetailsSectionComponent } from './details-section/details-section.component';
@@ -37,6 +42,7 @@ import { ProjectService } from './project.service';
 import { DonationService } from './donation.service';
 import { EventsService } from './events.service';
 import { AuthenticationService } from './auth.service';
+import { AuthGuard } from './guards/auth-guard';
 
 
 @NgModule({
@@ -72,7 +78,17 @@ import { AuthenticationService } from './auth.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ProjectService, DonationService, EventsService, AuthenticationService],
+  providers: [
+    AuthGuard,
+    ProjectService,
+    DonationService,
+    EventsService,
+    AuthenticationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
