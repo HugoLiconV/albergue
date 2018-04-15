@@ -15,7 +15,7 @@ export class AuthenticationService {
     return localStorage.getItem('token');
   }
 
-  login(username: string, password: string): Observable <any> {
+  login(username: string, password: string) {
     const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -24,7 +24,7 @@ export class AuthenticationService {
     };
     const encoded_data = JSON.stringify({'access_token': '87QMEbJvVTgbG62wkdBHdJkr9XNTzt6j'});
     return this.http
-      .post(
+      .post<any>(
         'http://0.0.0.0:9000/auth',
         encoded_data,
         httpOptions
