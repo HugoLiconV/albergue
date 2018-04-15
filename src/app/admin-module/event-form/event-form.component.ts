@@ -5,6 +5,7 @@ import {MomentDateAdapter} from '@angular/material-moment-adapter';
 
 import * as _moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
+// noinspection TypeScriptCheckImport
 import {default as _rollupMoment, Moment} from 'moment';
 const moment = _rollupMoment || _moment;
 

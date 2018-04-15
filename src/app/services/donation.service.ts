@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Donation } from '../donation';
-import { DONATIONS } from '../mock-donation';
+import { Donation } from '../../donation';
+import { DONATIONS } from '../../mock-donation';
 
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';

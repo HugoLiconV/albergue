@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Event } from '../event';
-import { EVENTS } from '../mock-events';
+import { Event } from '../../event';
+import { EVENTS } from '../../mock-events';
 
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';

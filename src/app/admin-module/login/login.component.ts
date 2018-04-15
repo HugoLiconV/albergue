@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import { AuthenticationService } from '../auth.service';
-import { AlertService } from '../services/alert.service';
+import { AuthenticationService } from '../../services/auth.service';
+import { AlertService } from '../../services/alert.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {MatSnackBar} from '@angular/material';
 

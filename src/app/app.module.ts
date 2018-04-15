@@ -9,40 +9,40 @@ import { AppRoutingModule } from './app-routing.module';
 
 // JWT
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from './guards/token.interceptor';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 // Flex Layout
 import { ObservableMedia } from '@angular/flex-layout';
 
 // Components
 import { AppComponent } from './app.component';
-import { HeroSectionComponent } from './hero-section/hero-section.component';
-import { DetailsSectionComponent } from './details-section/details-section.component';
-import { MainSectionComponent } from './main-section/main-section.component';
-import { FooterSectionComponent } from './footer-section/footer-section.component';
-import { ProjectCardComponent } from './project-card/project-card.component';
-import { DonationCardComponent } from './donation-card/donation-card.component';
-import { LoginComponent } from './login/login.component';
-import { AdminPanelComponent } from './admin-panel/admin-panel.component';
-import { ProjectFormComponent } from './project-form/project-form.component';
+import { HeroSectionComponent } from './main-module/hero-section/hero-section.component';
+import { DetailsSectionComponent } from './main-module/details-section/details-section.component';
+import { MainSectionComponent } from './main-module/main-section/main-section.component';
+import { FooterSectionComponent } from './main-module/footer-section/footer-section.component';
+import { ProjectCardComponent } from './main-module/project-card/project-card.component';
+import { DonationCardComponent } from './main-module/donation-card/donation-card.component';
+import { LoginComponent } from './admin-module/login/login.component';
+import { AdminPanelComponent } from './admin-module/admin-panel/admin-panel.component';
+import { ProjectFormComponent } from './admin-module/project-form/project-form.component';
 import { ContainerComponent } from './shared/container/container.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { EventCardComponent } from './event-card/event-card.component';
+import { EventCardComponent } from './main-module/event-card/event-card.component';
 import { NavbarAdminComponent } from './shared/navbar-admin/navbar-admin.component';
-import { TabsSectionComponent } from './tabs-section/tabs-section.component';
-import { DonationFormComponent } from './donation-form/donation-form.component';
-import { EventFormComponent } from './event-form/event-form.component';
-import { DonationsDetailsComponent } from './donations-details/donations-details.component';
-import { EventsDetailsComponent } from './events-details/events-details.component';
-import { ProjectsDetailsComponent } from './projects-details/projects-details.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { TabsSectionComponent } from './main-module/tabs-section/tabs-section.component';
+import { DonationFormComponent } from './admin-module/donation-form/donation-form.component';
+import { EventFormComponent } from './admin-module/event-form/event-form.component';
+import { DonationsDetailsComponent } from './main-module/donations-details/donations-details.component';
+import { EventsDetailsComponent } from './main-module/events-details/events-details.component';
+import { ProjectsDetailsComponent } from './main-module/projects-details/projects-details.component';
+import { AdminDashboardComponent } from './admin-module/admin-dashboard/admin-dashboard.component';
 import { AlertComponent } from './directives/alert/alert.component';
 
 // Services
-import { ProjectService } from './project.service';
-import { DonationService } from './donation.service';
-import { EventsService } from './events.service';
-import { AuthenticationService } from './auth.service';
+import { ProjectService } from './services/project.service';
+import { DonationService } from './services/donation.service';
+import { EventsService } from './services/events.service';
+import { AuthenticationService } from './services/auth.service';
 import { AlertService } from './services/alert.service';
 
 // Guards

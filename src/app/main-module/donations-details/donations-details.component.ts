@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DONATIONS } from '../../mock-donation';
+import { DONATIONS } from '../../../mock-donation';
 
 @Component({
   selector: 'app-donations-details',

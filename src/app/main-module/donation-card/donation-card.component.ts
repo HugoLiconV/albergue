@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DonationService } from '../donation.service';
-import { Donation } from '../../donation';
+import { DonationService } from '../../services/donation.service';
+import { Donation } from '../../../donation';
 
 @Component({
   selector: 'app-donation-card',

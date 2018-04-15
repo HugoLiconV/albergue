@@ -31,6 +31,7 @@ export class AuthenticationService {
       )
       .map((user) => {
         // const token = response.token && response.user;
+        console.log(user);
         if (user && user.token) {
           localStorage.setItem('currentUser', JSON.stringify(user));
         }
