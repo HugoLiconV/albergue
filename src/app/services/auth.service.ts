@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { JwtHelper } from 'angular2-jwt';
 import { tokenNotExpired } from 'angular2-jwt';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class AuthenticationService {
@@ -25,7 +26,7 @@ export class AuthenticationService {
     const encoded_data = JSON.stringify({'access_token': '87QMEbJvVTgbG62wkdBHdJkr9XNTzt6j'});
     return this.http
       .post<any>(
-        'http://0.0.0.0:9000/auth',
+        `${environment.API_URL}/auth`,
         encoded_data,
         httpOptions
       )
