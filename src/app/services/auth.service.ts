@@ -16,7 +16,7 @@ export class AuthenticationService {
     return localStorage.getItem('token');
   }
 
-  login(username: string, password: string) {
+  login(username: string, password: string): Observable<boolean> {
     const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -24,26 +24,43 @@ export class AuthenticationService {
       })
     };
     const encoded_data = JSON.stringify({'access_token': '87QMEbJvVTgbG62wkdBHdJkr9XNTzt6j'});
+    console.log('logeando')
     return this.http
-      .post<any>(
+      .post(
         `${environment.API_URL}/auth`,
         encoded_data,
         httpOptions
       )
-      .map((user) => {
-        // const token = response.token && response.user;
-        console.log(user);
-        if (user && user.token) {
-          localStorage.setItem('currentUser', JSON.stringify(user));
+      .map((response: Response) => {
+        console.log(response)
+        const token = response.token && response.user;
+        if (token) {
+          localStorage.setItem(
+            'currentUser',
+            JSON.stringify({ username: username, token: token })
+          );
+
+          // return true to indicate successful login
+          return true;
+        } else {
+          // return false to indicate failed login
+          return false;
         }
-        return user;
-        //   // return true to indicate successful login
-        //   return true;
-        // } else {
-        //   // return false to indicate failed login
-        //   return false;
-        // }
       });
+      // .map((user) => {
+      //   // const token = response.token && response.user;
+      //   console.log(user);
+      //   if (user && user.token) {
+      //     localStorage.setItem('currentUser', JSON.stringify(user));
+      //   }
+      //   return user;
+      //   //   // return true to indicate successful login
+      //   //   return true;
+      //   // } else {
+      //   //   // return false to indicate failed login
+      //   //   return false;
+      //   // }
+      // });
   }
 
   logout(): void {

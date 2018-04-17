@@ -38,16 +38,24 @@ export class LoginComponent implements OnInit {
 
   onSubmit(username, password) {
     this.loading = true;
-    this.authService.login('hugo@example.com', '1234567').subscribe(
-      data => {
-        this.router.navigate(['/admin']);
-      }, error => {
-        console.log(error.statusText);
-        // this.snackBar.open(error.statusText, 'cerrar', {
-        //   duration: 2000
-        // });
-        this.alertService.error(error.statusText);
-        this.loading = false;
+    this.authService.login(username, password).subscribe(
+      gotToken => {
+        if (gotToken) {
+          this.router.navigate(['/admin']);
+        } else {
+          this.error = 'Username or password is incorrect';
+          this.loading = false;
+        }
       });
   }
 }
+
+
+// , error => {
+//   console.log(error.statusText);
+//   this.snackBar.open(error.statusText, 'cerrar', {
+// duration: 2000
+// });
+// /  this.alertService.error(error.statusText);
+//   this.loading = false;
+// });
