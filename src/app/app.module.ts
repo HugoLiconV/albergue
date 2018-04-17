@@ -48,6 +48,8 @@ import { AlertService } from './services/alert.service';
 // Guards
 import { AuthGuard } from './guards/auth-guard';
 
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -94,7 +96,9 @@ import { AuthGuard } from './guards/auth-guard';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true,
-    }],
+    },
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
