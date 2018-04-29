@@ -19,12 +19,11 @@ export class AuthenticationService {
   login(username: string, password: string): Observable<boolean> {
     const httpOptions = {
     headers: new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
         'Authorization': 'Basic ' + btoa(username + ':' + password)
       })
     };
-    const encoded_data = JSON.stringify({'access_token': '87QMEbJvVTgbG62wkdBHdJkr9XNTzt6j'});
-    console.log('logeando')
+    const encoded_data = JSON.stringify({'access_token': environment.ACCESS_TOKEN});
     return this.http
       .post(
         `${environment.API_URL}/auth`,
@@ -47,20 +46,6 @@ export class AuthenticationService {
           return false;
         }
       });
-      // .map((user) => {
-      //   // const token = response.token && response.user;
-      //   console.log(user);
-      //   if (user && user.token) {
-      //     localStorage.setItem('currentUser', JSON.stringify(user));
-      //   }
-      //   return user;
-      //   //   // return true to indicate successful login
-      //   //   return true;
-      //   // } else {
-      //   //   // return false to indicate failed login
-      //   //   return false;
-      //   // }
-      // });
   }
 
   logout(): void {
@@ -69,3 +54,28 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
   }
 }
+
+/* 
+  login(username: string, password: string) {
+    const httpOptions = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Basic ' + btoa(username + ':' + password)
+      })
+    };
+    const encoded_data = JSON.stringify({'access_token': '87QMEbJvVTgbG62wkdBHdJkr9XNTzt6j'});
+    return this.http
+      .post<any>(
+        `${environment.API_URL}/auth`,
+        encoded_data,
+        httpOptions
+      )
+      .map((user) => {
+        // const token = response.token && response.user;
+        console.log(user);
+        if (user && user.token) {
+          localStorage.setItem('currentUser', JSON.stringify(user));
+        }
+        return user;
+      });
+ */
