@@ -39,23 +39,13 @@ export class LoginComponent implements OnInit {
   onSubmit(username, password) {
     this.loading = true;
     this.authService.login(username, password).subscribe(
-      gotToken => {
-        if (gotToken) {
-          this.router.navigate(['/admin']);
-        } else {
-          this.error = 'Username or password is incorrect';
-          this.loading = false;
+      data => {
+      this.router.navigate(['/admin']);
+      }, error => {
+        if (error.status === 401) {
+          this.alertService.error('Usuario o contraseña incorrecta');
         }
+        this.loading = false;
       });
   }
 }
-
-
-// , error => {
-//   console.log(error.statusText);
-//   this.snackBar.open(error.statusText, 'cerrar', {
-// duration: 2000
-// });
-// /  this.alertService.error(error.statusText);
-//   this.loading = false;
-// });

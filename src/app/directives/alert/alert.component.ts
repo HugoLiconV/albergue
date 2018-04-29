@@ -16,7 +16,7 @@ export class AlertComponent implements OnInit {
 
   openSnackBar(message: string, action: string = 'cerrar') {
     this.snackBar.open(message, action, {
-      duration: 2000,
+      duration: 4000,
     });
   }
 
