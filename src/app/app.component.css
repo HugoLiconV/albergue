@@ -3,7 +3,8 @@
 /* Variables CSS */
 ::ng-deep :root {
   --base-font-size: 16px;
-  --main-color: #345cd7;
+  --main-color: #AB0000;/* --main-color: #345cd7; */
+  --secondary-color: #FFC107;
   --main-font: "Rubik-Light", sans-serif;
   --secondary-font: "Roboto", sans-serif;
   --padding-top-section: 120px;
@@ -31,7 +32,7 @@ html {
   color: #fff;
   text-transform: uppercase;
 } */
-/* 
+/*
 .main {
   padding: 0;
   width: 100%;
@@ -50,7 +51,7 @@ html {
   position: relative;
 } */
 
-/* 
+/*
 li {
   float: left;
   display: inline;
@@ -117,4 +118,4 @@ a:hover,
 a:active {
   text-decoration: none;
   color: inherit;
-} */ 
+} */

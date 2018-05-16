@@ -4,9 +4,9 @@
   </a>
     <!-- Separador -->
   <div class="flex-spacer"></div>
-  <a mat-button class="docs-button docs-navbar-hide-small">Nosotros</a>
-  <a mat-button class="docs-button docs-navbar-hide-small">Servicios</a>
-  <a mat-button class="docs-button docs-navbar-hide-small">Proyectos</a>
+  <a [routerLink]="['/home']" fragment="about" (click)="onAnchorClick()" mat-button class="docs-button docs-navbar-hide-small">Nosotros</a>
+  <!-- <a mat-button class="docs-button docs-navbar-hide-small">Servicios</a> -->
+  <a [routerLink]="['/home']" fragment="projects" (click)="onAnchorClick()" mat-button class="docs-button docs-navbar-hide-small">Proyectos</a>
   <a mat-button class="docs-button docs-navbar-hide-small">Donaciones</a>
   <a mat-button class="docs-button docs-navbar-hide-small">Eventos</a>
 
