@@ -1,5 +1,5 @@
 .logo{
-  height: 26px;
+  height: 48px;
   margin: 0 4px 3px 0;
   vertical-align: middle;
 }
@@ -7,7 +7,7 @@
 .docs-navbar,
 .docs-navbar-header {
   background-color: var(--main-color);
-  color: #fff;
+  color: white;
 }
 
 .docs-navbar-header {
