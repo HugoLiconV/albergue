@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { DonationService } from '../../services/donation.service';
-import { Donation } from '../../../donation';
+import { DonationService } from '../../../services/donation.service';
+import { Donation } from '../../../../donation';
 
 @Component({
   selector: 'app-donation-card',
   templateUrl: './donation-card.component.html',
-  styleUrls: ['./donation-card.component.css']
+  styleUrls: ['../cards.css']
 })
 export class DonationCardComponent implements OnInit {
   donations: Donation[];

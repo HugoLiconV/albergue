@@ -20,14 +20,14 @@ import { HeroSectionComponent } from './main-module/hero-section/hero-section.co
 import { DetailsSectionComponent } from './main-module/details-section/details-section.component';
 import { MainSectionComponent } from './main-module/main-section/main-section.component';
 import { FooterSectionComponent } from './main-module/footer-section/footer-section.component';
-import { ProjectCardComponent } from './main-module/project-card/project-card.component';
-import { DonationCardComponent } from './main-module/donation-card/donation-card.component';
+import { ProjectCardComponent } from './shared/cards/project-card/project-card.component';
+import { DonationCardComponent } from './shared/cards/donation-card/donation-card.component';
 import { LoginComponent } from './admin-module/login/login.component';
 import { AdminPanelComponent } from './admin-module/admin-panel/admin-panel.component';
 import { ProjectFormComponent } from './admin-module/project-form/project-form.component';
 import { ContainerComponent } from './shared/container/container.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { EventCardComponent } from './main-module/event-card/event-card.component';
+import { EventCardComponent } from './shared/cards/event-card/event-card.component';
 import { NavbarAdminComponent } from './shared/navbar-admin/navbar-admin.component';
 import { TabsSectionComponent } from './main-module/tabs-section/tabs-section.component';
 import { DonationFormComponent } from './admin-module/donation-form/donation-form.component';

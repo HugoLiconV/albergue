@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectService } from '../../services/project.service';
-import { Project } from '../../../project';
-import { AlertService } from '../../services/alert.service';
+import { ProjectService } from '../../../services/project.service';
+import { Project } from '../../../../project';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-project-card',
   templateUrl: './project-card.component.html',
-  styleUrls: ['./project-card.component.css']
+  styleUrls: ['../cards.css']
 })
 export class ProjectCardComponent implements OnInit {
   projects: Project[];
