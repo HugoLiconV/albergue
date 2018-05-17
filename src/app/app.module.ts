@@ -44,7 +44,7 @@ import { DonationService } from './services/donation.service';
 import { EventsService } from './services/events.service';
 import { AuthenticationService } from './services/auth.service';
 import { AlertService } from './services/alert.service';
-
+import { FormatDateService } from './services/format.date.service';
 // Guards
 import { AuthGuard } from './guards/auth-guard';
 
@@ -92,6 +92,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     DonationService,
     EventsService,
     AuthenticationService,
+    FormatDateService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

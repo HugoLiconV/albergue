@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Event } from '../../../../event';
-import { EventsService } from '../../../services/events.service';
+import {Component, OnInit} from '@angular/core';
+import {Event} from '../../../../event';
+import {EventsService} from '../../../services/events.service';
+import {FormatDateService} from '../../../services/format.date.service';
 
 @Component({
   selector: 'app-event-card',
@@ -10,7 +11,10 @@ import { EventsService } from '../../../services/events.service';
 export class EventCardComponent implements OnInit {
   events: Event[];
 
-  constructor(private eventService: EventsService) { }
+  constructor(
+    private eventService: EventsService,
+    private formatDateService: FormatDateService) {
+  }
 
   ngOnInit() {
     this.getEvents();
@@ -21,26 +25,6 @@ export class EventCardComponent implements OnInit {
   }
 
   formatDate(date) {
-    const monthNames = [
-      'Enero',
-      'Febrero',
-      'Marzo',
-      'Abril',
-      'Mayo',
-      'Junio',
-      'Julio',
-      'Agosto',
-      'Septiembre',
-      'Octubre',
-      'Noviembre',
-      'Deciembre'
-    ];
-
-    const myDate = new Date(date);
-    const day = myDate.getDate();
-    const monthIndex = myDate.getMonth();
-    const year = myDate.getFullYear();
-
-    return day + ' ' + monthNames[monthIndex] + ' ' + year;
+    return this.formatDateService.formatDate(date);
   }
 }

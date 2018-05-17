@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../../../services/project.service';
 import { Project } from '../../../../project';
 import { AlertService } from '../../../services/alert.service';
+import {FormatDateService} from '../../../services/format.date.service';
 
 @Component({
   selector: 'app-project-card',
@@ -15,7 +16,8 @@ export class ProjectCardComponent implements OnInit {
 
   constructor(
   private projectService: ProjectService,
-  private alertService: AlertService) {}
+  private alertService: AlertService,
+  private formatDateService: FormatDateService) {}
 
   ngOnInit() {
     this.getProjects();
@@ -32,25 +34,6 @@ export class ProjectCardComponent implements OnInit {
   }
 
   formatDate(date) {
-    const monthNames = [
-      'Enero',
-      'Febrero',
-      'Marzo',
-      'Abril',
-      'Mayo',
-      'Junio',
-      'Julio',
-      'Agosto',
-      'Septiembre',
-      'Octubre',
-      'Noviembre',
-      'Deciembre'
-    ];
-    const myDate = new Date(date);
-    const day = myDate.getDate();
-    const monthIndex = myDate.getMonth();
-    const year = myDate.getFullYear();
-
-    return day + ' ' + monthNames[monthIndex] + ' ' + year;
+    return this.formatDateService.formatDate(date);
   }
 }
