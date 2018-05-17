@@ -33,7 +33,7 @@ app-navbar-admin {
   padding-left: 5vw;
   padding-right: 5vw;
   font-family: var(--main-font);
-  color: var(--title);
+  color: var(--title-color);
 }
 
 .tab-group {

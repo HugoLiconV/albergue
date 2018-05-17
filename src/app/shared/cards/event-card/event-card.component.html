@@ -1,3 +1,4 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
 <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="10px">
   <mat-card *ngFor="let event of events" class="example-card"
   fxFlex.xs="100%" fxFlex.sm="48%" fxFlex.md="48%" fxFlex.lg="32%" fxFlex.xl="24%">

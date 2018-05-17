@@ -3,7 +3,6 @@ import {FormControl, Validators} from '@angular/forms';
 import { AuthenticationService } from '../../services/auth.service';
 import { AlertService } from '../../services/alert.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -11,16 +10,13 @@ import {MatSnackBar} from '@angular/material';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  model: any = {};
   loading = false;
-  error = '';
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthenticationService,
-    private alertService: AlertService,
-    public snackBar: MatSnackBar) {
+    private alertService: AlertService) {
     }
 
   email = new FormControl('', [Validators.required, Validators.email]);

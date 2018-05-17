@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-tabs-section',
@@ -8,7 +8,8 @@ import { Component, OnInit, Input} from '@angular/core';
 export class TabsSectionComponent implements OnInit {
   selectedIndex: number | null;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

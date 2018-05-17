@@ -3,7 +3,7 @@
 /* Variables CSS */
 ::ng-deep :root {
   --base-font-size: 16px;
-  --main-color: #AB0000;/* --main-color: #345cd7; */
+  --main-color: #b71c1c;/* --main-color: #345cd7; */
   --secondary-color: #FFC107;
   --main-font: "Rubik-Light", sans-serif;
   --secondary-font: "Roboto", sans-serif;

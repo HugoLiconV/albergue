@@ -4,7 +4,7 @@
   /* padding-left: 11.5vw; */
   /* padding-right: 11.5vw; */
   font-family: var(--main-font);
-  color: var(--title);
+  color: var(--title-color);
 }
 
 
@@ -32,3 +32,15 @@
   padding: 16px;
 }
 
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
