@@ -1,18 +1,21 @@
 <nav class="docs-navbar-header">
   <a mat-button class="docs-button" routerLink="/">
+    <img class="logo" src="./assets/logo.png" alt="San Vicente de Paul">
     <span>Albergue San Vicente</span>
   </a>
-    <!-- Separador -->
+  <!-- Separador -->
   <div class="flex-spacer"></div>
-  <a [routerLink]="['/home']" fragment="about" (click)="onAnchorClick()" mat-button class="docs-button docs-navbar-hide-small">Nosotros</a>
+  <a [routerLink]="['/home']" fragment="about" (click)="onAnchorClick()" mat-button
+     class="docs-button docs-navbar-hide-small">Nosotros</a>
   <!-- <a mat-button class="docs-button docs-navbar-hide-small">Servicios</a> -->
-  <a [routerLink]="['/home']" fragment="projects" (click)="onAnchorClick()" mat-button class="docs-button docs-navbar-hide-small">Proyectos</a>
+  <a [routerLink]="['/home']" fragment="projects" (click)="onAnchorClick()" mat-button
+     class="docs-button docs-navbar-hide-small">Proyectos</a>
   <a mat-button class="docs-button docs-navbar-hide-small">Donaciones</a>
   <a mat-button class="docs-button docs-navbar-hide-small">Eventos</a>
 
   <div mat-icon-button class="docs-button docs-navbar-show-small">
     <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>menu</mat-icon>
+      <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item>
