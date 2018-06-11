@@ -1,4 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
+import {Event} from '../../../event';
 
 @Component({
   selector: 'app-tabs-section',
@@ -14,4 +15,7 @@ export class TabsSectionComponent implements OnInit {
   ngOnInit() {
   }
 
+  handleChildButtonClick(event: Event) {
+    console.log('received: ' + event.id);
+  }
 }

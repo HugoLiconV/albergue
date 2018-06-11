@@ -1,17 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700');
 
-.main-container{
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  flex-direction: column;
-  position: absolute;
-  top: 56px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
 /* Landing container */
 #landing {
   height: 100vh;
@@ -20,53 +8,8 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   z-index: -1;
-  background-color: var(--main-color);
+  background-color: #fff;
 }
-
-/* nav section */
-.main {
-  padding: 0;
-  width: 100%;
-  height: 7.5rem;
-  background-color: #345cd7;
-  z-index: 90;
-}
-
-
-.main .menu-container {
-  float: right;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  padding-top: 3.25rem;
-  position: relative;
-}
-
-li {
-  float: left;
-  display: inline;
-  margin-right: 2rem;
-  opacity: 0.7;
-}
-
-li a {
-  text-decoration: none;
-  font-family: var(--main-font);
-  font-size: 0.75rem;
-  font-weight: normal;
-  letter-spacing: 1.5px;
-  text-align: center;
-  color: #fff;
-  text-transform: uppercase;
-}
-
-.main .menu-container li:hover {
-  opacity: 1;
-}
-
-ul {
-  background-color: var(--main-color);
-};
 
 header {
   display: grid;
@@ -74,14 +17,18 @@ header {
 
 .intro {
   display: grid;
-  background-color: var(--main-color);
+  /* background-color: var(--main-color); */
   padding-bottom: 80px;
 }
+
+/* .intro>img{
+  width: 100%;
+} */
 
 .intro h1{
   font-family: var(--main-font);
   margin-top: 30vh;
-  color: #fff;
+  color: var(--main-color);
   font-size: 3.5rem;
   text-align: center;
 }
@@ -110,7 +57,7 @@ header {
   font-size: 26px;
   line-height: 1.31;
   text-align: center;
-  color: #fff;
+  color: var(--title-color);
 }
 
 .intro .strapline-container img {
@@ -118,149 +65,6 @@ header {
   transform: rotate(90deg);
 }
 
-app-navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  color: #fff;
+.arrow {
+   fill: #ff3;
 }
-
-/* 
-.pimg1 {
-  position: relative;
-  opacity: 0.70;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  z-index: -100;
-}
-
-.pimg1{
-  background-image: url('../../assets/hero-section.jpeg');
-  min-height: 100%;
-}
-
-.section{
-  text-align: center;
-  padding: 50px 80px;
-}
-
-.section-light{
-  background-color: #f4f4f4;
-  color: #666;
-}
-
-.section-dark{
-  background-color: #282e43;
-  color: #ddd;
-}
-
-.ptext{
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  text-align: center;
-  color: #000;
-  font-size: 27px;
-  letter-spacing: 8px;
-  text-transform: uppercase;
-}
-
-.ptext .border{
-  background-color: #111;
-  color: white;
-  padding: 20px;
-}
-
-.ptext .border.trans{
-  background-color: transparent; 
-}
-
-.video-content {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-}
-
-.video-content {
-    color: #fff !important;
-}
-
-.table {
-    display: table;
-    height: 100%;
-    width: 100%;
-}
-
-.table-cell {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-@media (min-width: 768px){
-  .video-content .half {
-      padding: 0 6em;
-  }
-}
-
-@media (min-width: 1025px){
-  .video-content .half {
-      width: 50%;
-  }
-
-  .video-content h4 {
-    width: 600px;
-  }
-}
-
-.video-content .half {
-    opacity: 1;
-    transition: all .5s;
-    -webkit-transition: all .5s;
-}
-
-@media (min-width: 1281px){
-  .video-content h2 {
-      width: 750px;
-  }
-  .video-content h2 {
-      font-size: 5em;
-  }
-}
-
-.video-content h2 {
-    opacity: 0;
-    -webkit-transform: translateY(40px);
-}
-
-.video-content h2 {
-    letter-spacing: .03em;
-    line-height: 1.1em;
-}
-.video-content h2 {
-    font-weight: 600;
-}
-
-.video-content h4 {
-    opacity: 0;
-    -webkit-transform: translateY(40px);
-    margin: 1em 0;
-}
-
-@media (min-width: 851px){
-  .video-content h4 {
-      font-size: 1.6em;
-  }
-}
-
-.video-content h4 {
-    line-height: 1.3em;
-} */
-/* @media(max-width 568px){
-  .pimg1, .pimg2, .pimg3{
-    background-attachment: scroll;
-  }
-} */

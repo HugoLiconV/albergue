@@ -16,7 +16,7 @@ export class AuthenticationService {
     return localStorage.getItem('token');
   }
 
-  login(username: string, password: string){
+  login(username: string, password: string) {
     const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json',
