@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { adminRoutes } from './admin.routes';
 
@@ -10,11 +9,13 @@ import { DonationFormComponent } from './donation-form/donation-form.component';
 import { EventFormComponent } from './event-form/event-form.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarAdminComponent } from '../shared/navbar-admin/navbar-admin.component';
+import { SharedModule } from '../shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
-    RouterModule.forChild(adminRoutes)],
+    SharedModule,
+    RouterModule.forChild(adminRoutes)
+    ],
   declarations: [
     AdminPanelComponent,
     AdminDashboardComponent,

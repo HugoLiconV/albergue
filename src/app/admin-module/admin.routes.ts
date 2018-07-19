@@ -9,11 +9,11 @@ export const adminRoutes = [
   { path: '', component: AdminPanelComponent, canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'login', component: LoginComponent},
       { path: 'dashboard', component: AdminDashboardComponent },
       { path: 'project-form', component: ProjectFormComponent },
       { path: 'donation-form', component: DonationFormComponent },
       { path: 'event-form', component: EventFormComponent },
     ]
-  }
+  },
+  { path: 'login', component: LoginComponent}
 ];

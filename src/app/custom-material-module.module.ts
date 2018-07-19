@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatTabsModule,
   MatCardModule,
@@ -27,7 +27,7 @@ import {
 @NgModule({
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     MatTabsModule,
     MatCardModule,
     MatButtonModule,
@@ -48,7 +48,7 @@ import {
   ],
   exports: [
     CommonModule,
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     MatTabsModule,
     MatCardModule,
     MatButtonModule,

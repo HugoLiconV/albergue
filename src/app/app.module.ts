@@ -1,10 +1,11 @@
 // Modulos
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { CustomMaterialModuleModule } from './custom-material-module.module';
+// import { CustomMaterialModuleModule } from './custom-material-module.module';
 import { AppRoutingModule } from './app-routing.module';
 
 // JWT
@@ -17,16 +18,16 @@ import { HeroSectionComponent } from './main-module/hero-section/hero-section.co
 import { DetailsSectionComponent } from './main-module/details-section/details-section.component';
 import { MainSectionComponent } from './main-module/main-section/main-section.component';
 import { FooterSectionComponent } from './main-module/footer-section/footer-section.component';
-import { ProjectCardComponent } from './shared/cards/project-card/project-card.component';
-import { DonationCardComponent } from './shared/cards/donation-card/donation-card.component';
+// import { ProjectCardComponent } from './shared/cards/project-card/project-card.component';
+// import { DonationCardComponent } from './shared/cards/donation-card/donation-card.component';
 // import { LoginComponent } from './admin-module/login/login.component';
 // import { AdminPanelComponent } from './admin-module/admin-panel/admin-panel.component';
 // import { ProjectFormComponent } from './admin-module/project-form/project-form.component';
-import { ContainerComponent } from './shared/container/container.component';
+// import { ContainerComponent } from './shared/container/container.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { EventCardComponent } from './shared/cards/event-card/event-card.component';
+// import { EventCardComponent } from './shared/cards/event-card/event-card.component';
 // import { NavbarAdminComponent } from './shared/navbar-admin/navbar-admin.component';
-import { TabsSectionComponent } from './main-module/tabs-section/tabs-section.component';
+// import { TabsSectionComponent } from './main-module/tabs-section/tabs-section.component';
 // import { DonationFormComponent } from './admin-module/donation-form/donation-form.component';
 // import { EventFormComponent } from './admin-module/event-form/event-form.component';
 import { DonationsDetailsComponent } from './main-module/donations-details/donations-details.component';
@@ -48,6 +49,7 @@ import {
 import { AuthGuard } from './_guards/auth-guard';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { SharedModule } from './shared.module';
 
 
 @NgModule({
@@ -57,16 +59,16 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     DetailsSectionComponent,
     MainSectionComponent,
     FooterSectionComponent,
-    ProjectCardComponent,
-    DonationCardComponent,
+    // ProjectCardComponent,
+    // DonationCardComponent,
     // LoginComponent,
     // AdminPanelComponent,
     // ProjectFormComponent,
-    ContainerComponent,
+    // ContainerComponent,
     NavbarComponent,
-    EventCardComponent,
+    // EventCardComponent,
     // NavbarAdminComponent,
-    TabsSectionComponent,
+    // TabsSectionComponent,
     // DonationFormComponent,
     // EventFormComponent,
     DonationsDetailsComponent,
@@ -77,12 +79,14 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
+    SharedModule,
+    BrowserAnimationsModule,
+    // FormsModule,
+    // ReactiveFormsModule,
     FlexLayoutModule,
-    CustomMaterialModuleModule,
+    // CustomMaterialModuleModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     AuthGuard,
