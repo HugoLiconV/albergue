@@ -1,5 +1,5 @@
 import { Component, ViewChild, AfterViewChecked, AfterViewInit } from '@angular/core';
-import { PROJECTS } from '../../../mock-project';
+import { PROJECTS } from '../../_data/';
 import {MatTableDataSource, MatSort} from '@angular/material';
 
 @Component({

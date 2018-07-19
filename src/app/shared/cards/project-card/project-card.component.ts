@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectService } from '../../../services/project.service';
-import { Project } from '../../../../project';
-import { AlertService } from '../../../services/alert.service';
-import {FormatDateService} from '../../../services/format.date.service';
+import {
+  ProjectService,
+  AlertService,
+  FormatDateService} from '../../../_services/';
+import { Project } from '../../../_models';
 
 @Component({
   selector: 'app-project-card',

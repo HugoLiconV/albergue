@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertService } from '../../services/alert.service';
+import { AlertService } from '../../_services';
 import {MatSnackBar} from '@angular/material';
 
 @Component({
@@ -28,5 +28,4 @@ export class AlertComponent implements OnInit {
       }
     });
   }
-
 }

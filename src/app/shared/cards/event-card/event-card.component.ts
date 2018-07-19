@@ -1,8 +1,10 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {Event} from '../../../../event';
-import {EventsService} from '../../../services/events.service';
-import {FormatDateService} from '../../../services/format.date.service';
-import {AlertService} from '../../../services/alert.service';
+import {Event} from '../../../_models';
+import {
+  EventsService,
+  FormatDateService,
+  AlertService} from '../../../_services';
+
 // import { EventEmitter } from 'protractor';
 
 @Component({

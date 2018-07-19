@@ -1,4 +1,4 @@
-import { Donation } from './donation';
+import { Donation } from '../_models';
   //   id: number;
   // name: string;
   // descripcion: string;

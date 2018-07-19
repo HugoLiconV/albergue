@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Event } from '../../event';
+import { Donation } from '../_models';
 import { environment} from '../../environments/environment';
 
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+
 @Injectable()
-export class EventsService {
-  private eventUrl = `${environment.API_URL}/events`;  // URL to web api
+export class DonationService {
+  private donationUrl = `${environment.API_URL}/donations`;  // URL to web api
 
   constructor(private http: HttpClient) { }
 
-  getEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(this.eventUrl);
+  getDonations(): Observable<Donation[]> {
+    return this.http.get<Donation[]>(this.donationUrl);
   }
 }

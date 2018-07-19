@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 // JWT
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from './interceptors/token.interceptor';
+import { TokenInterceptor } from './_interceptors/token.interceptor';
 
 // Flex Layout
 import { ObservableMedia } from '@angular/flex-layout';
@@ -36,17 +36,19 @@ import { DonationsDetailsComponent } from './main-module/donations-details/donat
 import { EventsDetailsComponent } from './main-module/events-details/events-details.component';
 import { ProjectsDetailsComponent } from './main-module/projects-details/projects-details.component';
 import { AdminDashboardComponent } from './admin-module/admin-dashboard/admin-dashboard.component';
-import { AlertComponent } from './directives/alert/alert.component';
+import { AlertComponent } from './_directives/alert/alert.component';
 
 // Services
-import { ProjectService } from './services/project.service';
-import { DonationService } from './services/donation.service';
-import { EventsService } from './services/events.service';
-import { AuthenticationService } from './services/auth.service';
-import { AlertService } from './services/alert.service';
-import { FormatDateService } from './services/format.date.service';
+import {
+  ProjectService,
+  DonationService,
+  EventsService,
+  AuthenticationService,
+  AlertService,
+  FormatDateService
+  } from './_services/';
 // Guards
-import { AuthGuard } from './guards/auth-guard';
+import { AuthGuard } from './_guards/auth-guard';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 

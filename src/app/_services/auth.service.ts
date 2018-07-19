@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import { JwtHelper } from 'angular2-jwt';
-import { tokenNotExpired } from 'angular2-jwt';
 import {environment} from '../../environments/environment';
 
 @Injectable()
