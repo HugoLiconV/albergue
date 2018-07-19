@@ -11,9 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './_interceptors/token.interceptor';
 
-// Flex Layout
-import { ObservableMedia } from '@angular/flex-layout';
-
 // Components
 import { AppComponent } from './app.component';
 import { HeroSectionComponent } from './main-module/hero-section/hero-section.component';
@@ -22,20 +19,20 @@ import { MainSectionComponent } from './main-module/main-section/main-section.co
 import { FooterSectionComponent } from './main-module/footer-section/footer-section.component';
 import { ProjectCardComponent } from './shared/cards/project-card/project-card.component';
 import { DonationCardComponent } from './shared/cards/donation-card/donation-card.component';
-import { LoginComponent } from './admin-module/login/login.component';
-import { AdminPanelComponent } from './admin-module/admin-panel/admin-panel.component';
-import { ProjectFormComponent } from './admin-module/project-form/project-form.component';
+// import { LoginComponent } from './admin-module/login/login.component';
+// import { AdminPanelComponent } from './admin-module/admin-panel/admin-panel.component';
+// import { ProjectFormComponent } from './admin-module/project-form/project-form.component';
 import { ContainerComponent } from './shared/container/container.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { EventCardComponent } from './shared/cards/event-card/event-card.component';
-import { NavbarAdminComponent } from './shared/navbar-admin/navbar-admin.component';
+// import { NavbarAdminComponent } from './shared/navbar-admin/navbar-admin.component';
 import { TabsSectionComponent } from './main-module/tabs-section/tabs-section.component';
-import { DonationFormComponent } from './admin-module/donation-form/donation-form.component';
-import { EventFormComponent } from './admin-module/event-form/event-form.component';
+// import { DonationFormComponent } from './admin-module/donation-form/donation-form.component';
+// import { EventFormComponent } from './admin-module/event-form/event-form.component';
 import { DonationsDetailsComponent } from './main-module/donations-details/donations-details.component';
 import { EventsDetailsComponent } from './main-module/events-details/events-details.component';
 import { ProjectsDetailsComponent } from './main-module/projects-details/projects-details.component';
-import { AdminDashboardComponent } from './admin-module/admin-dashboard/admin-dashboard.component';
+// import { AdminDashboardComponent } from './admin-module/admin-dashboard/admin-dashboard.component';
 import { AlertComponent } from './_directives/alert/alert.component';
 
 // Services
@@ -62,20 +59,20 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     FooterSectionComponent,
     ProjectCardComponent,
     DonationCardComponent,
-    LoginComponent,
-    AdminPanelComponent,
-    ProjectFormComponent,
+    // LoginComponent,
+    // AdminPanelComponent,
+    // ProjectFormComponent,
     ContainerComponent,
     NavbarComponent,
     EventCardComponent,
-    NavbarAdminComponent,
+    // NavbarAdminComponent,
     TabsSectionComponent,
-    DonationFormComponent,
-    EventFormComponent,
+    // DonationFormComponent,
+    // EventFormComponent,
     DonationsDetailsComponent,
     EventsDetailsComponent,
     ProjectsDetailsComponent,
-    AdminDashboardComponent,
+    // AdminDashboardComponent,
     AlertComponent
   ],
   imports: [
