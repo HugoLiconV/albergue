@@ -1,7 +1,129 @@
 /* Tema para material design */
 /*@import "~@angular/material/prebuilt-themes/indigo-pink.css";*/
 /* You can add global styles to this file, and also import other style files */
-html {
+::ng-deep :root {
+  --base-font-size: 16px;
+  --main-color: #b71c1c;/* --main-color: #345cd7; */
+  --secondary-color: #FFC107;
+  --main-font: "Rubik-Light", sans-serif;
+  --secondary-font: "Roboto", sans-serif;
+  --padding-top-section: 120px;
+  --padding-bottom-section: 120px;
+  --padding-left-section: 11.5vw;
+  --padding-right-section: 11.5vw;
+  --title-color: #121212;
+  --body-color: #434345;
+  --acent-color: #e91e63;
+  --margin: 1rem;
+}
+
+html,
+.root {
+  font-size: var(--base-font-size);
+  line-height: var(--line-height);
+  box-sizing: border-box;
+  background-color: #f0f0f0;
+  margin: 0;
+}
+
+body,
+.article {
+  font-family: var(--secondary-font);
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--main-font);
+}
+
+h1,
+.h1 {
+  font-size: 3.4rem;
+  line-height: 4.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+h2,
+.h2 {
+  font-size: 2.25rem;
+  line-height: 3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+h3,
+.h3 {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0rem;
+}
+
+h4,
+.h4 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0rem;
+}
+
+h5,
+.h5 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0rem;
+}
+
+p,
+ul,
+ol,
+pre,
+table,
+blockquote {
+  margin-top: 0rem;
+  margin-bottom: 1.5rem;
+}
+
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.section {
+  padding: 50px 1rem;
+}
+.section-title{
+  text-align: center;
+  font-family: var(--main-font);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--title-color);
+  margin: 0;
+}
+.section-info{
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-size: 26px;
+  line-height: 60px;
+  margin-top: 15px;
+  margin-bottom: 30px;
+  color: var(--body-color);
+}
+/* html {
   overflow-y: scroll;
 }
 
@@ -9,7 +131,7 @@ body {
   margin: 0;
   max-width: 100%;
   overflow-x: hidden;
-}
+} */
 
 /* body, html {
  height: 100%;

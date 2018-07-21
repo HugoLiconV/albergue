@@ -1,25 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700');
-
+@import "../styles.css";
 /* Variables CSS */
-::ng-deep :root {
-  --base-font-size: 16px;
-  --main-color: #b71c1c;/* --main-color: #345cd7; */
-  --secondary-color: #FFC107;
-  --main-font: "Rubik-Light", sans-serif;
-  --secondary-font: "Roboto", sans-serif;
-  --padding-top-section: 120px;
-  --padding-bottom-section: 120px;
-  --padding-left-section: 11.5vw;
-  --padding-right-section: 11.5vw;
-  --title-color: #121212;
-  --body-color: #434345;
-  --acent-color: #e91e63;
-  --margin: 20px;
-}
 
-html {
-  font-size: 16px;
-}
 
 /* Texto nav */
 /* .main .menu-container a,
