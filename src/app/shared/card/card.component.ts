@@ -16,7 +16,6 @@ export class CardComponent implements OnInit {
 
   handleClick() {
     this.cardClick.emit(this.id);
-    // console.log(this.id);
   }
 
 }

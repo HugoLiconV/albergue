@@ -10,6 +10,9 @@
   margin: 16px;
 }
 
+.card-container:hover {
+  box-shadow: 0 15px 30px 0 rgba(0,0,0,0.15);
+}
 /*
 This is the shorthand for flex-grow, flex-shrink and flex-basis combined.
 The second and third parameters (flex-shrink and flex-basis) are optional. Default is 0 1 auto.

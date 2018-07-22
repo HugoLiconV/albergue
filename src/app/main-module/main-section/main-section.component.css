@@ -16,12 +16,8 @@ app-navbar {
 }
 
 .tab-group {
-  /* display: flex;
-  justify-content: center; */
   align-items: center;
-  /* background-color: bisque; */
   width: 100%;
-  /* border-top: solid 3px #345cd7; */
 }
 
 .tab-group:before{
@@ -37,14 +33,4 @@ app-navbar {
 
 .tab-content {
   padding: 16px;
-}
-
-.cards-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  grid-gap: 1rem;
-}
-
-.card {
-  display: grid;
 }
