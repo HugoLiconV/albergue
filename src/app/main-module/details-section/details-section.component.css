@@ -39,6 +39,9 @@ header:before,
     flex-direction: column;
   }
   .service .image-block img{
-    width: 80%
+    width: 60%
+  }
+  .service h4 {
+    margin: 3rem 0 0.5rem 0;
   }
 }

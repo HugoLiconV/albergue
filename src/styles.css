@@ -31,6 +31,7 @@ body,
   font-family: var(--secondary-font);
   font-size: 1rem;
   line-height: 1.5rem;
+  margin: 0;
 }
 
 h1,
@@ -104,8 +105,10 @@ ol ul {
 }
 
 .section {
-  padding: 50px 1rem;
+  padding: 2rem 3rem;
 }
+
+
 .section-title{
   text-align: center;
   font-family: var(--main-font);
@@ -122,6 +125,15 @@ ol ul {
   margin-top: 15px;
   margin-bottom: 30px;
   color: var(--body-color);
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  .html, :root {
+    font-size: 12px;
+  }
+  .section{
+    padding: 1rem 1rem;
+  }
 }
 /* html {
   overflow-y: scroll;
