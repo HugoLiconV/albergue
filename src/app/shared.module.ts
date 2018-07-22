@@ -7,6 +7,7 @@ import { DonationCardComponent } from './shared/cards/donation-card/donation-car
 import { EventCardComponent } from './shared/cards/event-card/event-card.component';
 import { ContainerComponent } from './shared/container/container.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CardComponent } from './shared/card/card.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -28,6 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ContainerComponent,
     FormsModule,
     ReactiveFormsModule,
+    CardComponent
     // BrowserAnimationsModule
   ],
   declarations: [
@@ -35,7 +37,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProjectCardComponent,
     DonationCardComponent,
     EventCardComponent,
-    ContainerComponent
+    ContainerComponent,
+    CardComponent
   ],
   providers: []
 })

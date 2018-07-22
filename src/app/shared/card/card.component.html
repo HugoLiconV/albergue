@@ -1,0 +1,14 @@
+<div class="card-container">
+  <div class="card-content">
+    <div class="card-title">
+      <ng-content select="[card-title]"></ng-content>
+    </div>
+    <p class="card-details">
+      <ng-content select="[card-details]"></ng-content>
+    </p>
+    <p class="card-text">
+      <ng-content select="[card-text]"></ng-content>
+    </p>
+    <button (click)="handleClick()" class="btn btn-block card-btn">Información</button>
+  </div>
+</div>

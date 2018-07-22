@@ -37,4 +37,8 @@ export class ProjectCardComponent implements OnInit {
   formatDate(date) {
     return this.formatDateService.formatDate(date);
   }
+
+  handleClick(data) {
+    console.log(`project: ${data}`);
+  }
 }

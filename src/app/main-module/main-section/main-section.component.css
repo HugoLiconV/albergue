@@ -39,3 +39,12 @@ app-navbar {
   padding: 16px;
 }
 
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 1rem;
+}
+
+.card {
+  display: grid;
+}

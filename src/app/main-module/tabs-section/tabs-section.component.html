@@ -1,20 +1,14 @@
 index: {{ tabGroup.selectedIndex }}
-<section class="main" >
-  <mat-tab-group color="primary" [selectedIndex]="selectedIndex" #tabGroup class="tab-group" layout="row" layout-align="center center" id="projects">
+<section class="section">
+  <mat-tab-group color="primary" [selectedIndex]="selectedIndex" #tabGroup class="tab-group" id="projects">
     <mat-tab label="Proyectos">
-      <div class="tab-content">
-        <app-project-card></app-project-card>
-      </div>
+      <app-project-card></app-project-card>
     </mat-tab>
     <mat-tab label="Donaciones">
-      <div class="tab-content">
-        <app-donation-card></app-donation-card>
-      </div>
+      <app-donation-card></app-donation-card>
     </mat-tab>
     <mat-tab label="Eventos">
-      <div class="tab-content">
-        <app-event-card (buttonClick)="handleChildButtonClick($event)"></app-event-card>
-      </div>
+      <app-event-card (buttonClick)="handleChildButtonClick($event)"></app-event-card>
     </mat-tab>
   </mat-tab-group>
 </section>

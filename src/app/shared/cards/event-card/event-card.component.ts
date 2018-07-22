@@ -1,11 +1,9 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Event} from '../../../_models';
 import {
   EventsService,
   FormatDateService,
   AlertService} from '../../../_services';
-
-// import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'app-event-card',
@@ -15,7 +13,6 @@ import {
 export class EventCardComponent implements OnInit {
   events: Event[];
   loading = false;
-  @Output() buttonClick = new EventEmitter();
 
   constructor(
     private eventService: EventsService,
@@ -38,12 +35,10 @@ export class EventCardComponent implements OnInit {
       }
       this.loading = false;
     });
-
   }
 
-  buttonClicked(event: Event) {
-    console.log('emitiendo');
-    this.buttonClick.emit(event);
+  handleClick(data) {
+    console.log(`eve: ${data}`);
   }
 
   formatDate(date) {

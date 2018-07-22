@@ -1,21 +1,3 @@
-.main {
-  padding-bottom: var(--padding-bottom-section);
-  /* padding-left: 11.5vw; */
-  /* padding-right: 11.5vw; */
-  font-family: var(--main-font);
-  color: var(--title-color);
-}
-
-
-.tab-group {
-  /* display: flex;
-  justify-content: center; */
-  align-items: center;
-  /* background-color: bisque; */
-  width: 100%;
-  /* border-top: solid 3px #345cd7; */
-}
-
 .tab-group:before{
   margin-left: auto;
   margin-right: auto;
@@ -26,20 +8,10 @@
   display: block;
   margin-bottom: var(--margin);
 }
-
-.tab-content {
-  padding: 16px;
+.mat-tab{
+  background-color: rebeccapurple;
 }
-
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-}
-
-.example-icon {
-  padding: 0 14px;
-}
-
-.example-spacer {
-  flex: 1 1 auto;
+.mat-tab-labels {
+  display: flex !important;
+  justify-content: center !important;
 }

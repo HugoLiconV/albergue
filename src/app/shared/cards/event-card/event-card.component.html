@@ -1,28 +1,17 @@
-<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="10px">
-  <mat-card *ngFor="let event of events" class="example-card"
-  fxFlex.xs="100%" fxFlex.sm="48%" fxFlex.md="48%" fxFlex.lg="32%" fxFlex.xl="24%">
-    <mat-card-title>{{ event.name }}</mat-card-title>
-    <mat-card-subtitle>
+<div class="cards-container">
+  <app-card (cardClick)="handleClick($event)" [id]="event.id" *ngFor="let event of events" class="card">
+    <div card-title>{{ event.name }}</div>
+    <div card-details>
       <span class="acent">Costo: </span> {{ event.cost }}
       <br>
       <span>
-        <!-- TODO: Crear funcion para dar formato a hora -->
         <span class="acent">Fecha: </span>{{ formatDate(event.date) }} a las {{event.hour}}
       </span>
       <br>
       <span>
         <span class="acent">Ubicación: </span> {{ event.location }}
       </span>
-    </mat-card-subtitle>
-    <mat-card-content>
-      <p>
-        {{ event.description }}
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <!-- (click)="handleClick(event)" -->
-      <button (click)="buttonClicked(event)" mat-raised-button color="accent">Detalles</button>
-    </mat-card-actions>
-  </mat-card>
+    </div>
+    <div card-text>{{ event.description }}</div>
+  </app-card>
 </div>

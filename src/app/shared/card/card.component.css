@@ -1,0 +1,66 @@
+.card-container {
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+  background-color: white;
+  padding: 1rem;
+  /* padding: 0; */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 16px;
+}
+
+/*
+This is the shorthand for flex-grow, flex-shrink and flex-basis combined.
+The second and third parameters (flex-shrink and flex-basis) are optional. Default is 0 1 auto.
+ */
+
+.card-content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.card-details {
+  /* color: var(--acent-color); */
+  font-weight: 100;
+}
+
+.card-details {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.card-title {
+  color: var(--title-color);
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.card-text {
+  flex: 1 1 auto;
+  font-size: 1rem;
+  color: var(--body-color);
+  margin-top: 1.5rem;
+}
+
+.btn {
+  background-color: white;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  color: var(--body-color);
+  font-size: 1rem;
+  padding: 0.5rem;
+  text-transform: lowercase;
+}
+
+.btn:hover {
+  background-color: rgba(0, 0, 0, .1);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}

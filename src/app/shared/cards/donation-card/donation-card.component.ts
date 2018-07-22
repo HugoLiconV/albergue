@@ -19,4 +19,8 @@ export class DonationCardComponent implements OnInit {
   getDonations(): void {
     this.donationService.getDonations().subscribe(donations => this.donations = donations);
   }
+
+  handleClick(data) {
+    console.log(`dona: ${data}`);
+  }
 }

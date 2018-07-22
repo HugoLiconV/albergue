@@ -1,9 +1,7 @@
-<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="10px">
-  <mat-card *ngFor="let project of projects" class="example-card"
-  fxFlex.xs="100%" fxFlex.sm="48%" fxFlex.md="48%" fxFlex.lg="32%" fxFlex.xl="24%">
-    <mat-card-title>{{ project.name }}</mat-card-title>
-    <mat-card-subtitle>
+<div class="cards-container">
+  <app-card (cardClick)="handleClick($event)" [id]="project.id" *ngFor="let project of projects" class="card">
+    <div card-title>{{ project.name }}</div>
+    <div card-details>
       <span class="acent">Area: </span> {{ project.area }}
       <br>
       <span>
@@ -13,14 +11,7 @@
       <span>
         <span class="acent">Numero de personas: </span> {{ project.numberOfPeople }} personas
       </span>
-    </mat-card-subtitle>
-    <mat-card-content>
-      <p>
-        {{ project.solution }}
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="accent">Detalles</button>
-    </mat-card-actions>
-  </mat-card>
+    </div>
+    <div card-text>{{ project.solution }}</div>
+  </app-card>
 </div>
