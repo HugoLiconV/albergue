@@ -74,7 +74,7 @@ export class EventFormComponent implements OnInit {
     console.log(formValues);
     let event: Event = new Event();
     event = {...formValues};
-    this.eventService.addEvent(formValues).subscribe(_event =>{
+    this.eventService.addEvent(formValues).subscribe(_event => {
       if (_event) {
         this.alertService.success('Se agregó Evento con éxito');
         this.router.navigate(['/admin/dashboard']);
