@@ -9,18 +9,4 @@
   <p>
     <span class="acent">Descripción: </span>{{project?.description}}</p>
 </app-container>
-<app-container>
-  <h2>Contacto:</h2>
-  <div class="flex-container">
-    <a href="mailto:example@tutorialspark.com?subject=Feedback">
-      <span>
-        <img src="./assets/email.svg" alt="email">
-      </span> alberge@gmail.com
-    </a>
-    <p>
-      <span>
-        <img src="./assets/call.svg" alt="Call">
-      </span> 614 123 4567
-    </p>
-  </div>
-</app-container>
+<app-contact-card [subject]="project?.name"></app-contact-card>

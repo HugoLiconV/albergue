@@ -1,0 +1,32 @@
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.flex-container > * {
+  color: var(--body-color);
+  font-size: 1rem;
+}
+
+h2 {
+  text-align: center;
+  font-weight: 100;
+  font-size: 1.5rem;
+  line-height: 60px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--body-color);;
+}
+
+img {
+  width: 2rem;
+}
+
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
