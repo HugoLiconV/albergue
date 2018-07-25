@@ -13,4 +13,8 @@ export class EventsService {
   getEvents(): Observable<Event[]> {
     return this.http.get<Event[]>(this.eventUrl);
   }
+
+  addEvent(event: Event): Observable<Event> {
+    return this.http.post<Event>(this.eventUrl, event);
+  }
 }
