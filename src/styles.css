@@ -134,6 +134,15 @@ ol ul {
     padding: 1rem 1rem;
   }
 }
+
+.container-title {
+  text-align: center;
+  font-family: var(--main-font);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--body-color);
+  margin: 0;
+}
 /* html {
   overflow-y: scroll;
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Project } from '../../_models';
-import { ProjectService, AlertService } from '../../_services';
+import { ProjectService, AlertService, FormatDateService } from '../../_services';
 
 @Component({
   selector: 'app-projects-details',
@@ -10,25 +10,27 @@ import { ProjectService, AlertService } from '../../_services';
 })
 export class ProjectsDetailsComponent implements OnInit {
   project: Project;
-  id: string;
   private sub: any;
-
+  formatedDate;
   constructor(
     private route: ActivatedRoute,
     private projectService: ProjectService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private formatDateService: FormatDateService
   ) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-       this.id = params['id']; // (+) converts string 'id' to a number
-        this.projectService.getProjectById(this.id)
+       const id = params['id']; // (+) converts string 'id' to a number
+        this.projectService.getProjectById(id)
         .subscribe(_project => {
           this.project = _project;
-          console.log(this.project);
+          this.formatedDate = this.formatDateService.formatDate(this.project.publicationDate);
         }, error => {
-          this.alertService.success(error.message);
+          this.alertService.error(error.message);
         });
     });
   }
+
+
 }

@@ -1,5 +1,5 @@
 <app-container>
-  <h1 class="section-title">Añadir Proyecto</h1>
+  <h1 class="container-title">Añadir Proyecto</h1>
   <form [formGroup]="projectForm" (ngSubmit)="addProject(projectForm.value)" autocomplete="off" novalidate>
     <mat-form-field>
       <input matInput formControlName="name" placeholder="Nombre" required>

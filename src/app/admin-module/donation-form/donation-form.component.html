@@ -1,5 +1,5 @@
 <app-container>
-  <h1 class="section-title">Añadir Donación</h1>
+  <h1 class="container-title">Añadir Donación</h1>
   <form [formGroup]="donationForm" (ngSubmit)="addDonation(donationForm.value)" autocomplete="off" novalidate>
     <mat-form-field>
       <input formControlName="name" matInput placeholder="Nombre" required>

@@ -1,13 +1,16 @@
 .container {
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
   display: flex;
   flex-direction: column;
   max-width: 80%;
-  margin: 100px auto;
+  margin: 1rem auto;
   padding: 20px;
   position: relative;
   border-radius: 6px;
+  background-color: white;
 }
 
 .container > * {
   width: 100%;
 }
+

@@ -1,26 +1,36 @@
-h1 {
-    text-align: center;
-    font-family: var(--main-font);
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: var(--title-color);
-    margin: 0;
-}
-
 h2 {
-    font-family: "Roboto", sans-serif;
-    text-align: center;
-    font-weight: 100;
-    font-size: 26px;
-    line-height: 60px;
-    margin-top: 15px;
-    margin-bottom: 30px;
-    color: #434345;
+  text-align: center;
+  font-weight: 100;
+  font-size: 1.5rem;
+  line-height: 60px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--body-color);;
 }
 
 p {
-    font-family: "Roboto", sans-serif;
-    text-align: center;
-    font-size: 18px;
-    color: #000;
+  font-size: 1rem;
+  color: var(--body-color);
+}
+
+.acent {
+  color: var(--acent-color);
+}
+
+img {
+  width: 2rem;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  color: var(--body-color);
+  font-size: 1rem;
 }

@@ -12,6 +12,7 @@
   </nav>
 </div>
 <app-container>
+  <h1 class="container-title">Inicio de Sesión</h1>
   <form #loginForm="ngForm" (ngSubmit)="onSubmit(Email.value, Password.value)">
     <mat-form-field>
       <input matInput placeholder="Enter your email" [formControl]="email" #Email ngModel name="Email" required>

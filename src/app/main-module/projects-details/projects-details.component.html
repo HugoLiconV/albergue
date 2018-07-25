@@ -1,11 +1,26 @@
 <app-container>
-  <h1>{{project.name}}</h1>
-  <h2>AREA</h2>
-  <p>{{project.area}}</p>
-  <h2>DESCRIPCION</h2>
-  <p>{{project.description}}</p>
-  <h2>FECHA</h2>
-  <p>{{project.publicationDate}}</p>
-  <h2>CANTIDAD DE PERSONAS REQUERIDAS</h2>
-  <p>{{project.numberOfPeople}}</p>
+  <h1 class="container-title">{{project?.name}}</h1>
+  <p>
+    <span class="acent">Area: </span> {{project?.area}}</p>
+  <p>
+    <span class="acent">Fecha:</span>{{formatedDate}}</p>
+  <p>
+    <span class="acent">Cantidad de personas requeridas:</span>{{project?.numberOfPeople}}</p>
+  <p>
+    <span class="acent">Descripción: </span>{{project?.description}}</p>
+</app-container>
+<app-container>
+  <h2>Contacto:</h2>
+  <div class="flex-container">
+    <a href="mailto:example@tutorialspark.com?subject=Feedback">
+      <span>
+        <img src="./assets/email.svg" alt="email">
+      </span> alberge@gmail.com
+    </a>
+    <p>
+      <span>
+        <img src="./assets/call.svg" alt="Call">
+      </span> 614 123 4567
+    </p>
+  </div>
 </app-container>
