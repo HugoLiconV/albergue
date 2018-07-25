@@ -9,7 +9,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   public getToken(): string {
-    return localStorage.getItem('token');
+    return localStorage.getItem('currentUser');
   }
 
   login(username: string, password: string) {
@@ -29,7 +29,7 @@ export class AuthenticationService {
       .map((user) => {
         console.log(user);
         if (user && user.token) {
-          localStorage.setItem('currentUser', JSON.stringify(user));
+          localStorage.setItem('currentUser', user.token);
         }
         return user;
       });
