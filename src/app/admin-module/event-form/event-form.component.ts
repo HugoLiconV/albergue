@@ -26,7 +26,7 @@ export const MY_FORMATS = {
 @Component({
   selector: 'app-event-form',
   templateUrl: './event-form.component.html',
-  styleUrls: ['./event-form.component.css'],
+  styleUrls: ['../forms.css'],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'es'},
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},

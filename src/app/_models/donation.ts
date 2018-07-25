@@ -1,5 +1,5 @@
 export class Donation {
-  id: number;
+  id?: number;
   name: string;
   description: string;
 }

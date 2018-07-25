@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '../../../../node_modules/@an
 @Component({
   selector: 'app-project-form',
   templateUrl: './project-form.component.html',
-  styleUrls: ['./project-form.component.css']
+  styleUrls: ['../forms.css']
 })
 export class ProjectFormComponent implements OnInit {
 
@@ -20,11 +20,6 @@ export class ProjectFormComponent implements OnInit {
   projectForm: FormGroup;
   separatorKeysCodes = [ENTER, COMMA];
 
-// forms values
-  name: string;
-  description: string;
-  solution: string;
-  numberOfPeople: number;
   elements: string[] = [];
 
   ngOnInit() {

@@ -1,35 +1,3 @@
-<!-- <app-container>
-  <h1 class="section-title">Añadir Proyecto</h1>
-  <form #projectForm="ngForm" (ngSubmit)="addProject(projectForm.value)" autocomplete="off" novalidate>
-    <mat-form-field>
-      <input (ngModel)="name" name="name" id="name" matInput placeholder="Nombre" required>
-    </mat-form-field>
-    <mat-form-field>
-      <textarea (ngModel)="description" name="description" matInput placeholder="Descripción" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" required></textarea>
-    </mat-form-field>
-    <mat-form-field>
-      <textarea (ngModel)="solution" name="solution" matInput placeholder="Solución" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" required></textarea>
-    </mat-form-field>
-    <mat-form-field>
-      <input type="number" (ngModel)="numberOfPeople" name="numberOfPeople" matInput placeholder="Número de personas">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-chip-list #chipList>
-        <mat-chip *ngFor="let element of elements" [selectable]="true" [removable]="true" (remove)="removeArea(element)">
-          {{element}}
-          <mat-icon matChipRemove>cancel</mat-icon>
-        </mat-chip>
-        <input placeholder="Area *separadas con coma" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true"
-          (matChipInputTokenEnd)="addArea($event)" />
-      </mat-chip-list>
-    </mat-form-field>
-    <div class="actions">
-      <button class="button" [disabled]="projectForm.invalid" type="submit" mat-raised-button color="primary">Guardar</button>
-      <button class="button" mat-raised-button (click)="cancel()">Cancelar</button>
-    </div>
-  </form>
-</app-container> -->
-
 <app-container>
   <h1 class="section-title">Añadir Proyecto</h1>
   <form [formGroup]="projectForm" (ngSubmit)="addProject(projectForm.value)" autocomplete="off" novalidate>
