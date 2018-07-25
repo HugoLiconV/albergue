@@ -1,11 +1,15 @@
 export class Project {
-  id: number;
+  id?: number;
   name: string;
   description: string;
   publicationDate: Date;
-  numberOfPeople: number;
+  numberOfPeople?: number;
   solution: string;
   area: string;
+
+  constructor() {
+    this.publicationDate = new Date();
+  }
 }
 
 /*
