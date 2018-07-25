@@ -39,6 +39,7 @@ import { AuthGuard } from './_guards/auth-guard';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SharedModule } from './shared.module';
+import { LandingPageComponent } from './main-module/landing-page/landing-page.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { SharedModule } from './shared.module';
     DonationsDetailsComponent,
     EventsDetailsComponent,
     ProjectsDetailsComponent,
-    AlertComponent
+    AlertComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

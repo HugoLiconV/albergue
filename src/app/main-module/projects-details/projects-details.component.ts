@@ -27,9 +27,8 @@ export class ProjectsDetailsComponent implements OnInit {
           this.project = _project;
           console.log(this.project);
         }, error => {
-          this.alertService.success(error.message)
+          this.alertService.success(error.message);
         });
     });
   }
-
 }

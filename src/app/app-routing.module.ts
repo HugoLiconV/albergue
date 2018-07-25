@@ -4,13 +4,20 @@ import { MainSectionComponent } from './main-module/main-section/main-section.co
 import { DonationsDetailsComponent } from './main-module/donations-details/donations-details.component';
 import { EventsDetailsComponent } from './main-module/events-details/events-details.component';
 import { ProjectsDetailsComponent } from './main-module/projects-details/projects-details.component';
+import { LandingPageComponent } from './main-module/landing-page/landing-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: MainSectionComponent },
-  { path: 'donations-details/:id', component: DonationsDetailsComponent },
-  { path: 'project-details/:id', component: ProjectsDetailsComponent },
-  { path: 'event-details/:id', component: EventsDetailsComponent },
+  // { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', component: MainSectionComponent,
+    children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      // { path: 'home', redirectTo: 'landing', pathMatch: 'full' },
+      { path: 'home', component: LandingPageComponent },
+      { path: 'donations-details/:id', component: DonationsDetailsComponent },
+      { path: 'project-details/:id', component: ProjectsDetailsComponent },
+      { path: 'event-details/:id', component: EventsDetailsComponent },
+    ]
+  },
   { path: 'admin', loadChildren: './admin-module/admin.module#AdminModule'}
 ];
 
