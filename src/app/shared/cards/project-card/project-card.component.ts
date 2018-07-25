@@ -4,6 +4,7 @@ import {
   AlertService,
   FormatDateService} from '../../../_services/';
 import { Project } from '../../../_models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-card',
@@ -18,7 +19,8 @@ export class ProjectCardComponent implements OnInit {
   constructor(
   private projectService: ProjectService,
   private alertService: AlertService,
-  private formatDateService: FormatDateService) {}
+  private formatDateService: FormatDateService,
+  private router: Router) {}
 
   ngOnInit() {
     this.getProjects();
@@ -38,7 +40,8 @@ export class ProjectCardComponent implements OnInit {
     return this.formatDateService.formatDate(date);
   }
 
-  handleClick(data) {
-    console.log(`project: ${data}`);
+  handleClick(id) {
+    console.log(`project: ${id}`);
+    this.router.navigate(['/project-details', id]);
   }
 }
