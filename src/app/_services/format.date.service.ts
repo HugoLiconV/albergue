@@ -6,7 +6,7 @@ export class FormatDateService {
   constructor() {
   }
 
-  formatDate(date): String {
+  formatDate(date): string {
     const monthNames = [
       'Enero',
       'Febrero',

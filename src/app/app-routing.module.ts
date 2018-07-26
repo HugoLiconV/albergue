@@ -5,17 +5,19 @@ import { DonationsDetailsComponent } from './main-module/donations-details/donat
 import { EventsDetailsComponent } from './main-module/events-details/events-details.component';
 import { ProjectsDetailsComponent } from './main-module/projects-details/projects-details.component';
 import { LandingPageComponent } from './main-module/landing-page/landing-page.component';
-import { ProjectResolverServiceService } from './_services';
+import { ProjectResolverServiceService, DonationResolverService, EventResolverService } from './_services';
 
 const routes: Routes = [
   { path: '', component: MainSectionComponent,
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: LandingPageComponent },
-      { path: 'donations-details/:id', component: DonationsDetailsComponent },
+      { path: 'donations-details/:id', component: DonationsDetailsComponent,
+        resolve: {donation: DonationResolverService}},
       { path: 'project-details/:id', component: ProjectsDetailsComponent,
         resolve: {project: ProjectResolverServiceService} },
-      { path: 'event-details/:id', component: EventsDetailsComponent },
+      { path: 'event-details/:id', component: EventsDetailsComponent,
+        resolve: {event: EventResolverService}},
     ]
   },
   { path: 'admin', loadChildren: './admin-module/admin.module#AdminModule'}

@@ -4,6 +4,7 @@ import {
   EventsService,
   FormatDateService,
   AlertService} from '../../../_services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-event-card',
@@ -17,6 +18,7 @@ export class EventCardComponent implements OnInit {
   constructor(
     private eventService: EventsService,
     private formatDateService: FormatDateService,
+    private router: Router,
     private alertService: AlertService) {
   }
 
@@ -30,15 +32,13 @@ export class EventCardComponent implements OnInit {
       this.events = events;
       this.loading = false;
     }, error => {
-      if (error.status) {
-        this.alertService.error('Error conectandose con el servidor');
-      }
+      this.alertService.error('Error en servidor');
       this.loading = false;
     });
   }
 
-  handleClick(data) {
-    console.log(`eve: ${data}`);
+  handleClick(id) {
+    this.router.navigate(['/event-details', id]);
   }
 
   formatDate(date) {

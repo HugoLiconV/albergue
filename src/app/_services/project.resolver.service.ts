@@ -7,9 +7,10 @@ import { Project } from '../_models';
 export class ProjectResolverServiceService implements Resolve<any> {
   sub: any;
   constructor(
-    private projectService: ProjectService) { }
+    private projectService: ProjectService
+  ) { }
+
   resolve(route: ActivatedRouteSnapshot): Observable<Project> {
-    console.log('resolviendo');
     const id = route.paramMap.get('id');
     return this.projectService.getProjectById(id).pipe();
   }

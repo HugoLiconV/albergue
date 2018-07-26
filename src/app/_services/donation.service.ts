@@ -15,6 +15,11 @@ export class DonationService {
   getDonations(): Observable<Donation[]> {
     return this.http.get<Donation[]>(this.donationUrl);
   }
+
+  getDonationById(id: string): Observable<Donation> {
+    return this.http.get<Donation>(`${this.donationUrl}/${id}`);
+  }
+
   addDonations(donation: Donation): Observable<Donation> {
     return this.http.post<Donation>(this.donationUrl, donation);
   }
