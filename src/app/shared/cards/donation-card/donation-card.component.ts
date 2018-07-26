@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DonationService } from '../../../_services/';
+import { DonationService } from '../../../_services';
 import { Donation } from '../../../_models';
 
 @Component({

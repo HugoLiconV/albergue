@@ -5,7 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { AuthenticationService } from '../_services/';
+import { AuthenticationService } from '../_services';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()

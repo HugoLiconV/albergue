@@ -4,3 +4,4 @@ export * from './donation.service';
 export * from './events.service';
 export * from './format.date.service';
 export * from './project.service';
+export * from './project.resolver.service';

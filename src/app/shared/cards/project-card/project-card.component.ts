@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {
   ProjectService,
   AlertService,
-  FormatDateService} from '../../../_services/';
+  FormatDateService} from '../../../_services';
 import { Project } from '../../../_models';
 import { Router } from '@angular/router';
 
@@ -41,7 +41,6 @@ export class ProjectCardComponent implements OnInit {
   }
 
   handleClick(id) {
-    console.log(`project: ${id}`);
     this.router.navigate(['/project-details', id]);
   }
 }

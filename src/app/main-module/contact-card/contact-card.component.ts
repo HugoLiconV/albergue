@@ -10,10 +10,11 @@ export class ContactCardComponent implements OnInit {
   @Input() subject;
   email = 'alberge@gmail.com';
   phone = '614 123 4567';
-  emailLink = `mailto:${this.email}?subject=${this.subject}`
+  emailLink: string;
   constructor() { }
 
   ngOnInit() {
+    this.emailLink = `mailto:${this.email}?subject=${this.subject}`;
   }
 
 }

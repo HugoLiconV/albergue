@@ -32,8 +32,9 @@ import {
   EventsService,
   AuthenticationService,
   AlertService,
-  FormatDateService
-  } from './_services/';
+  FormatDateService,
+  ProjectResolverServiceService
+  } from './_services';
 // Guards
 import { AuthGuard } from './_guards/auth-guard';
 
@@ -74,6 +75,7 @@ import { ContactCardComponent } from './main-module/contact-card/contact-card.co
     EventsService,
     AuthenticationService,
     FormatDateService,
+    ProjectResolverServiceService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

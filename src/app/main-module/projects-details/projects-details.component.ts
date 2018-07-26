@@ -20,16 +20,19 @@ export class ProjectsDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-       const id = params['id']; // (+) converts string 'id' to a number
-        this.projectService.getProjectById(id)
-        .subscribe(_project => {
-          this.project = _project;
-          this.formatedDate = this.formatDateService.formatDate(this.project.publicationDate);
-        }, error => {
-          this.alertService.error(error.message);
-        });
-    });
+    this.project = this.route.snapshot.data['project'];
+    this.formatedDate = this.formatDateService.formatDate(this.project.publicationDate);
+    // console.log(this.project);
+    // this.sub = this.route.params.subscribe(params => {
+    //    const id = params['id']; // (+) converts string 'id' to a number
+    //     this.projectService.getProjectById(id)
+    //     .subscribe(_project => {
+    //       this.project = _project;
+    //       this.formatedDate = this.formatDateService.formatDate(this.project.publicationDate);
+    //     }, error => {
+    //       this.alertService.error(error.message);
+    //     });
+    // });
   }
 
 

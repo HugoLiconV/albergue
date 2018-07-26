@@ -4,7 +4,7 @@ import {ENTER, COMMA} from '@angular/cdk/keycodes';
 import { ProjectService, AlertService } from '../../_services';
 import { Project } from '../../_models';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '../../../../node_modules/@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-project-form',
   templateUrl: './project-form.component.html',
