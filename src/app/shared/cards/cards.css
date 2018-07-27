@@ -11,3 +11,10 @@
 .card {
   display: grid;
 }
+
+.loading-bar {
+  margin: 2rem auto;
+  display: flex;
+  justify-content: center;
+}
+

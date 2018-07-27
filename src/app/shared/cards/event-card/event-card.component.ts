@@ -30,11 +30,9 @@ export class EventCardComponent implements OnInit {
     this.loading = true;
     this.eventService.getEvents().subscribe(events => {
       this.events = events;
-      this.loading = false;
     }, error => {
       this.alertService.error('Error en servidor');
-      this.loading = false;
-    });
+    }, () => this.loading = false);
   }
 
   handleClick(id) {

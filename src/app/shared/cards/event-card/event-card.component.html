@@ -1,3 +1,6 @@
+<div class="loading-bar">
+  <mat-spinner [diameter]="50" *ngIf="loading"></mat-spinner>
+</div>
 <div class="cards-container">
   <app-card (cardClick)="handleClick($event)" [id]="event.id" *ngFor="let event of events" class="card">
     <div card-title>{{ event.name }}</div>

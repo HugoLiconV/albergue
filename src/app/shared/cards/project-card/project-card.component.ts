@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
 })
 export class ProjectCardComponent implements OnInit {
   projects: Project[];
-  error = '';
   loading = false;
 
   constructor(
@@ -30,10 +29,9 @@ export class ProjectCardComponent implements OnInit {
     this.loading = true;
     this.projectService.getProjects().subscribe(projects => {
       this.projects = projects;
-      }, error => {
-        this.alertService.error('Error en servidor');
-      });
-      this.loading = false;
+    }, error => {
+      this.alertService.error('Error en servidor');
+    }, () => this.loading = false);
   }
 
   formatDate(date) {

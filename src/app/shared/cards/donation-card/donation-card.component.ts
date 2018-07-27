@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class DonationCardComponent implements OnInit {
   donations: Donation[];
+  loading = false;
 
   constructor(
     private donationService: DonationService,
@@ -21,11 +22,12 @@ export class DonationCardComponent implements OnInit {
   }
 
   getDonations(): void {
+    this.loading = true;
     this.donationService.getDonations().subscribe(donations => {
-    this.donations = donations;
+      this.donations = donations;
     }, error => {
       this.alertService.error('Error en servidor');
-    });
+    }, () => this.loading = false);
   }
 
   handleClick(id) {
