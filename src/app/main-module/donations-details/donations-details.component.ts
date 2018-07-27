@@ -8,7 +8,7 @@ import { Donation } from '../../_models';
 })
 export class DonationsDetailsComponent implements OnInit {
   donation: Donation;
-  constructor(private route: ActivatedRoute,) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.donation = this.route.snapshot.data['donation'];

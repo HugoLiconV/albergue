@@ -41,6 +41,11 @@ export class ProjectCardComponent implements OnInit {
   }
 
   handleClick(id) {
-    this.router.navigate(['/project-details', id]);
+    const currentRoute = this.router.url;
+    if (currentRoute === '/home') {
+      this.router.navigate(['/project-details', id]);
+    } else {
+      this.router.navigate(['/admin/project-form', id]);
+    }
   }
 }

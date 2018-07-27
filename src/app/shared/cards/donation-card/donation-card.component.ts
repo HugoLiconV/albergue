@@ -29,6 +29,11 @@ export class DonationCardComponent implements OnInit {
   }
 
   handleClick(id) {
-    this.router.navigate(['/donations-details', id]);
+    const currentRoute = this.router.url;
+    if (currentRoute === '/home') {
+      this.router.navigate(['/donations-details', id]);
+    } else {
+      this.router.navigate(['/admin/donation-form', id]);
+    }
   }
 }

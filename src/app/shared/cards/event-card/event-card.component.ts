@@ -38,7 +38,12 @@ export class EventCardComponent implements OnInit {
   }
 
   handleClick(id) {
-    this.router.navigate(['/event-details', id]);
+    const currentRoute = this.router.url;
+    if (currentRoute === '/home') {
+      this.router.navigate(['/event-details', id]);
+    } else {
+      this.router.navigate(['/admin/event-form', id]);
+    }
   }
 
   formatDate(date) {

@@ -11,8 +11,11 @@ export const adminRoutes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: AdminDashboardComponent },
       { path: 'project-form', component: ProjectFormComponent },
+      { path: 'project-form/:id', component: ProjectFormComponent },
       { path: 'donation-form', component: DonationFormComponent },
+      { path: 'donation-form/:id', component: DonationFormComponent },
       { path: 'event-form', component: EventFormComponent },
+      { path: 'event-form/:id', component: EventFormComponent },
     ]
   },
   { path: 'login', component: LoginComponent}
