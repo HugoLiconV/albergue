@@ -24,6 +24,8 @@ export class ProjectFormComponent implements OnInit {
 
   elements: string[] = [];
   project: Project;
+  id: string;
+
   ngOnInit() {
     this.projectForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -31,9 +33,9 @@ export class ProjectFormComponent implements OnInit {
       solution: ['', Validators.required],
       numberOfPeople: ['', Validators.required]
     });
-    const id = this.route.snapshot.params['id'];
-    if (id) {
-      this.projectService.getProjectById(id).subscribe(project => {
+    this.id = this.route.snapshot.params['id'];
+    if (this.id) {
+      this.projectService.getProjectById(this.id).subscribe(project => {
         this.project = project;
         this.projectForm.setValue({
           name: this.project.name,
@@ -42,9 +44,7 @@ export class ProjectFormComponent implements OnInit {
           numberOfPeople: this.project.numberOfPeople,
         });
         this.elements = this.project.area.split(',');
-      }, error => {
-        this.alertService.error(error.message);
-      });
+      }, error => this.errorHandler(error));
     }
   }
 
@@ -75,18 +75,23 @@ export class ProjectFormComponent implements OnInit {
       ...formValues,
       ...project,
       area: this.elements.toString()
-      };
-    console.log(project);
-    this.projectService.addProject(project).subscribe(_project => {
-      if (_project) {
-        this.alertService.success('Proyecto Creado con éxito');
+    };
+    const isNewProject = this.id === null;
+    if  (isNewProject) {
+      this.projectService.addProject(project).subscribe(_ => {
+          this.alertService.success('Proyecto Creado con éxito');
+          this.router.navigate(['/admin/dashboard']);
+      }, error => this.errorHandler(error));
+    } else {
+      this.projectService.editProject(project, this.id).subscribe(_ => {
+        this.alertService.success('Proyecto Modificado con éxito');
         this.router.navigate(['/admin/dashboard']);
-      }
-    }, error => {
-      this.alertService.error(error.message);
-    });
+      }, error => this.errorHandler(error));
+    }
   }
-
+  private errorHandler(error) {
+    this.alertService.error(error.message);
+  }
   cancel() {
     this.router.navigate(['/admin/dashboard']);
   }

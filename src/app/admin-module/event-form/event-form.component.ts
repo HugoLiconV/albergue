@@ -52,7 +52,7 @@ export class EventFormComponent implements OnInit {
 
   eventForm: FormGroup;
   event: Event;
-
+  id: string;
   checkScreenSize(): boolean {
     return this.innerWidth < 840;
   }
@@ -66,9 +66,9 @@ export class EventFormComponent implements OnInit {
       date: ['', Validators.required],
       hour: ['', Validators.required]
     });
-    const id = this.route.snapshot.params['id'];
-    if (id) {
-      this.eventService.getEventById(id).subscribe(event => {
+    this.id = this.route.snapshot.params['id'];
+    if (this.id) {
+      this.eventService.getEventById(this.id).subscribe(event => {
         this.event = event;
         this.eventForm.setValue({
           name: this.event.name,
@@ -78,24 +78,30 @@ export class EventFormComponent implements OnInit {
           date: this.event.date,
           hour: this.event.hour
         });
-      }, error => {
-        this.alertService.error(error.message);
-      });
+      }, error => this.errorHandler(error));
     }
   }
 
   addEvent(formValues) {
-    this.eventService.addEvent(formValues).subscribe(_event => {
-      if (_event) {
+    const isNewEvent = this.id === null;
+    if (isNewEvent) {
+      this.eventService.addEvent(formValues).subscribe(_ => {
         this.alertService.success('Se agregó Evento con éxito');
         this.router.navigate(['/admin/dashboard']);
-      }
-    }, error => {
-      this.alertService.error(error.message);
-    });
+      }, error => this.errorHandler(error));
+    } else {
+      this.eventService.editEvent(formValues, this.id).subscribe(_ => {
+        this.alertService.success('Se Modificó Evento con éxito');
+        this.router.navigate(['/admin/dashboard']);
+      }, error => this.errorHandler(error));
+    }
   }
 
   cancel() {
     this.router.navigate(['/admin/dashboard']);
+  }
+
+  private errorHandler(error) {
+    this.alertService.error(error.message);
   }
 }

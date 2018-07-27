@@ -3,7 +3,6 @@ import { Project } from '../_models';
 import { environment } from '../../environments/environment';
 
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
@@ -22,5 +21,9 @@ export class ProjectService {
 
   addProject(project: Project): Observable<Project> {
     return this.http.post<Project>(this.projectUrl, project);
+  }
+
+  editProject(project: Project, id: string): Observable<Project> {
+    return this.http.put<Project>(`${this.projectUrl}/${id}`, project);
   }
 }

@@ -23,4 +23,8 @@ export class DonationService {
   addDonations(donation: Donation): Observable<Donation> {
     return this.http.post<Donation>(this.donationUrl, donation);
   }
+
+  editDonation(donation: Donation, id: string): Observable<Donation> {
+    return this.http.put<Donation>(`${this.donationUrl}/${id}`, donation);
+  }
 }

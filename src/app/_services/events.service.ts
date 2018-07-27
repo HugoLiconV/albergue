@@ -21,4 +21,8 @@ export class EventsService {
   addEvent(event: Event): Observable<Event> {
     return this.http.post<Event>(this.eventUrl, event);
   }
+
+  editEvent(event: Event, id: string): Observable<Event> {
+    return this.http.put<Event>(`${this.eventUrl}/${id}`, event);
+  }
 }

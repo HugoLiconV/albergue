@@ -21,38 +21,44 @@ export class DonationFormComponent implements OnInit {
   ) { }
   donation: Donation;
   donationForm: FormGroup;
-
+  id: string;
   ngOnInit() {
     const name = new FormControl('', Validators.required);
     const description = new FormControl('', Validators.required);
     this.donationForm = new FormGroup({ name, description});
 
-    const id = this.route.snapshot.params['id'];
-    if (id) {
-      this.donationService.getDonationById(id).subscribe(_donation => {
+    this.id = this.route.snapshot.params['id'];
+    if (this.id) {
+      this.donationService.getDonationById(this.id).subscribe(_donation => {
         this.donation = _donation;
         this.donationForm.setValue({
           name: this.donation.name,
           description: this.donation.description
         });
-      }, error => {
-        this.alertService.error(error.message);
-      });
+      }, error => this.errorHandler(error));
     }
   }
 
   addDonation(formValues) {
-    this.donationService.addDonations(formValues).subscribe(_donation => {
-      if (_donation) {
-        this.alertService.success('Donación agregada con éxito');
-        this.router.navigate(['/admin/dashboard']);
-      }
-    }, error => {
-      this.alertService.error(error.message);
-    });
+    const isNewDonation = this.id === null;
+    if (isNewDonation) {
+      this.donationService.addDonations(formValues).subscribe(_ => {
+      this.alertService.success('Donación agregada con éxito');
+      this.router.navigate(['/admin/dashboard']);
+      }, error => this.errorHandler(error));
+    } else {
+      this.donationService.editDonation(formValues, this.id).subscribe(_ => {
+      this.alertService.success('Donación Modificada con éxito');
+      this.router.navigate(['/admin/dashboard']);
+      }, error => this.errorHandler(error));
+    }
   }
 
   cancel() {
     this.router.navigate(['/admin/dashboard']);
+  }
+
+  private errorHandler(error) {
+    this.alertService.error(error.message);
   }
 }
