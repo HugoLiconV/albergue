@@ -29,28 +29,30 @@ export class DonationFormComponent implements OnInit {
 
     this.id = this.route.snapshot.params['id'];
     if (this.id) {
-      this.donationService.getDonationById(this.id).subscribe(_donation => {
-        this.donation = _donation;
-        this.donationForm.setValue({
-          name: this.donation.name,
-          description: this.donation.description
-        });
-      }, error => this.errorHandler(error));
+      this.donationService.getDonationById(this.id).subscribe(donation => {
+        if (donation) {
+          this.donation = donation;
+          this.donationForm.setValue({
+            name: this.donation.name,
+            description: this.donation.description
+          });
+        }
+      });
     }
   }
 
   addDonation(formValues) {
-    const isNewDonation = this.id === null;
+    const isNewDonation = this.id === undefined;
     if (isNewDonation) {
       this.donationService.addDonations(formValues).subscribe(_ => {
       this.alertService.success('Donación agregada con éxito');
       this.router.navigate(['/admin/dashboard']);
-      }, error => this.errorHandler(error));
+      });
     } else {
       this.donationService.editDonation(formValues, this.id).subscribe(_ => {
       this.alertService.success('Donación Modificada con éxito');
       this.router.navigate(['/admin/dashboard']);
-      }, error => this.errorHandler(error));
+      });
     }
   }
 
@@ -58,7 +60,10 @@ export class DonationFormComponent implements OnInit {
     this.router.navigate(['/admin/dashboard']);
   }
 
-  private errorHandler(error) {
-    this.alertService.error(error.message);
+  deleteDonation() {
+    this.donationService.deleteDonation(this.id).subscribe(_ => {
+      this.alertService.success('Donación eliminada con éxito');
+      this.router.navigate(['/admin/dashboard']);
+    });
   }
 }

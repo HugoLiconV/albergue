@@ -69,31 +69,33 @@ export class EventFormComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     if (this.id) {
       this.eventService.getEventById(this.id).subscribe(event => {
-        this.event = event;
-        this.eventForm.setValue({
-          name: this.event.name,
-          description: this.event.description,
-          cost: this.event.cost,
-          location: this.event.location,
-          date: this.event.date,
-          hour: this.event.hour
-        });
-      }, error => this.errorHandler(error));
+        if (event) {
+          this.event = event;
+          this.eventForm.setValue({
+            name: this.event.name,
+            description: this.event.description,
+            cost: this.event.cost,
+            location: this.event.location,
+            date: this.event.date,
+            hour: this.event.hour
+          });
+        }
+      });
     }
   }
 
   addEvent(formValues) {
-    const isNewEvent = this.id === null;
+    const isNewEvent = this.id === undefined;
     if (isNewEvent) {
       this.eventService.addEvent(formValues).subscribe(_ => {
         this.alertService.success('Se agregó Evento con éxito');
         this.router.navigate(['/admin/dashboard']);
-      }, error => this.errorHandler(error));
+      });
     } else {
       this.eventService.editEvent(formValues, this.id).subscribe(_ => {
         this.alertService.success('Se Modificó Evento con éxito');
         this.router.navigate(['/admin/dashboard']);
-      }, error => this.errorHandler(error));
+      });
     }
   }
 
@@ -101,7 +103,10 @@ export class EventFormComponent implements OnInit {
     this.router.navigate(['/admin/dashboard']);
   }
 
-  private errorHandler(error) {
-    this.alertService.error(error.message);
+  deleteEvent() {
+    this.eventService.deleteEvent(this.id).subscribe(_ => {
+      this.alertService.success('Evento eliminado con éxito');
+      this.router.navigate(['/admin/dashboard']);
+    });
   }
 }

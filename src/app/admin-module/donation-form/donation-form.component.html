@@ -8,8 +8,9 @@
       <textarea formControlName="description" matInput placeholder="Descripción" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" required></textarea>
     </mat-form-field>
     <div class="actions">
-      <button class="button" [disabled]="donationForm.invalid" type="submit" mat-raised-button color="primary">Guardar</button>
-      <button class="button" (click)="cancel()" mat-raised-button>Cancelar</button>
+      <button type="submit" class="button" [disabled]="donationForm.invalid" mat-raised-button color="primary">Guardar</button>
+      <button type="button" class="button" (click)="cancel()" mat-raised-button>Cancelar</button>
+      <button type="button" class="button" (click)="deleteDonation()" *ngIf="id" mat-raised-button>Eliminar</button>
     </div>
   </form>
 </app-container>

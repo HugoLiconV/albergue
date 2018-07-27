@@ -36,15 +36,17 @@ export class ProjectFormComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     if (this.id) {
       this.projectService.getProjectById(this.id).subscribe(project => {
-        this.project = project;
-        this.projectForm.setValue({
-          name: this.project.name,
-          description: this.project.description,
-          solution: this.project.solution,
-          numberOfPeople: this.project.numberOfPeople,
-        });
-        this.elements = this.project.area.split(',');
-      }, error => this.errorHandler(error));
+        if (project) {
+          this.project = project;
+          this.projectForm.setValue({
+            name: this.project.name,
+            description: this.project.description,
+            solution: this.project.solution,
+            numberOfPeople: this.project.numberOfPeople,
+          });
+          this.elements = this.project.area.split(',');
+        }
+      });
     }
   }
 
@@ -76,23 +78,27 @@ export class ProjectFormComponent implements OnInit {
       ...project,
       area: this.elements.toString()
     };
-    const isNewProject = this.id === null;
+    const isNewProject = this.id === undefined;
     if  (isNewProject) {
       this.projectService.addProject(project).subscribe(_ => {
           this.alertService.success('Proyecto Creado con éxito');
           this.router.navigate(['/admin/dashboard']);
-      }, error => this.errorHandler(error));
+      });
     } else {
       this.projectService.editProject(project, this.id).subscribe(_ => {
         this.alertService.success('Proyecto Modificado con éxito');
         this.router.navigate(['/admin/dashboard']);
-      }, error => this.errorHandler(error));
+      });
     }
-  }
-  private errorHandler(error) {
-    this.alertService.error(error.message);
   }
   cancel() {
     this.router.navigate(['/admin/dashboard']);
+  }
+
+  deleteProject() {
+    this.projectService.deleteProject(this.id).subscribe(_ => {
+      this.alertService.success('Proyecto eliminado con éxito');
+      this.router.navigate(['/admin/dashboard']);
+    });
   }
 }
