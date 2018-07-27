@@ -19,7 +19,6 @@ export class DonationFormComponent implements OnInit {
     private alertService: AlertService,
     private route: ActivatedRoute
   ) { }
-  private sub: any;
   donation: Donation;
   donationForm: FormGroup;
 

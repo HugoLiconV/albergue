@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MomentDateAdapter} from '@angular/material-moment-adapter';
 
 import * as _moment from 'moment';
@@ -8,7 +8,7 @@ import * as _moment from 'moment';
 // noinspection TypeScriptCheckImport
 import {default as _rollupMoment, Moment} from 'moment';
 import { EventsService, AlertService } from '../../_services';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Event } from '../../_models';
 const moment = _rollupMoment || _moment;
 
@@ -42,38 +42,49 @@ export class EventFormComponent implements OnInit {
   constructor(
     private eventService: EventsService,
     private router: Router,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute
   ) {
     this.innerWidth = window.innerWidth;
     this.isMobile = this.checkScreenSize();
   }
-  date = new FormControl(moment());
+
   eventForm: FormGroup;
+  event: Event;
+
   checkScreenSize(): boolean {
     return this.innerWidth < 840;
   }
 
   ngOnInit() {
-    const name = new FormControl('', Validators.required);
-    const description = new FormControl('', Validators.required);
-    const cost = new FormControl('', Validators.required);
-    const location = new FormControl('', Validators.required);
-    const date = new FormControl('', Validators.required);
-    const hour = new FormControl('', Validators.required);
-    this.eventForm = new FormGroup({
-      name,
-      description,
-      cost,
-      location,
-      date,
-      hour
+    this.eventForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      cost: ['', Validators.required],
+      location: ['', Validators.required],
+      date: ['', Validators.required],
+      hour: ['', Validators.required]
     });
+    const id = this.route.snapshot.params['id'];
+    if (id) {
+      this.eventService.getEventById(id).subscribe(event => {
+        this.event = event;
+        this.eventForm.setValue({
+          name: this.event.name,
+          description: this.event.description,
+          cost: this.event.cost,
+          location: this.event.location,
+          date: this.event.date,
+          hour: this.event.hour
+        });
+      }, error => {
+        this.alertService.error(error.message);
+      });
+    }
   }
 
   addEvent(formValues) {
-    console.log(formValues);
-    let event: Event = new Event();
-    event = {...formValues};
     this.eventService.addEvent(formValues).subscribe(_event => {
       if (_event) {
         this.alertService.success('Se agregó Evento con éxito');
