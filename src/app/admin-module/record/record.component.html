@@ -1,0 +1,29 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource" class="example-table" matSort matSortActive="created" matSortDisableClear matSortDirection="asc">
+
+    <!-- Number Column -->
+    <ng-container matColumnDef="user">
+      <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.user.name }}</mat-cell>
+    </ng-container>
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="fecha">
+      <mat-header-cell *matHeaderCellDef>fecha</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.fecha }}</mat-cell>
+    </ng-container>
+
+    <!-- State Column -->
+    <ng-container matColumnDef="hora">
+      <mat-header-cell *matHeaderCellDef>hora</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.hora }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

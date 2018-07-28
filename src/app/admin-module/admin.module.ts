@@ -10,7 +10,7 @@ import { EventFormComponent } from './event-form/event-form.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarAdminComponent } from '../shared/navbar-admin/navbar-admin.component';
 import { SharedModule } from '../shared.module';
-
+import { RecordComponent } from './record/record.component';
 @NgModule({
   imports: [
     SharedModule,
@@ -23,7 +23,8 @@ import { SharedModule } from '../shared.module';
     DonationFormComponent,
     EventFormComponent,
     LoginComponent,
-    NavbarAdminComponent
+    NavbarAdminComponent,
+    RecordComponent
   ],
   providers: []
 })

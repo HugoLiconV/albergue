@@ -22,7 +22,8 @@ import {
   MatDividerModule,
   MatProgressBarModule,
   MatSnackBarModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatPaginatorModule,
 } from '@angular/material';
 
 @NgModule({
@@ -47,6 +48,7 @@ import {
     MatProgressBarModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
+    MatPaginatorModule,
   ],
   exports: [
     CommonModule,
@@ -69,6 +71,7 @@ import {
     MatProgressBarModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
+    MatPaginatorModule,
   ]
 })
 export class CustomMaterialModuleModule { }
