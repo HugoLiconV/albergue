@@ -12,6 +12,7 @@ import { NavbarAdminComponent } from '../shared/navbar-admin/navbar-admin.compon
 import { SharedModule } from '../shared.module';
 import { RecordComponent } from './record/record.component';
 import { UserTableComponent } from './user-table/user-table.component';
+import { RecordDashboardComponent } from './record-dashboard/record-dashboard.component';
 @NgModule({
   imports: [
     SharedModule,
@@ -26,7 +27,8 @@ import { UserTableComponent } from './user-table/user-table.component';
     LoginComponent,
     NavbarAdminComponent,
     RecordComponent,
-    UserTableComponent
+    UserTableComponent,
+    RecordDashboardComponent
   ],
   providers: []
 })

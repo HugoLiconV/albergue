@@ -5,7 +5,7 @@ import { ProjectFormComponent } from './project-form/project-form.component';
 import { DonationFormComponent } from './donation-form/donation-form.component';
 import { EventFormComponent } from './event-form/event-form.component';
 import { LoginComponent } from './login/login.component';
-import { RecordComponent } from './record/record.component';
+import { RecordDashboardComponent } from './record-dashboard/record-dashboard.component';
 
 export const adminRoutes = [
   { path: '', component: AdminPanelComponent, canActivate: [AuthGuard],
@@ -18,6 +18,7 @@ export const adminRoutes = [
       { path: 'donation-form/:id', component: DonationFormComponent },
       { path: 'event-form', component: EventFormComponent },
       { path: 'event-form/:id', component: EventFormComponent },
+      { path: 'record-dashboard', component: RecordDashboardComponent },
     ]
   },
   { path: 'login', component: LoginComponent}
