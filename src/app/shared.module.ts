@@ -8,8 +8,8 @@ import { EventCardComponent } from './shared/cards/event-card/event-card.compone
 import { ContainerComponent } from './shared/container/container.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardComponent } from './shared/card/card.component';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { DialogComponent } from './shared/dialog/dialog.component';
+import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -21,15 +21,16 @@ import { CardComponent } from './shared/card/card.component';
   exports: [
     CommonModule,
     CustomMaterialModuleModule,
-    TabsSectionComponent,
+    FormsModule,
+    ReactiveFormsModule,
     TabsSectionComponent,
     ProjectCardComponent,
     DonationCardComponent,
     EventCardComponent,
     ContainerComponent,
-    FormsModule,
-    ReactiveFormsModule,
-    CardComponent
+    CardComponent,
+    DialogComponent,
+    ConfirmationDialogComponent
     // BrowserAnimationsModule
   ],
   declarations: [
@@ -38,8 +39,11 @@ import { CardComponent } from './shared/card/card.component';
     DonationCardComponent,
     EventCardComponent,
     ContainerComponent,
-    CardComponent
+    CardComponent,
+    DialogComponent,
+    ConfirmationDialogComponent
   ],
+  entryComponents: [DialogComponent, ConfirmationDialogComponent],
   providers: []
 })
 export class SharedModule { }
