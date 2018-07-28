@@ -35,7 +35,8 @@ import {
   FormatDateService,
   ProjectResolverServiceService,
   DonationResolverService,
-  EventResolverService
+  EventResolverService,
+  HandleErrorService
   } from './_services';
 // Guards
 import { AuthGuard } from './_guards/auth-guard';
@@ -44,6 +45,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SharedModule } from './shared.module';
 import { LandingPageComponent } from './main-module/landing-page/landing-page.component';
 import { ContactCardComponent } from './main-module/contact-card/contact-card.component';
+import { PersonService } from './_services/person.service';
+import { RecordService } from './_services/record.service';
 
 
 @NgModule({
@@ -80,6 +83,9 @@ import { ContactCardComponent } from './main-module/contact-card/contact-card.co
     ProjectResolverServiceService,
     DonationResolverService,
     EventResolverService,
+    PersonService,
+    RecordService,
+    HandleErrorService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
