@@ -36,3 +36,21 @@
 .mat-column-created {
   max-width: 124px;
 }
+
+.icon {
+  cursor: pointer;
+  transition: .4s all;
+  font-size: 1.5rem;
+}
+
+.icon:hover {
+  font-size: 1.6rem;
+}
+
+.edit:hover {
+  color: #27ae60;
+}
+
+.delete:hover {
+  color: #e74c3c;
+}

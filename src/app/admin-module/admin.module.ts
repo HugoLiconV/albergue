@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { NavbarAdminComponent } from '../shared/navbar-admin/navbar-admin.component';
 import { SharedModule } from '../shared.module';
 import { RecordComponent } from './record/record.component';
+import { UserTableComponent } from './user-table/user-table.component';
 @NgModule({
   imports: [
     SharedModule,
@@ -24,7 +25,8 @@ import { RecordComponent } from './record/record.component';
     EventFormComponent,
     LoginComponent,
     NavbarAdminComponent,
-    RecordComponent
+    RecordComponent,
+    UserTableComponent
   ],
   providers: []
 })
