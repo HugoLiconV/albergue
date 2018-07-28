@@ -12,9 +12,9 @@
     </ng-container>
 
     <!-- Title Column -->
-    <ng-container matColumnDef="isActive">
+    <ng-container matColumnDef="isBlocked">
       <mat-header-cell *matHeaderCellDef>Bloqueado:</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.isActive ? 'No' : 'Si' }}</mat-cell>
+      <mat-cell *matCellDef="let row">{{ row.isBlocked ? 'Si' : 'No' }}</mat-cell>
     </ng-container>
 
     <!-- State Column -->
@@ -26,7 +26,7 @@
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef>Acción</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <mat-icon class="icon edit" (click)="editUser(row.id)">edit</mat-icon>
+        <mat-icon class="icon edit" (click)="editUser(row)">edit</mat-icon>
         <mat-icon class="icon delete" (click)="deleteUser(row.id)">delete</mat-icon></mat-cell>
     </ng-container>
 

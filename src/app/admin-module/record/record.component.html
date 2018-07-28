@@ -8,19 +8,19 @@
     <!-- Number Column -->
     <ng-container matColumnDef="user">
       <mat-header-cell *matHeaderCellDef>Usuario</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.user.name }}</mat-cell>
+      <mat-cell *matCellDef="let row">{{ row?.user?.name }}</mat-cell>
     </ng-container>
 
     <!-- Title Column -->
     <ng-container matColumnDef="fecha">
       <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.fecha }}</mat-cell>
+      <mat-cell *matCellDef="let row">{{ row?.fecha }}</mat-cell>
     </ng-container>
 
     <!-- State Column -->
     <ng-container matColumnDef="hora">
       <mat-header-cell *matHeaderCellDef>Hora</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.hora }}</mat-cell>
+      <mat-cell *matCellDef="let row">{{ row?.hora }}</mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

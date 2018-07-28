@@ -1,6 +1,8 @@
-import {Component, OnInit } from '@angular/core';
-import {MatTableDataSource} from '@angular/material';
-import { PersonService } from '../../_services';
+import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource, MatDialog } from '@angular/material';
+import { PersonService, AlertService } from '../../_services';
+import { DialogComponent } from '../../shared/dialog/dialog.component';
+import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-user-table',
@@ -9,17 +11,24 @@ import { PersonService } from '../../_services';
 })
 export class UserTableComponent implements OnInit {
 
-displayedColumns = ['name', 'isActive', 'code', 'action'];
+displayedColumns = ['name', 'isBlocked', 'code', 'action'];
   dataSource = new MatTableDataSource();
 
   isLoadingResults = true;
 
-  constructor(private personService: PersonService) {}
+  constructor(
+    private personService: PersonService,
+    public dialog: MatDialog,
+    private alertService: AlertService
+  ) {}
 
   ngOnInit() {
+    this.populateTable();
+  }
+
+  private populateTable(): void {
     this.isLoadingResults = true;
     this.personService.getPeople().subscribe(people => {
-      console.log(people);
       this.dataSource.data = people;
     },
     error => {},
@@ -27,12 +36,34 @@ displayedColumns = ['name', 'isActive', 'code', 'action'];
   }
 
   editUser(data): void {
-    console.log('edit');
-    console.log(data);
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '50%',
+      data
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) { // recibe true si se editó
+        this.populateTable();
+      }
+    });
   }
 
-  deleteUser(data): void {
-    console.log('delete');
-    console.log(data);
+  deleteUser(userId): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '50%',
+      data: {title: 'Eliminar usuario', action: 'eliminar', color: 'warn'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) { // recibe true si se editó
+        this.populateTable();
+        this.personService.deletePerson(userId).subscribe(_ => {
+          // if (response) {
+            this.alertService.success('Usuario eliminado con éxito');
+            this.populateTable();
+          // }
+        });
+      }
+    });
   }
 }
