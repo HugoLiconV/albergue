@@ -7,3 +7,7 @@ export * from './project.service';
 export * from './project.resolver.service';
 export * from './donation.resolver.service';
 export * from './event.resolver.service';
+export * from './person.service';
+export * from './record.service';
+export * from './handle.error.service';
+

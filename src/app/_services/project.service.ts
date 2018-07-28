@@ -5,45 +5,38 @@ import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs/RX';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { AlertService } from './alert.service';
+import { HandleErrorService } from './handle.error.service';
 @Injectable()
 export class ProjectService {
   private projectUrl = `${environment.API_URL}/projects`;  // URL to web api
 
   constructor(
     private http: HttpClient,
-    private alertService: AlertService
+    private handleErrorService: HandleErrorService
     ) { }
 
   getProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(this.projectUrl)
-      .pipe(catchError(this.handleError<Project[]>('obteniendo proyectos', [])));
+      .pipe(catchError(this.handleErrorService.handleError<Project[]>('obteniendo proyectos', [])));
   }
 
   getProjectById(id: string): Observable<Project> {
     return this.http.get<Project>(`${this.projectUrl}/${id}`)
-      .pipe(catchError(this.handleError<Project>('obteniendo proyecto')));
+      .pipe(catchError(this.handleErrorService.handleError<Project>('obteniendo proyecto')));
   }
 
   addProject(project: Project): Observable<Project> {
     return this.http.post<Project>(this.projectUrl, project)
-      .pipe(catchError(this.handleError<Project>('añadiendo proyecto')));
+      .pipe(catchError(this.handleErrorService.handleError<Project>('añadiendo proyecto')));
   }
 
   editProject(project: Project, id: string): Observable<Project> {
     return this.http.put<Project>(`${this.projectUrl}/${id}`, project)
-      .pipe(catchError(this.handleError<Project>('editando proyecto')));
+      .pipe(catchError(this.handleErrorService.handleError<Project>('editando proyecto')));
   }
 
   deleteProject(id: string): Observable<any> {
     return this.http.delete<any>(`${this.projectUrl}/${id}`)
-      .pipe(catchError(this.handleError<any>('eliminando proyecto')));
-  }
-
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      this.alertService.error(`Error ${operation}: ${error.message}`);
-      return Observable.of(result as T);
-    };
+      .pipe(catchError(this.handleErrorService.handleError<any>('eliminando proyecto')));
   }
 }

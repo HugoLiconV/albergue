@@ -5,7 +5,7 @@ import { environment} from '../../environments/environment';
 import { Observable } from 'rxjs/RX';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { AlertService } from './alert.service';
+import { HandleErrorService } from './handle.error.service';
 
 
 @Injectable()
@@ -14,38 +14,31 @@ export class DonationService {
 
   constructor(
     private http: HttpClient,
-    private alertService: AlertService
+    private handleErrorService: HandleErrorService
     ) { }
 
   getDonations(): Observable<Donation[]> {
     return this.http.get<Donation[]>(this.donationUrl)
-      .pipe(catchError(this.handleError<Donation[]>('obteniendo donaciones', [])));
+      .pipe(catchError(this.handleErrorService.handleError<Donation[]>('obteniendo donaciones', [])));
   }
 
   getDonationById(id: string): Observable<Donation> {
     return this.http.get<Donation>(`${this.donationUrl}/${id}`)
-      .pipe(catchError(this.handleError<Donation>('obteniendo donación')));
+      .pipe(catchError(this.handleErrorService.handleError<Donation>('obteniendo donación')));
   }
 
   addDonations(donation: Donation): Observable<Donation> {
     return this.http.post<Donation>(this.donationUrl, donation)
-     .pipe(catchError(this.handleError<Donation>('añadiendo donación')));
+     .pipe(catchError(this.handleErrorService.handleError<Donation>('añadiendo donación')));
   }
 
   editDonation(donation: Donation, id: string): Observable<Donation> {
     return this.http.put<Donation>(`${this.donationUrl}/${id}`, donation)
-      .pipe(catchError(this.handleError<Donation>('editando donación')));
+      .pipe(catchError(this.handleErrorService.handleError<Donation>('editando donación')));
   }
 
   deleteDonation(id: string): Observable<any> {
     return this.http.delete<any>(`${this.donationUrl}/${id}`)
-      .pipe(catchError(this.handleError<any>('eliminando donación')));
-  }
-
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      this.alertService.error(`Error ${operation}: ${error.message}`);
-      return Observable.of(result as T);
-    };
+      .pipe(catchError(this.handleErrorService.handleError<any>('eliminando donación')));
   }
 }
