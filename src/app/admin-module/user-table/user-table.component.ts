@@ -11,7 +11,7 @@ import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/co
 })
 export class UserTableComponent implements OnInit {
 
-displayedColumns = ['name', 'isBlocked', 'code', 'action'];
+  displayedColumns = ['name', 'isBlocked', 'code', 'action'];
   dataSource = new MatTableDataSource();
 
   isLoadingResults = true;
@@ -26,7 +26,7 @@ displayedColumns = ['name', 'isBlocked', 'code', 'action'];
     this.populateTable();
   }
 
-  private populateTable(): void {
+  populateTable(): void {
     this.isLoadingResults = true;
     this.personService.getPeople().subscribe(people => {
       this.dataSource.data = people;

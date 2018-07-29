@@ -1,5 +1,14 @@
 <section class="section">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Panel de uso de lavadoras</span>
+      <span class="example-spacer"></span>
+      <button mat-button (click)="createUser()">
+        Añadir Usuario
+        <mat-icon class="example-icon">add</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
   <app-user-table></app-user-table>
   <app-record></app-record>
 </section>
-

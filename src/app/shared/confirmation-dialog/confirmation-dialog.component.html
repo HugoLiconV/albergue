@@ -1,5 +1,5 @@
-{{data.title}}
-¿Está seguro que lo desea {{data.action}}?
+<p class="dialog-title">{{data.title}}</p>
+<p>¿Está seguro que lo desea {{data.action}}?</p>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No</button>
   <button mat-button [color]="data.color" [mat-dialog-close]="true">{{data.action}}</button>
