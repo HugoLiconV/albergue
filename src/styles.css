@@ -3,7 +3,7 @@
 /* You can add global styles to this file, and also import other style files */
 ::ng-deep :root {
   --base-font-size: 16px;
-  --main-color: #b71c1c;/* --main-color: #345cd7; */
+  --main-color: #303f9f;/* --main-color: b71c1c; */
   --secondary-color: #FFC107;
   --main-font: "Rubik-Light", sans-serif;
   --secondary-font: "Roboto", sans-serif;
@@ -14,6 +14,7 @@
   --title-color: #121212;
   --body-color: #434345;
   --acent-color: #e91e63;
+  --shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
   --margin: 1rem;
 }
 
