@@ -9,7 +9,11 @@ export class HandleErrorService {
 
   handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      this.alertService.error(`Error ${operation}: ${error.message}`);
+      if (error.error.message) {
+        this.alertService.error(`Error ${operation}: ${error.error.message}`);
+      } else {
+        this.alertService.error(`Error ${operation}: ${error.message}`);
+      }
       return Observable.of(result as T);
     };
   }

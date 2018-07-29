@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Record } from '../_models';
 import { environment} from '../../environments/environment';
 
-import { Observable } from 'rxjs/RX';
+// import { Observable } from 'rxjs/RX';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { HandleErrorService } from './handle.error.service';
+import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class RecordService {
   private url = `${environment.API_URL}/registros`;  // URL to web api
