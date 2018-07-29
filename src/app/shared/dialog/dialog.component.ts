@@ -23,9 +23,9 @@ export class DialogComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.userForm = this.formBuilder.group({
-      name: [this.data.name, Validators.required],
-      code: [this.data.code, [Validators.required, Validators.pattern(/^\d{4,6}$/)]],
-      isBlocked: [this.data.isBlocked, Validators.required]
+      name: [this.data ? this.data.name : '', Validators.required],
+      code: [this.data ? this.data.code : '', [Validators.required, Validators.pattern(/^\d{4,6}$/)]],
+      isBlocked: [this.data ? this.data.isBlocked : false, Validators.required]
     });
   }
 
@@ -33,13 +33,23 @@ export class DialogComponent implements OnInit, OnDestroy {
     this.dialogRef.close();
   }
 
-  editUser(person): void {
-    this.subscription = this.personService.editPerson(person, this.data.id).subscribe(_person => {
-      if (_person) {
-        this.alertService.success('Usuario editado con exito');
-        this.dialogRef.close(true);
-      }
-    });
+  saveUser(person): void {
+    const isNewUser = this.data === null || this.data === undefined;
+    if (isNewUser) {
+      this.personService.addPerson(person).subscribe(_person => {
+        if (_person) {
+          this.alertService.success('Usuario creado con éxito');
+          this.dialogRef.close(true);
+        }
+      });
+    } else {
+      this.subscription = this.personService.editPerson(person, this.data.id).subscribe(_person => {
+        if (_person) {
+          this.alertService.success('Usuario editado con éxito');
+          this.dialogRef.close(true);
+        }
+      });
+    }
   }
 
   validateCode(): boolean {
