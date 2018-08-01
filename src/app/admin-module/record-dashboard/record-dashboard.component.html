@@ -3,6 +3,10 @@
     <mat-toolbar-row>
       <span>Panel de uso de lavadoras</span>
       <span class="example-spacer"></span>
+      <button mat-button (click)="updateRecordTable()">
+        Actualizar Registro
+        <mat-icon class="example-icon">refresh</mat-icon>
+      </button>
       <button mat-button (click)="createUser()">
         Añadir Usuario
         <mat-icon class="example-icon">add</mat-icon>

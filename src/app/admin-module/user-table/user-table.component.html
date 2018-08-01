@@ -1,4 +1,5 @@
 <div class="table-container">
+  <h1 class="section-title">Usuarios</h1>
   <div class="loading-shade" *ngIf="isLoadingResults">
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
   </div>
@@ -27,7 +28,8 @@
       <mat-header-cell *matHeaderCellDef>Acción</mat-header-cell>
       <mat-cell *matCellDef="let row">
         <mat-icon class="icon edit" (click)="editUser(row)">edit</mat-icon>
-        <mat-icon class="icon delete" (click)="deleteUser(row.id)">delete</mat-icon></mat-cell>
+        <mat-icon class="icon delete" (click)="deleteUser(row.id)">delete</mat-icon>
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

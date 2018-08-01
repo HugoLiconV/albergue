@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserTableComponent } from '../user-table/user-table.component';
 import { DialogComponent } from '../../shared/dialog/dialog.component';
 import { MatDialog } from '../../../../node_modules/@angular/material';
-import { AlertService, PersonService } from '../../_services';
+import { RecordComponent } from '../record/record.component';
 
 @Component({
   selector: 'app-record-dashboard',
@@ -12,6 +12,7 @@ import { AlertService, PersonService } from '../../_services';
 export class RecordDashboardComponent implements OnInit {
 
   @ViewChild(UserTableComponent) userTableInstance;
+  @ViewChild(RecordComponent) recordComponent;
 
   constructor(
     public dialog: MatDialog) { }
@@ -28,6 +29,10 @@ export class RecordDashboardComponent implements OnInit {
         this.userTableInstance.populateTable();
       }
     });
+  }
+
+  updateRecordTable(): void {
+    this.recordComponent.populateTable();
   }
 
 }

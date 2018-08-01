@@ -1,7 +1,7 @@
 /* Structure */
 .table-container {
   max-height: 500px;
-  min-width: 300px;
+  /* min-width: 300px; */
   position: relative;
   border-radius: 6px;
   background-color: white;
@@ -11,7 +11,7 @@
 
 .table {
   overflow: auto;
-  min-height: 300px;
+  /* min-height: 300px; */
 }
 
 .loading-shade {
