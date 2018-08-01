@@ -4,21 +4,20 @@
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
   </div>
 
-  <mat-table #table [dataSource]="dataSource" class="table" matSort matSortActive="created" matSortDisableClear matSortDirection="asc">
-
-    <!-- Number Column -->
+  <mat-table #table [dataSource]="dataSource" class="table" matSort>
+    <!-- User Column -->
     <ng-container matColumnDef="user">
-      <mat-header-cell *matHeaderCellDef>Usuario</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Usuario</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row?.user?.name }}</mat-cell>
     </ng-container>
 
-    <!-- Title Column -->
+    <!-- Date Column -->
     <ng-container matColumnDef="fecha">
-      <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row?.fecha }}</mat-cell>
     </ng-container>
 
-    <!-- State Column -->
+    <!-- Time Column -->
     <ng-container matColumnDef="hora">
       <mat-header-cell *matHeaderCellDef>Hora</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row?.hora }}</mat-cell>
@@ -33,3 +32,4 @@
                  [showFirstLastButtons]="true">
   </mat-paginator>
 </div>
+<!-- matSortActive="created" matSortDisableClear  matSortDirection="asc"-->

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { RecordService } from '../../_services';
 @Component({
   selector: 'app-record',
@@ -8,19 +8,24 @@ import { RecordService } from '../../_services';
 })
 export class RecordComponent implements OnInit, AfterViewInit {
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
   displayedColumns = ['user', 'fecha', 'hora'];
   dataSource = new MatTableDataSource();
   isLoadingResults = true;
 
-  constructor(private recordService: RecordService) {}
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  constructor(private recordService: RecordService) {
+    this.populateTable();
+  }
 
   ngOnInit() {
-    this.populateTable();
+
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
   populateTable(): void {
     this.isLoadingResults = true;
