@@ -1,0 +1,9 @@
+::ng-deep .error {
+  color: white;
+  background-color: #D35E57;
+}
+
+::ng-deep .success {
+  color: white;
+  background-color: #009688;
+}

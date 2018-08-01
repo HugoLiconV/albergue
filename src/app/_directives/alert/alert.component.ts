@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { AlertService } from '../../_services';
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar, MAT_SNACK_BAR_DATA, MatSnackBarConfig} from '@angular/material';
 
 @Component({
   selector: 'app-alert',
@@ -8,24 +8,25 @@ import {MatSnackBar} from '@angular/material';
   styleUrls: ['./alert.component.css']
 })
 export class AlertComponent implements OnInit {
-  message: any;
+  message: any;
 
   constructor(
     private alertService: AlertService,
-    public snackBar: MatSnackBar) { }
+    public snackBar: MatSnackBar) {}
 
-  openSnackBar(message: string, action: string = 'cerrar') {
-    this.snackBar.open(message, action, {
-      duration: 4000,
-    });
-  }
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.alertService.getMessage().subscribe(message => {
       this.message = message;
+      console.log(message);
       if (this.message) {
-      this.openSnackBar(this.message.text);
+        this.openSnackBar(this.message.text, this.message.type);
       }
     });
+  }
+  openSnackBar(message: string, type: string, action: string = 'cerrar') {
+    const config = new MatSnackBarConfig();
+    config.duration = 2000;
+    config.panelClass = [type];
+    this.snackBar.open(message, action, config);
   }
 }

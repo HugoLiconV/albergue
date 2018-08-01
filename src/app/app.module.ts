@@ -92,7 +92,7 @@ import { RecordService } from './_services/record.service';
       multi: true,
     },
     {provide: LocationStrategy, useClass: HashLocationStrategy}
-    ],
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
