@@ -9,8 +9,6 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loading = false;
-
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -18,6 +16,7 @@ export class LoginComponent implements OnInit {
     private alertService: AlertService) {
     }
 
+  loading = false;
   email = new FormControl('', [Validators.required, Validators.email]);
   hide = true;
 
@@ -33,14 +32,15 @@ export class LoginComponent implements OnInit {
 
   onSubmit(username, password) {
     this.loading = true;
-    this.authService.login(username, password).subscribe(
-      data => {
+    this.authService.login(username, password).subscribe(data => {
       this.router.navigate(['/admin']);
-      }, error => {
-        if (error.status === 401) {
-          this.alertService.error('Usuario o contraseña incorrecta');
-        }
-        this.loading = false;
-      });
+    }, error => {
+      if (error.status === 401) {
+        this.alertService.error('Usuario o contraseña incorrecta');
+      } else {
+        this.alertService.error(error.message);
+      }
+    });
+    this.loading = false;
   }
 }

@@ -25,6 +25,7 @@ export class ProjectFormComponent implements OnInit {
   elements: string[] = [];
   project: Project;
   id: string;
+  isLoading = false;
 
   ngOnInit() {
     this.projectForm = this.formBuilder.group({
@@ -35,6 +36,7 @@ export class ProjectFormComponent implements OnInit {
     });
     this.id = this.route.snapshot.params['id'];
     if (this.id) {
+      this.isLoading = true;
       this.projectService.getProjectById(this.id).subscribe(project => {
         if (project) {
           this.project = project;
@@ -47,6 +49,7 @@ export class ProjectFormComponent implements OnInit {
           this.elements = this.project.area.split(',');
         }
       });
+      this.isLoading = false;
     }
   }
 
@@ -72,6 +75,7 @@ export class ProjectFormComponent implements OnInit {
   }
 
   addProject(formValues) {
+    this.isLoading = true;
     let project: Project = new Project();
     project = {
       ...formValues,
@@ -80,25 +84,34 @@ export class ProjectFormComponent implements OnInit {
     };
     const isNewProject = this.id === undefined;
     if  (isNewProject) {
-      this.projectService.addProject(project).subscribe(_ => {
+      this.projectService.addProject(project).subscribe(_project => {
+        if (_project) {
           this.alertService.success('Proyecto Creado con éxito');
           this.router.navigate(['/admin/dashboard']);
+        }
       });
     } else {
-      this.projectService.editProject(project, this.id).subscribe(_ => {
-        this.alertService.success('Proyecto Modificado con éxito');
-        this.router.navigate(['/admin/dashboard']);
+      this.projectService.editProject(project, this.id).subscribe(_project => {
+        if (_project) {
+          this.alertService.success('Proyecto Editado con éxito');
+          this.router.navigate(['/admin/dashboard']);
+        }
       });
     }
+    this.isLoading = false;
   }
   cancel() {
     this.router.navigate(['/admin/dashboard']);
   }
 
   deleteProject() {
-    this.projectService.deleteProject(this.id).subscribe(_ => {
-      this.alertService.success('Proyecto eliminado con éxito');
-      this.router.navigate(['/admin/dashboard']);
+    this.isLoading = true;
+    this.projectService.deleteProject(this.id).subscribe(_project => {
+      if (_project) {
+        this.alertService.success('Proyecto eliminado con éxito');
+        this.router.navigate(['/admin/dashboard']);
+      }
     });
+    this.isLoading = false;
   }
 }

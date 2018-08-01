@@ -12,6 +12,7 @@
   </nav>
 </div>
 <app-container>
+  <app-loading-bar [isLoading]="loading"></app-loading-bar>
   <h1 class="container-title">Inicio de Sesión</h1>
   <form #loginForm="ngForm" (ngSubmit)="onSubmit(Email.value, Password.value)">
     <mat-form-field>
@@ -23,7 +24,6 @@
       <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" #Password ngModel name="Password">
       <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
     </mat-form-field>
-    <button mat-raised-button color="primary" type="submit">Iniciar Sesión</button>
-    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    <button mat-raised-button color="primary" [disabled]="loading" type="submit">Iniciar Sesión</button>
   </form>
 </app-container>

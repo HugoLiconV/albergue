@@ -55,15 +55,17 @@ export class UserTableComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.isLoadingResults = true;
       if (result) { // recibe true si se editó
         this.populateTable();
-        this.personService.deletePerson(userId).subscribe(_ => {
-          // if (response) {
+        this.personService.deletePerson(userId).subscribe(_user => {
+          if (_user) {
             this.alertService.success('Usuario eliminado con éxito');
             this.populateTable();
-          // }
+          }
         });
       }
+      this.isLoadingResults = false;
     });
   }
 }

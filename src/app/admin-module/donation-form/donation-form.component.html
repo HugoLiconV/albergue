@@ -1,5 +1,6 @@
 <app-container>
   <h1 class="container-title">Añadir Donación</h1>
+  <app-loading-bar [isLoading]="isLoading"></app-loading-bar>
   <form [formGroup]="donationForm" (ngSubmit)="addDonation(donationForm.value)" autocomplete="off" novalidate>
     <mat-form-field>
       <input formControlName="name" matInput placeholder="Nombre" required>
@@ -8,7 +9,7 @@
       <textarea formControlName="description" matInput placeholder="Descripción" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" required></textarea>
     </mat-form-field>
     <div class="actions">
-      <button type="submit" class="button" [disabled]="donationForm.invalid" mat-raised-button color="primary">Guardar</button>
+      <button type="submit" class="button" [disabled]="donationForm.invalid || isLoading" mat-raised-button color="primary">Guardar</button>
       <button type="button" class="button" (click)="cancel()" mat-raised-button>Cancelar</button>
       <button type="button" class="button" (click)="deleteDonation()" *ngIf="id" mat-raised-button>Eliminar</button>
     </div>

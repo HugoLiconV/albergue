@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardComponent } from './shared/card/card.component';
 import { DialogComponent } from './shared/dialog/dialog.component';
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
+import { LoadingBarComponent } from './shared/loading-bar/loading-bar.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -30,7 +31,8 @@ import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confir
     ContainerComponent,
     CardComponent,
     DialogComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    LoadingBarComponent
     // BrowserAnimationsModule
   ],
   declarations: [
@@ -41,7 +43,8 @@ import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confir
     ContainerComponent,
     CardComponent,
     DialogComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    LoadingBarComponent
   ],
   entryComponents: [DialogComponent, ConfirmationDialogComponent],
   providers: []

@@ -22,6 +22,8 @@ export class DonationFormComponent implements OnInit {
   donation: Donation;
   donationForm: FormGroup;
   id: string;
+  isLoading = false;
+
   ngOnInit() {
     const name = new FormControl('', Validators.required);
     const description = new FormControl('', Validators.required);
@@ -29,6 +31,7 @@ export class DonationFormComponent implements OnInit {
 
     this.id = this.route.snapshot.params['id'];
     if (this.id) {
+      this.isLoading = true;
       this.donationService.getDonationById(this.id).subscribe(donation => {
         if (donation) {
           this.donation = donation;
@@ -38,22 +41,31 @@ export class DonationFormComponent implements OnInit {
           });
         }
       });
+      this.isLoading = false;
     }
   }
 
   addDonation(formValues) {
+    this.isLoading = true;
     const isNewDonation = this.id === undefined;
     if (isNewDonation) {
-      this.donationService.addDonations(formValues).subscribe(_ => {
-      this.alertService.success('Donación agregada con éxito');
-      this.router.navigate(['/admin/dashboard']);
+      this.donationService.addDonations(formValues).subscribe(_donation => {
+        if (_donation) {
+          this.alertService.success('Donación agregada con éxito');
+          this.isLoading = false;
+          this.router.navigate(['/admin/dashboard']);
+        }
       });
     } else {
-      this.donationService.editDonation(formValues, this.id).subscribe(_ => {
-      this.alertService.success('Donación Modificada con éxito');
-      this.router.navigate(['/admin/dashboard']);
+      this.donationService.editDonation(formValues, this.id).subscribe(_donation => {
+        if (_donation) {
+          this.alertService.success('Donación Modificada con éxito');
+          this.isLoading = false;
+          this.router.navigate(['/admin/dashboard']);
+        }
       });
     }
+    this.isLoading = false;
   }
 
   cancel() {
@@ -61,9 +73,14 @@ export class DonationFormComponent implements OnInit {
   }
 
   deleteDonation() {
-    this.donationService.deleteDonation(this.id).subscribe(_ => {
-      this.alertService.success('Donación eliminada con éxito');
-      this.router.navigate(['/admin/dashboard']);
-    });
+    this.isLoading = true;
+    this.donationService.deleteDonation(this.id).subscribe(_donation => {
+      if (_donation) {
+        this.alertService.success('Donación eliminada con éxito');
+        this.isLoading = false;
+        this.router.navigate(['/admin/dashboard']);
+      }
+    }, error => {},
+    () => this.isLoading = false);
   }
 }

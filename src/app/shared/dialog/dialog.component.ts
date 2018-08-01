@@ -12,6 +12,7 @@ import { ISubscription } from 'rxjs/Subscription';
 export class DialogComponent implements OnInit, OnDestroy {
   private subscription: ISubscription;
   userForm: FormGroup;
+  isLoading = false;
 
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
@@ -34,11 +35,13 @@ export class DialogComponent implements OnInit, OnDestroy {
   }
 
   saveUser(person): void {
+    this.isLoading = true;
     const isNewUser = this.data === null || this.data === undefined;
     if (isNewUser) {
       this.personService.addPerson(person).subscribe(_person => {
         if (_person) {
           this.alertService.success('Usuario creado con éxito');
+          this.isLoading = false;
           this.dialogRef.close(true);
         }
       });
@@ -46,10 +49,12 @@ export class DialogComponent implements OnInit, OnDestroy {
       this.subscription = this.personService.editPerson(person, this.data.id).subscribe(_person => {
         if (_person) {
           this.alertService.success('Usuario editado con éxito');
+          this.isLoading = false;
           this.dialogRef.close(true);
         }
       });
     }
+    this.isLoading = false;
   }
 
   validateCode(): boolean {

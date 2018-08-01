@@ -1,5 +1,6 @@
 <app-container>
   <h1 class="container-title">Añadir Evento</h1>
+  <app-loading-bar [isLoading]="isLoading"></app-loading-bar>
   <form [formGroup]="eventForm" (ngSubmit)="addEvent(eventForm.value)" autocomplete="off" novalidate>
     <!-- Name field -->
     <mat-form-field>
@@ -36,7 +37,7 @@
       <input formControlName="hour" matInput placeholder="Hora ej 12:00 p.m." required>
     </mat-form-field>
     <div class="actions">
-      <button class="button" [disabled]="eventForm.invalid" type="submit" mat-raised-button color="primary">Guardar</button>
+      <button class="button" [disabled]="eventForm.invalid || isLoading" type="submit" mat-raised-button color="primary">Guardar</button>
       <button type="button" class="button" (click)="cancel()" mat-raised-button>Cancelar</button>
       <button type="button" class="button" (click)="deleteEvent()" *ngIf="id" mat-raised-button>Eliminar</button>
     </div>

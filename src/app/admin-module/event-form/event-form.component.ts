@@ -38,6 +38,7 @@ export class EventFormComponent implements OnInit {
 
   innerWidth: any;
   isMobile: boolean;
+  isLoading = false;
 
   constructor(
     private eventService: EventsService,
@@ -68,6 +69,7 @@ export class EventFormComponent implements OnInit {
     });
     this.id = this.route.snapshot.params['id'];
     if (this.id) {
+      this.isLoading = true;
       this.eventService.getEventById(this.id).subscribe(event => {
         if (event) {
           this.event = event;
@@ -81,22 +83,31 @@ export class EventFormComponent implements OnInit {
           });
         }
       });
+      this.isLoading = false;
     }
   }
 
   addEvent(formValues) {
+    this.isLoading = true;
     const isNewEvent = this.id === undefined;
     if (isNewEvent) {
-      this.eventService.addEvent(formValues).subscribe(_ => {
-        this.alertService.success('Se agregó Evento con éxito');
-        this.router.navigate(['/admin/dashboard']);
+      this.eventService.addEvent(formValues).subscribe(_event => {
+        if (_event) {
+          this.alertService.success('Se agregó Evento con éxito');
+          this.isLoading = false;
+          this.router.navigate(['/admin/dashboard']);
+        }
       });
     } else {
-      this.eventService.editEvent(formValues, this.id).subscribe(_ => {
-        this.alertService.success('Se Modificó Evento con éxito');
-        this.router.navigate(['/admin/dashboard']);
+      this.eventService.editEvent(formValues, this.id).subscribe(_event => {
+        if (_event) {
+          this.alertService.success('Se Modificó Evento con éxito');
+          this.isLoading = false;
+          this.router.navigate(['/admin/dashboard']);
+        }
       });
     }
+    this.isLoading = false;
   }
 
   cancel() {
@@ -104,9 +115,14 @@ export class EventFormComponent implements OnInit {
   }
 
   deleteEvent() {
-    this.eventService.deleteEvent(this.id).subscribe(_ => {
-      this.alertService.success('Evento eliminado con éxito');
-      this.router.navigate(['/admin/dashboard']);
-    });
+    this.isLoading = true;
+    this.eventService.deleteEvent(this.id).subscribe(event => {
+      if (event) {
+        this.router.navigate(['/admin/dashboard']);
+        this.alertService.success('Evento eliminado con éxito');
+        this.isLoading = false;
+      }
+    }, error => {},
+    () => this.isLoading = false);
   }
 }

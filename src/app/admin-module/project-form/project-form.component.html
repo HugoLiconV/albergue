@@ -1,5 +1,6 @@
 <app-container>
   <h1 class="container-title">Añadir Proyecto</h1>
+  <app-loading-bar [isLoading]="isLoading"></app-loading-bar>
   <form [formGroup]="projectForm" (ngSubmit)="addProject(projectForm.value)" autocomplete="off" novalidate>
     <mat-form-field>
       <input matInput formControlName="name" placeholder="Nombre" required>
@@ -24,7 +25,7 @@
       </mat-chip-list>
     </mat-form-field>
     <div class="actions">
-      <button class="button" [disabled]="projectForm.invalid" type="submit" mat-raised-button color="primary">Guardar</button>
+      <button class="button" [disabled]="projectForm.invalid || isLoading" type="submit" mat-raised-button color="primary">Guardar</button>
       <button type="button" class="button" (click)="cancel()" mat-raised-button>Cancelar</button>
       <button type="button" class="button" (click)="deleteProject()" *ngIf="id" mat-raised-button>Eliminar</button>
     </div>

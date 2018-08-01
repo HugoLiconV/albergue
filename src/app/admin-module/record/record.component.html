@@ -1,8 +1,6 @@
 <div class="table-container">
   <h1 class="section-title">Registro</h1>
-  <div class="loading-shade" *ngIf="isLoadingResults">
-    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-  </div>
+  <app-loading-bar [isLoading]="isLoadingResults"></app-loading-bar>
 
   <mat-table #table [dataSource]="dataSource" class="table" matSort>
     <!-- User Column -->
