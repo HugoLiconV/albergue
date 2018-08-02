@@ -1,3 +1,15 @@
+p {
+  margin: 0;
+  margin-bottom: 1rem;
+}
 .dialog-title {
   font-weight: bold;
+}
+
+.warn {
+  color: #f44336;
+}
+
+.details {
+  font-size: 0.8rem;
 }

@@ -33,6 +33,7 @@ export class RecordTableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
   populateTable(): void {
+    console.log('populateTable Record');
     this.isLoadingResults = true;
     this.recordService.getRecords().subscribe(records => {
       console.log(records);
@@ -40,5 +41,9 @@ export class RecordTableComponent implements OnInit, AfterViewInit {
     },
     error => {},
     () => this.isLoadingResults = false);
+  }
+
+  prueba() {
+    return 'hola';
   }
 }
