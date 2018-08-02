@@ -5,7 +5,7 @@ export class Event {
   location: string;
   date: Date;
   hour: string;
-  cost: number;
+  cost?: number;
 }
 
 

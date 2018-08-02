@@ -4,7 +4,7 @@ export class Project {
   description: string;
   publicationDate: Date;
   numberOfPeople?: number;
-  solution: string;
+  solution?: string;
   area: string;
 
   constructor() {

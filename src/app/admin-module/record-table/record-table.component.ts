@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-import { RecordService, FormatDateService, DataRefreshService } from '../../_services';
+import { RecordService, DataRefreshService } from '../../_services';
 
 @Component({
   selector: 'app-record-table',
