@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Event} from '../../../_models';
 import {
   EventsService,
-  FormatDateService,
   AlertService} from '../../../_services';
 import { Router } from '@angular/router';
 
@@ -17,7 +16,6 @@ export class EventCardComponent implements OnInit {
 
   constructor(
     private eventService: EventsService,
-    private formatDateService: FormatDateService,
     private router: Router,
     private alertService: AlertService) {
   }
@@ -42,9 +40,5 @@ export class EventCardComponent implements OnInit {
     } else {
       this.router.navigate(['/admin/event-form', id]);
     }
-  }
-
-  formatDate(date) {
-    return this.formatDateService.formatDate(date);
   }
 }

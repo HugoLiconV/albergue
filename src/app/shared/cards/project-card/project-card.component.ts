@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
   ProjectService,
-  AlertService,
-  FormatDateService} from '../../../_services';
+  AlertService } from '../../../_services';
 import { Project } from '../../../_models';
 import { Router } from '@angular/router';
 
@@ -18,7 +17,6 @@ export class ProjectCardComponent implements OnInit {
   constructor(
   private projectService: ProjectService,
   private alertService: AlertService,
-  private formatDateService: FormatDateService,
   private router: Router) {}
 
   ngOnInit() {
@@ -32,10 +30,6 @@ export class ProjectCardComponent implements OnInit {
     }, error => {
       this.alertService.error('Error en servidor');
     }, () => this.loading = false);
-  }
-
-  formatDate(date) {
-    return this.formatDateService.formatDate(date);
   }
 
   handleClick(id) {

@@ -3,7 +3,7 @@
   <p>
     <span class="acent">Area: </span> {{project?.area}}</p>
   <p>
-    <span class="acent">Fecha:</span>{{formatedDate}}</p>
+    <span class="acent">Fecha:</span>{{project?.publicationDate | date: 'longDate': 'America/Chihuahua' : 'es'}}</p>
   <p>
     <span class="acent">Cantidad de personas requeridas:</span>{{project?.numberOfPeople}}</p>
   <p>

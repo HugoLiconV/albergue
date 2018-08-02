@@ -18,7 +18,6 @@ export class RecordTableComponent implements OnInit, AfterViewInit {
 
   constructor(
     private recordService: RecordService,
-    private formatDateService: FormatDateService,
     private dataRefreshService: DataRefreshService) {
   }
 
@@ -29,9 +28,6 @@ export class RecordTableComponent implements OnInit, AfterViewInit {
     });
   }
 
-  formatDate(date) {
-    return this.formatDateService.formatDate(date);
-  }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

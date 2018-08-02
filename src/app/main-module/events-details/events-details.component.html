@@ -3,9 +3,9 @@
   <p>
     <span class="acent">Ubicación: </span> {{event?.location}}</p>
   <p>
-    <span class="acent">Fecha y hora</span>{{formatedDate}} {{event.hour}}</p>
+    <span class="acent">Fecha y hora</span>{{event?.date | date: 'longDate': 'America/Chihuahua' : 'es'}} {{event.hour}}</p>
   <p>
-    <span class="acent">Costo:</span>{{event?.cost}}</p>
+    <span class="acent">Costo:</span>{{event?.cost | currency }}</p>
   <p>
     <span class="acent">Descripción: </span>{{event?.description}}</p>
 </app-container>

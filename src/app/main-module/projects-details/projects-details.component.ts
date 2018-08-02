@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Project } from '../../_models';
-import { FormatDateService } from '../../_services';
 
 @Component({
   selector: 'app-projects-details',
@@ -10,14 +9,11 @@ import { FormatDateService } from '../../_services';
 })
 export class ProjectsDetailsComponent implements OnInit {
   project: Project;
-  formatedDate: string;
   constructor(
-    private route: ActivatedRoute,
-    private formatDateService: FormatDateService
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.project = this.route.snapshot.data['project'];
-    this.formatedDate = this.formatDateService.formatDate(this.project.publicationDate);
   }
 }
