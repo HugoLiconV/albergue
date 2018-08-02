@@ -10,7 +10,8 @@ export class HandleErrorService {
 
   handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      if (error.error.message) {
+      console.log(error);
+      if (error.error && error.error.message) {
         this.alertService.error(`Error ${operation}: ${error.error.message}`);
       } else {
         this.alertService.error(`Error ${operation}: ${error.message}`);
