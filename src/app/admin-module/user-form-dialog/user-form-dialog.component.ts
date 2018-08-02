@@ -6,16 +6,16 @@ import { ISubscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-dialog',
-  templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.css']
+  templateUrl: './user-form-dialog.component.html',
+  styleUrls: ['./user-form-dialog.component.css']
 })
-export class DialogComponent implements OnInit, OnDestroy {
+export class UserFormDialogComponent implements OnInit, OnDestroy {
   private subscription: ISubscription;
   userForm: FormGroup;
   isLoading = false;
 
   constructor(
-    public dialogRef: MatDialogRef<DialogComponent>,
+    public dialogRef: MatDialogRef<UserFormDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
     private alertService: AlertService,

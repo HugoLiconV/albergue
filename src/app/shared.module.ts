@@ -8,7 +8,6 @@ import { EventCardComponent } from './shared/cards/event-card/event-card.compone
 import { ContainerComponent } from './shared/container/container.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardComponent } from './shared/card/card.component';
-import { DialogComponent } from './shared/dialog/dialog.component';
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
 import { LoadingBarComponent } from './shared/loading-bar/loading-bar.component';
 @NgModule({
@@ -30,7 +29,6 @@ import { LoadingBarComponent } from './shared/loading-bar/loading-bar.component'
     EventCardComponent,
     ContainerComponent,
     CardComponent,
-    DialogComponent,
     ConfirmationDialogComponent,
     LoadingBarComponent
     // BrowserAnimationsModule
@@ -42,11 +40,10 @@ import { LoadingBarComponent } from './shared/loading-bar/loading-bar.component'
     EventCardComponent,
     ContainerComponent,
     CardComponent,
-    DialogComponent,
     ConfirmationDialogComponent,
     LoadingBarComponent
   ],
-  entryComponents: [DialogComponent, ConfirmationDialogComponent],
+  entryComponents: [ConfirmationDialogComponent],
   providers: []
 })
 export class SharedModule { }

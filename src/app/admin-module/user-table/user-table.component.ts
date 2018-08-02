@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatDialog } from '@angular/material';
 import { PersonService, AlertService } from '../../_services';
-import { DialogComponent } from '../../shared/dialog/dialog.component';
 import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
+import { UserFormDialogComponent } from '../user-form-dialog/user-form-dialog.component';
 
 @Component({
   selector: 'app-user-table',
@@ -36,7 +36,7 @@ export class UserTableComponent implements OnInit {
   }
 
   editUser(data): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
+    const dialogRef = this.dialog.open(UserFormDialogComponent, {
       width: '50%',
       data
     });

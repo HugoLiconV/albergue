@@ -13,6 +13,7 @@ import { SharedModule } from '../shared.module';
 import { RecordComponent } from './record/record.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import { RecordDashboardComponent } from './record-dashboard/record-dashboard.component';
+import { UserFormDialogComponent } from './user-form-dialog/user-form-dialog.component';
 @NgModule({
   imports: [
     SharedModule,
@@ -28,8 +29,10 @@ import { RecordDashboardComponent } from './record-dashboard/record-dashboard.co
     NavbarAdminComponent,
     RecordComponent,
     UserTableComponent,
-    RecordDashboardComponent
+    RecordDashboardComponent,
+    UserFormDialogComponent
   ],
-  providers: []
+  providers: [],
+  entryComponents: [UserFormDialogComponent]
 })
 export class AdminModule { }

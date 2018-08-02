@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserTableComponent } from '../user-table/user-table.component';
-import { DialogComponent } from '../../shared/dialog/dialog.component';
-import { MatDialog } from '../../../../node_modules/@angular/material';
+import { MatDialog } from '@angular/material';
 import { RecordComponent } from '../record/record.component';
+import { UserFormDialogComponent } from '../user-form-dialog/user-form-dialog.component';
 
 @Component({
   selector: 'app-record-dashboard',
@@ -20,7 +20,7 @@ export class RecordDashboardComponent implements OnInit {
   }
 
   createUser() {
-    const dialogRef = this.dialog.open(DialogComponent, {
+    const dialogRef = this.dialog.open(UserFormDialogComponent, {
       width: '50%',
     });
 
