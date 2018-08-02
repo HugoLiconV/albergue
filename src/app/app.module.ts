@@ -39,7 +39,8 @@ import {
   HandleErrorService,
   PersonService,
   RecordService,
-  DeviceTypeService
+  DeviceTypeService,
+  DataRefreshService
   } from './_services';
 // Guards
 import { AuthGuard } from './_guards/auth-guard';
@@ -86,6 +87,7 @@ import { ContactCardComponent } from './main-module/contact-card/contact-card.co
     RecordService,
     HandleErrorService,
     DeviceTypeService,
+    DataRefreshService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

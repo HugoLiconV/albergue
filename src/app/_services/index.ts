@@ -11,5 +11,6 @@ export * from './person.service';
 export * from './record.service';
 export * from './handle.error.service';
 export * from './device.type.service';
+export * from './data.service';
 
 

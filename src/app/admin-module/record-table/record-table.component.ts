@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-import { RecordService, FormatDateService } from '../../_services';
+import { RecordService, FormatDateService, DataRefreshService } from '../../_services';
 
 @Component({
   selector: 'app-record-table',
@@ -18,11 +18,15 @@ export class RecordTableComponent implements OnInit, AfterViewInit {
 
   constructor(
     private recordService: RecordService,
-    private formatDateService: FormatDateService) {
+    private formatDateService: FormatDateService,
+    private dataRefreshService: DataRefreshService) {
   }
 
   ngOnInit() {
     this.populateTable();
+    this.dataRefreshService.getMessage().subscribe(message => {
+      this.populateTable();
+    });
   }
 
   formatDate(date) {
@@ -41,9 +45,5 @@ export class RecordTableComponent implements OnInit, AfterViewInit {
     },
     error => {},
     () => this.isLoadingResults = false);
-  }
-
-  prueba() {
-    return 'hola';
   }
 }

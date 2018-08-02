@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatDialog } from '@angular/material';
-import { PersonService, AlertService, DeviceTypeService } from '../../_services';
+import { PersonService, AlertService, DeviceTypeService, DataRefreshService } from '../../_services';
 import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
 import { UserFormDialogComponent } from '../user-form-dialog/user-form-dialog.component';
-import { RecordTableComponent } from '../record-table/record-table.component';
 
 @Component({
   selector: 'app-user-table',
@@ -11,9 +10,6 @@ import { RecordTableComponent } from '../record-table/record-table.component';
   styleUrls: ['./user-table.component.css']
 })
 export class UserTableComponent implements OnInit {
-
-  @ViewChild(RecordTableComponent) recordComponent;
-
   displayedColumns = ['name', 'isBlocked', 'code', 'action'];
   dataSource = new MatTableDataSource();
 
@@ -25,7 +21,8 @@ export class UserTableComponent implements OnInit {
     private personService: PersonService,
     public dialog: MatDialog,
     private alertService: AlertService,
-    private deviceTypeService: DeviceTypeService
+    private deviceTypeService: DeviceTypeService,
+    private dataRefreshService: DataRefreshService
   ) {}
 
   ngOnInit() {
@@ -57,7 +54,6 @@ export class UserTableComponent implements OnInit {
   }
 
   deleteUser(userId): void {
-    console.log(this.recordComponent.prueba());
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: this.dialogWidth,
       data: {
@@ -74,7 +70,8 @@ export class UserTableComponent implements OnInit {
         this.personService.deletePerson(userId).subscribe(_ => {
           this.alertService.success('Usuario eliminado con éxito');
           this.populateTable();
-          this.recordComponent.populateTable();
+          // actualiza la tabla de registro
+          this.dataRefreshService.refresh();
         });
       }
       this.isLoadingResults = false;
