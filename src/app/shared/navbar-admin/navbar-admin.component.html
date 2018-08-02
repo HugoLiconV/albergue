@@ -1,14 +1,20 @@
 <!-- TODO: Quitar sombra en pagina ppal -->
 <div class="app-navbar mat-elevation-z6">
   <nav class="docs-navbar-header">
-    <a mat-button class="docs-button" routerLink="/admin">
+    <a mat-button routerLink="/admin">
       <img class="logo" src="./assets/logo.png" alt="San Vicente de Paul">
       <span>Panel de Administración</span>
     </a>
-    <a mat-button class="docs-navbar-hide-small docs-button" routerLink="/home">Página Principal</a>
-    <a mat-button class="docs-navbar-hide-small docs-button" routerLink="/admin/record-dashboard">Registro Lavadaras</a>
+    <a mat-button class="docs-navbar-hide-small docs-button" routerLink="/home">
+      <mat-icon>home</mat-icon>
+      <p>Página Principal</p>
+    </a>
+    <a mat-button class="docs-navbar-hide-small docs-button" routerLink="/admin/record-dashboard">
+      <mat-icon>dashboard</mat-icon>
+      <p>Registro Lavadaras</p>
+    </a>
     <div class="flex-spacer"></div>
-    <button mat-icon-button [matMenuTriggerFor]="menu" id="add-menu">
+    <button mat-icon-button class="docs-button" [matMenuTriggerFor]="menu" id="add-menu">
       <mat-icon>add</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
@@ -23,15 +29,19 @@
       </button>
     </mat-menu>
     <a mat-button class="docs-button docs-navbar-hide-small" routerLink="/admin/login">
-      <mat-icon>input</mat-icon>
-      Cerrar Sesión
+      <mat-icon class="icon">input</mat-icon>
+      <p>Cerrar Sesión</p>
     </a>
-    <a mat-icon-button class="docs-button docs-navbar-show-small" routerLink="/admin/login">
+    <a mat-icon-button class="docs-navbar-show-small" routerLink="/admin/login">
       <mat-icon>input</mat-icon>
     </a>
   </nav>
   <nav class="docs-navbar docs-navbar-show-small">
-    <a mat-button class="docs-navbar-link">Página Principal</a>
-    <a mat-button class="docs-navbar-link">Registro Lavadoras</a>
+    <a mat-button class="docs-navbar-link" routerLink="/home">
+      <mat-icon class="icon">home</mat-icon> Página Principal
+    </a>
+    <a mat-button class="docs-navbar-link" routerLink="/admin/record-dashboard">
+      <mat-icon class="icon">dashboard</mat-icon> Registro Lavadoras
+    </a>
   </nav>
 </div>

@@ -38,6 +38,21 @@
   display: none;
 }
 
+.icon {
+  margin-right: 10px;
+  line-height: 22px;
+}
+
+.docs-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.docs-button p {
+  margin: 0;
+  line-height: 1rem;
+}
 /**
   * Rules for when the device is detected to be a small screen.
   * Moves content two rows instead of one.
