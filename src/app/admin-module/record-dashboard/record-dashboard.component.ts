@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserTableComponent } from '../user-table/user-table.component';
 import { MatDialog } from '@angular/material';
-import { RecordComponent } from '../record/record.component';
 import { UserFormDialogComponent } from '../user-form-dialog/user-form-dialog.component';
 import { DeviceTypeService } from '../../_services';
+import { RecordTableComponent } from '../record-table/record-table.component';
 
 @Component({
   selector: 'app-record-dashboard',
@@ -13,7 +13,7 @@ import { DeviceTypeService } from '../../_services';
 export class RecordDashboardComponent implements OnInit {
 
   @ViewChild(UserTableComponent) userTableInstance;
-  @ViewChild(RecordComponent) recordComponent;
+  @ViewChild(RecordTableComponent) recordComponent;
 
   private isMobile: boolean;
 

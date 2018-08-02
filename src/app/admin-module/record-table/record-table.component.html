@@ -12,13 +12,13 @@
     <!-- Date Column -->
     <ng-container matColumnDef="fecha">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row?.fecha }}</mat-cell>
+      <mat-cell *matCellDef="let row">{{ row?.fecha | date: 'longDate': 'America/Chihuahua' : 'es'}}</mat-cell>
     </ng-container>
 
     <!-- Time Column -->
     <ng-container matColumnDef="hora">
-      <mat-header-cell *matHeaderCellDef>Hora</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row?.hora }}</mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Hora</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row?.hora | date: 'shortTime' }}</mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
