@@ -17,7 +17,6 @@ export class AlertComponent implements OnInit {
   ngOnInit(): void {
     this.alertService.getMessage().subscribe(message => {
       this.message = message;
-      console.log(message);
       if (this.message) {
         this.openSnackBar(this.message.text, this.message.type);
       }

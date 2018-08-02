@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { AlertService, AuthenticationService } from '../../_services';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,36 +9,56 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private authService: AuthenticationService,
     private alertService: AlertService) {
     }
 
   loading = false;
-  email = new FormControl('', [Validators.required, Validators.email]);
   hide = true;
 
-  getErrorMessage() {
-    return this.email.hasError('required') ? 'You must enter a value' :
-        this.email.hasError('email') ? 'Not a valid email' :
-            '';
+  loginForm: FormGroup;
+  email: FormControl;
+  password: FormControl;
+
+  getEmailErrorMessage() {
+    return this.email.hasError('required') ? 'Debes introducir un valor' :
+      this.email.hasError('email') ? 'Email no válido' : '';
+  }
+
+  getPasswordErrorMessage() {
+    return this.password.hasError('required') ? 'Debes introducir un valor' :
+      this.password.hasError('minlength') ? 'La contraseña debe ser de al menos 6 caracteres' : '';
   }
 
   ngOnInit() {
     this.authService.logout();
+    this.email = new FormControl('', [Validators.required, Validators.email]);
+    this.password = new FormControl('', [Validators.required, Validators.minLength(6)]);
+    this.loginForm = new FormGroup({
+      email: this.email,
+      password: this.password
+    });
   }
 
-  onSubmit(username, password) {
+  onSubmit(formValues) {
+    console.log(formValues);
     this.loading = true;
-    this.authService.login(username, password).subscribe(data => {
-      this.router.navigate(['/admin']);
+    this.authService.login(formValues.email, formValues.password).subscribe(data => {
+      if (data) {
+        this.router.navigate(['/admin']);
+      }
     }, error => {
       if (error.status === 401) {
         this.alertService.error('Usuario o contraseña incorrecta');
       } else {
-        this.alertService.error(error.message);
+        if (error.error && error.error.message) {
+          this.alertService.error(error.error.message);
+        } else {
+          this.alertService.error(error.message);
+        }
       }
     });
     this.loading = false;

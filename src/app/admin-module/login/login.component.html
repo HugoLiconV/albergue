@@ -14,16 +14,17 @@
 <app-container>
   <app-loading-bar [isLoading]="loading"></app-loading-bar>
   <h1 class="container-title">Inicio de Sesión</h1>
-  <form #loginForm="ngForm" (ngSubmit)="onSubmit(Email.value, Password.value)">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" novalidate>
     <mat-form-field>
-      <input matInput placeholder="Enter your email" [formControl]="email" #Email ngModel name="Email" required>
-      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      <input matInput placeholder="Enter your email" formControlName="email" name="Email" required>
+      <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" #Password ngModel name="Password">
+      <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" name="Password" formControlName="password" required>
       <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+      <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" [disabled]="loading" type="submit">Iniciar Sesión</button>
+    <button mat-raised-button color="primary" [disabled]="loginForm.invalid || loading" type="submit">Iniciar Sesión</button>
   </form>
 </app-container>
