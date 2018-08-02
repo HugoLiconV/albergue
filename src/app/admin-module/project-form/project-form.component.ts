@@ -106,12 +106,10 @@ export class ProjectFormComponent implements OnInit {
 
   deleteProject() {
     this.isLoading = true;
-    this.projectService.deleteProject(this.id).subscribe(_project => {
-      if (_project) {
+    this.projectService.deleteProject(this.id).subscribe(_ => {
         this.alertService.success('Proyecto eliminado con éxito');
         this.router.navigate(['/admin/dashboard']);
-      }
-    });
-    this.isLoading = false;
+    }, error => {},
+    () => this.isLoading = false);
   }
 }

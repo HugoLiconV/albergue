@@ -74,12 +74,9 @@ export class DonationFormComponent implements OnInit {
 
   deleteDonation() {
     this.isLoading = true;
-    this.donationService.deleteDonation(this.id).subscribe(_donation => {
-      if (_donation) {
+    this.donationService.deleteDonation(this.id).subscribe(_ => {
         this.alertService.success('Donación eliminada con éxito');
-        this.isLoading = false;
         this.router.navigate(['/admin/dashboard']);
-      }
     }, error => {},
     () => this.isLoading = false);
   }

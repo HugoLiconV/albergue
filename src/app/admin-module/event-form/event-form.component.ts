@@ -116,12 +116,9 @@ export class EventFormComponent implements OnInit {
 
   deleteEvent() {
     this.isLoading = true;
-    this.eventService.deleteEvent(this.id).subscribe(event => {
-      if (event) {
+    this.eventService.deleteEvent(this.id).subscribe(_ => {
         this.router.navigate(['/admin/dashboard']);
         this.alertService.success('Evento eliminado con éxito');
-        this.isLoading = false;
-      }
     }, error => {},
     () => this.isLoading = false);
   }
