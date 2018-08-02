@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { RecordService } from '../../_services';
+
 @Component({
-  selector: 'app-record',
-  templateUrl: './record.component.html',
-  styleUrls: ['./record.component.css']
+  selector: 'app-record-table',
+  templateUrl: './record-table.component.html',
+  styleUrls: ['./record-table.component.css']
 })
-export class RecordComponent implements OnInit, AfterViewInit {
+export class RecordTableComponent implements OnInit, AfterViewInit {
 
   displayedColumns = ['user', 'fecha', 'hora'];
   dataSource = new MatTableDataSource();
