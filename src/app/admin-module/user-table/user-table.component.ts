@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatDialog } from '@angular/material';
-import { PersonService, AlertService } from '../../_services';
+import { PersonService, AlertService, DeviceTypeService } from '../../_services';
 import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
 import { UserFormDialogComponent } from '../user-form-dialog/user-form-dialog.component';
 
@@ -15,14 +15,19 @@ export class UserTableComponent implements OnInit {
   dataSource = new MatTableDataSource();
 
   isLoadingResults = true;
+  private isMobile: boolean;
+  private dialogWidth: string;
 
   constructor(
     private personService: PersonService,
     public dialog: MatDialog,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private deviceTypeService: DeviceTypeService
   ) {}
 
   ngOnInit() {
+    this.isMobile = this.deviceTypeService.isMobile();
+    this.dialogWidth = this.isMobile ? '80%' : '50%';
     this.populateTable();
   }
 
@@ -37,7 +42,7 @@ export class UserTableComponent implements OnInit {
 
   editUser(data): void {
     const dialogRef = this.dialog.open(UserFormDialogComponent, {
-      width: '50%',
+      width: this.dialogWidth,
       data
     });
 
@@ -50,7 +55,7 @@ export class UserTableComponent implements OnInit {
 
   deleteUser(userId): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '50%',
+      width: this.dialogWidth,
       data: {title: 'Eliminar usuario', action: 'eliminar', color: 'warn'}
     });
 

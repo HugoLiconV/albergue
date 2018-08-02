@@ -10,4 +10,6 @@ export * from './event.resolver.service';
 export * from './person.service';
 export * from './record.service';
 export * from './handle.error.service';
+export * from './device.type.service';
+
 

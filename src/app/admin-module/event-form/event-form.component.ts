@@ -7,7 +7,7 @@ import * as _moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
 // noinspection TypeScriptCheckImport
 import {default as _rollupMoment, Moment} from 'moment';
-import { EventsService, AlertService } from '../../_services';
+import { EventsService, AlertService, DeviceTypeService } from '../../_services';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Event } from '../../_models';
 const moment = _rollupMoment || _moment;
@@ -40,22 +40,19 @@ export class EventFormComponent implements OnInit {
   isMobile: boolean;
   isLoading = false;
 
+  eventForm: FormGroup;
+  event: Event;
+  id: string;
+
   constructor(
     private eventService: EventsService,
     private router: Router,
     private alertService: AlertService,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private deviceTypeService: DeviceTypeService
   ) {
-    this.innerWidth = window.innerWidth;
-    this.isMobile = this.checkScreenSize();
-  }
-
-  eventForm: FormGroup;
-  event: Event;
-  id: string;
-  checkScreenSize(): boolean {
-    return this.innerWidth < 840;
+    this.isMobile = deviceTypeService.isMobile();
   }
 
   ngOnInit() {
