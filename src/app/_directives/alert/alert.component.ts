@@ -24,7 +24,7 @@ export class AlertComponent implements OnInit {
   }
   openSnackBar(message: string, type: string, action: string = 'cerrar') {
     const config = new MatSnackBarConfig();
-    config.duration = 2000;
+    config.duration = 3000;
     config.panelClass = [type];
     this.snackBar.open(message, action, config);
   }
