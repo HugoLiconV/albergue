@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {MomentDateAdapter} from '@angular/material-moment-adapter';
 
 import * as _moment from 'moment';
@@ -43,7 +43,7 @@ export class EventFormComponent implements OnInit {
   eventForm: FormGroup;
   event: Event;
   id: string;
-
+  date: FormControl;
   constructor(
     private eventService: EventsService,
     private router: Router,
@@ -56,12 +56,13 @@ export class EventFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.date = new FormControl('', Validators.required);
     this.eventForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      cost: ['', Validators.required],
+      cost: [''],
       location: ['', Validators.required],
-      date: ['', Validators.required],
+      date: this.date,
       hour: ['', Validators.required]
     });
     this.id = this.route.snapshot.params['id'];
@@ -78,10 +79,16 @@ export class EventFormComponent implements OnInit {
             date: this.event.date,
             hour: this.event.hour
           });
+          this.date.setValue(this.event.date);
         }
       });
       this.isLoading = false;
     }
+  }
+
+  getDateErrorMessage() {
+    return this.date.hasError('required') ?
+      'Debes introducir una fecha válida, usa el ícono de calendario' : '';
   }
 
   addEvent(formValues) {

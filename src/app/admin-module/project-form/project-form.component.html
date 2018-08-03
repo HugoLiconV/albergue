@@ -21,13 +21,13 @@
           <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>
         <input placeholder="Area *separadas con coma" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true"
-          (matChipInputTokenEnd)="addArea($event)" />
+          (matChipInputTokenEnd)="addArea($event)"/>
       </mat-chip-list>
     </mat-form-field>
     <div class="actions">
-      <button class="button" [disabled]="projectForm.invalid || isLoading" type="submit" mat-raised-button color="primary">Guardar</button>
-      <button type="button" class="button" (click)="cancel()" mat-raised-button>Cancelar</button>
-      <button type="button" class="button" (click)="deleteProject()" *ngIf="id" mat-raised-button>Eliminar</button>
+      <button class="button" [disabled]="projectForm.invalid || isLoading" type="submit" mat-button color="primary">Guardar</button>
+      <button type="button" class="button" (click)="cancel()" mat-button>Cancelar</button>
+      <button type="button" class="button" (click)="deleteProject()" *ngIf="id" mat-button color="warn">Eliminar</button>
     </div>
   </form>
 </app-container>

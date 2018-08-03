@@ -13,7 +13,7 @@
     </mat-form-field>
     <!-- Cost field -->
     <mat-form-field>
-      <input formControlName="cost" matInput placeholder="Costo" required>
+      <input formControlName="cost" matInput placeholder="Costo">
     </mat-form-field>
     <!-- Location field -->
     <mat-form-field>
@@ -21,12 +21,14 @@
     </mat-form-field>
     <!-- Date pickers for desk and mobile-->
     <mat-form-field *ngIf="!isMobile">
-      <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Choose a date">
+      <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Choose a date" required>
+      <mat-error *ngIf="date.invalid">{{getDateErrorMessage()}}</mat-error>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field *ngIf="isMobile">
-      <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Choose a date">
+      <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Choose a date" required>
+      <mat-error *ngIf="date.invalid">{{getDateErrorMessage()}}</mat-error>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker touchUi="true" #picker></mat-datepicker>
     </mat-form-field>
@@ -37,9 +39,9 @@
       <input formControlName="hour" matInput placeholder="Hora ej 12:00 p.m." required>
     </mat-form-field>
     <div class="actions">
-      <button class="button" [disabled]="eventForm.invalid || isLoading" type="submit" mat-raised-button color="primary">Guardar</button>
-      <button type="button" class="button" (click)="cancel()" mat-raised-button>Cancelar</button>
-      <button type="button" class="button" (click)="deleteEvent()" *ngIf="id" mat-raised-button>Eliminar</button>
+      <button class="button" [disabled]="eventForm.invalid || isLoading" type="submit" mat-button color="primary">Guardar</button>
+      <button type="button" class="button" (click)="cancel()" mat-button>Cancelar</button>
+      <button type="button" class="button" (click)="deleteEvent()" *ngIf="id" mat-button color="warn">Eliminar</button>
     </div>
   </form>
 </app-container>

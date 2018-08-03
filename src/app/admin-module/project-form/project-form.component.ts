@@ -32,7 +32,7 @@ export class ProjectFormComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required],
       solution: ['', Validators.required],
-      numberOfPeople: ['', Validators.required]
+      numberOfPeople: ['']
     });
     this.id = this.route.snapshot.params['id'];
     if (this.id) {
@@ -44,7 +44,7 @@ export class ProjectFormComponent implements OnInit {
             name: this.project.name,
             description: this.project.description,
             solution: this.project.solution,
-            numberOfPeople: this.project.numberOfPeople,
+            numberOfPeople: this.project.numberOfPeople
           });
           this.elements = this.project.area.split(',');
         }
