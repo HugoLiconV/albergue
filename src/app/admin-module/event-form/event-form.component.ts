@@ -10,6 +10,8 @@ import {default as _rollupMoment, Moment} from 'moment';
 import { EventsService, AlertService, DeviceTypeService } from '../../_services';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Event } from '../../_models';
+import { MatDialog } from '@angular/material';
+import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
 const moment = _rollupMoment || _moment;
 
 export const MY_FORMATS = {
@@ -32,12 +34,13 @@ export const MY_FORMATS = {
     {provide: MAT_DATE_LOCALE, useValue: 'es'},
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS}
-    ]
+  ]
 })
 export class EventFormComponent implements OnInit {
 
   innerWidth: any;
-  isMobile: boolean;
+  private isMobile: boolean;
+  private dialogWidth: string;
   isLoading = false;
 
   eventForm: FormGroup;
@@ -50,12 +53,14 @@ export class EventFormComponent implements OnInit {
     private alertService: AlertService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private deviceTypeService: DeviceTypeService
-  ) {
-    this.isMobile = deviceTypeService.isMobile();
-  }
+    private deviceTypeService: DeviceTypeService,
+    public dialog: MatDialog,
+  ) { }
 
   ngOnInit() {
+    this.isMobile = this.deviceTypeService.isMobile();
+    this.dialogWidth = this.isMobile ? '80%' : '50%';
+
     this.date = new FormControl('', Validators.required);
     this.eventForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -119,11 +124,24 @@ export class EventFormComponent implements OnInit {
   }
 
   deleteEvent() {
-    this.isLoading = true;
-    this.eventService.deleteEvent(this.id).subscribe(_ => {
-        this.router.navigate(['/admin/dashboard']);
-        this.alertService.success('Evento eliminado con éxito');
-    }, error => {},
-    () => this.isLoading = false);
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: this.dialogWidth,
+      data: {
+        title: 'Eliminar evento',
+        action: 'eliminar',
+        color: 'warn'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(confirmation => {
+      if (confirmation) {
+        this.isLoading = true;
+        this.eventService.deleteEvent(this.id).subscribe(_ => {
+            this.router.navigate(['/admin/dashboard']);
+            this.alertService.success('Evento eliminado con éxito');
+        }, error => {},
+        () => this.isLoading = false);
+      }
+    });
   }
 }

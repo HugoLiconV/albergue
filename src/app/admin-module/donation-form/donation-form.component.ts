@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { DonationService, AlertService } from '../../_services';
+import { DonationService, AlertService, DeviceTypeService } from '../../_services';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Donation } from '../../_models';
+import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
 import 'rxjs/add/observable/forkJoin';
-import { Observable } from 'rxjs/Observable';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-donation-form',
@@ -17,14 +18,22 @@ export class DonationFormComponent implements OnInit {
     private donationService: DonationService,
     private router: Router,
     private alertService: AlertService,
+    private deviceTypeService: DeviceTypeService,
+    public dialog: MatDialog,
     private route: ActivatedRoute
   ) { }
+
   donation: Donation;
   donationForm: FormGroup;
   id: string;
   isLoading = false;
+  private isMobile: boolean;
+  private dialogWidth: string;
 
   ngOnInit() {
+    this.isMobile = this.deviceTypeService.isMobile();
+    this.dialogWidth = this.isMobile ? '80%' : '50%';
+
     const name = new FormControl('', Validators.required);
     const description = new FormControl('', Validators.required);
     this.donationForm = new FormGroup({ name, description});
@@ -73,11 +82,24 @@ export class DonationFormComponent implements OnInit {
   }
 
   deleteDonation() {
-    this.isLoading = true;
-    this.donationService.deleteDonation(this.id).subscribe(_ => {
-        this.alertService.success('Donación eliminada con éxito');
-        this.router.navigate(['/admin/dashboard']);
-    }, error => {},
-    () => this.isLoading = false);
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: this.dialogWidth,
+      data: {
+        title: 'Eliminar donación',
+        action: 'eliminar',
+        color: 'warn'
+      }
+    });
+
+     dialogRef.afterClosed().subscribe(confirmation => {
+      if (confirmation) { // recibe true si se editó
+        this.isLoading = true;
+        this.donationService.deleteDonation(this.id).subscribe(_ => {
+            this.alertService.success('Donación eliminada con éxito');
+            this.router.navigate(['/admin/dashboard']);
+        }, error => {},
+        () => this.isLoading = false);
+      }
+    });
   }
 }

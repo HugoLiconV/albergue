@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {MatChipInputEvent} from '@angular/material';
+import { MatChipInputEvent, MatDialog } from '@angular/material';
 import {ENTER, COMMA} from '@angular/cdk/keycodes';
-import { ProjectService, AlertService } from '../../_services';
+import { ProjectService, AlertService, DeviceTypeService } from '../../_services';
 import { Project } from '../../_models';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
 @Component({
   selector: 'app-project-form',
   templateUrl: './project-form.component.html',
@@ -17,10 +18,15 @@ export class ProjectFormComponent implements OnInit {
     private router: Router,
     private alertService: AlertService,
     private formBuilder: FormBuilder,
+    private deviceTypeService: DeviceTypeService,
+    public dialog: MatDialog,
     private route: ActivatedRoute) { }
 
   projectForm: FormGroup;
   separatorKeysCodes = [ENTER, COMMA];
+
+  private isMobile: boolean;
+  private dialogWidth: string;
 
   elements: string[] = [];
   project: Project;
@@ -28,6 +34,9 @@ export class ProjectFormComponent implements OnInit {
   isLoading = false;
 
   ngOnInit() {
+    this.isMobile = this.deviceTypeService.isMobile();
+    this.dialogWidth = this.isMobile ? '80%' : '50%';
+
     this.projectForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
@@ -105,11 +114,24 @@ export class ProjectFormComponent implements OnInit {
   }
 
   deleteProject() {
-    this.isLoading = true;
-    this.projectService.deleteProject(this.id).subscribe(_ => {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: this.dialogWidth,
+      data: {
+        title: 'Eliminar Proyecto',
+        action: 'eliminar',
+        color: 'warn'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(confirmation => {
+    if (confirmation) {
+      this.isLoading = true;
+      this.projectService.deleteProject(this.id).subscribe(_ => {
         this.alertService.success('Proyecto eliminado con éxito');
         this.router.navigate(['/admin/dashboard']);
-    }, error => {},
-    () => this.isLoading = false);
+      }, error => {},
+      () => this.isLoading = false);
+      }
+    });
   }
 }

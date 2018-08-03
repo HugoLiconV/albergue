@@ -11,7 +11,7 @@
     <div class="actions">
       <button type="submit" class="button" [disabled]="donationForm.invalid || isLoading" mat-button color="primary">Guardar</button>
       <button type="button" class="button" (click)="cancel()" mat-button>Cancelar</button>
-      <button type="button" class="button" (click)="deleteDonation()" *ngIf="id" matbutton color="warn">Eliminar</button>
+      <button type="button" class="button" (click)="deleteDonation()" *ngIf="id" mat-button color="warn">Eliminar</button>
     </div>
   </form>
 </app-container>
