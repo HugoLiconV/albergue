@@ -15,10 +15,10 @@ import { UserTableComponent } from './user-table/user-table.component';
 import { RecordDashboardComponent } from './record-dashboard/record-dashboard.component';
 import { UserFormDialogComponent } from './user-form-dialog/user-form-dialog.component';
 
+import es from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
-import localeEs from '@angular/common/locales/es';
 
-registerLocaleData(localeEs, 'es');
+registerLocaleData(es);
 
 @NgModule({
   imports: [
