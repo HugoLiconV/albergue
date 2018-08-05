@@ -48,6 +48,11 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SharedModule } from './shared.module';
 import { LandingPageComponent } from './main-module/landing-page/landing-page.component';
 import { ContactCardComponent } from './main-module/contact-card/contact-card.component';
+
+import es from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(es);
+
 @NgModule({
   declarations: [
     AppComponent,

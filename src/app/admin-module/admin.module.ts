@@ -15,10 +15,7 @@ import { UserTableComponent } from './user-table/user-table.component';
 import { RecordDashboardComponent } from './record-dashboard/record-dashboard.component';
 import { UserFormDialogComponent } from './user-form-dialog/user-form-dialog.component';
 
-import es from '@angular/common/locales/es';
-import { registerLocaleData } from '@angular/common';
-
-registerLocaleData(es);
+import { UseChartComponent } from './use-chart/use-chart.component';
 
 @NgModule({
   imports: [
@@ -36,7 +33,8 @@ registerLocaleData(es);
     RecordTableComponent,
     UserTableComponent,
     RecordDashboardComponent,
-    UserFormDialogComponent
+    UserFormDialogComponent,
+    UseChartComponent
   ],
   providers: [],
   entryComponents: [UserFormDialogComponent]
