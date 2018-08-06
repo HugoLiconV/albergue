@@ -39,7 +39,7 @@ export const MY_FORMATS = {
 export class EventFormComponent implements OnInit {
 
   innerWidth: any;
-  private isMobile: boolean;
+  isMobile: boolean;
   private dialogWidth: string;
   isLoading = false;
 

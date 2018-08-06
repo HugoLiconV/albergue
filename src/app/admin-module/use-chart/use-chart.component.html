@@ -1,3 +1,5 @@
-<p>
-  use-chart works!
-</p>
+<app-container>
+  <div [hidden]="!chart">
+    <canvas id="canvas">{{ chart }}</canvas>
+  </div>
+</app-container>
