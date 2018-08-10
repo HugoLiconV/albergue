@@ -2,7 +2,7 @@
   <nav class="docs-navbar-header">
     <!-- TODO: Agregar ícono -->
     <a mat-button class="docs-button" routerLink="/login">
-    <span>Panel de Administración</span>
+      <span>Panel de Administración</span>
     </a>
     <a mat-button class="docs-navbar-hide-small docs-button" routerLink="/home">Página Principal</a>
     <div class="flex-spacer"></div>
@@ -11,20 +11,23 @@
     <a mat-button class="docs-navbar-link" routerLink="/home">Página Principal</a>
   </nav>
 </div>
-<app-container>
-  <app-loading-bar [isLoading]="loading"></app-loading-bar>
-  <h1 class="container-title">Inicio de Sesión</h1>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" novalidate>
-    <mat-form-field>
-      <input matInput placeholder="Enter your email" formControlName="email" name="Email" required>
-      <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
-    </mat-form-field>
+<section class="section">
+  <app-container>
+    <app-loading-bar [isLoading]="loading"></app-loading-bar>
+    <h1 class="container-title">Inicio de Sesión</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" novalidate>
+      <mat-form-field>
+        <input matInput placeholder="Enter your email" formControlName="email" name="Email" required>
+        <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+      </mat-form-field>
 
-    <mat-form-field>
-      <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" name="Password" formControlName="password" required>
-      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-      <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
-    </mat-form-field>
-    <button mat-raised-button color="primary" [disabled]="loginForm.invalid || loading" type="submit">Iniciar Sesión</button>
-  </form>
-</app-container>
+      <mat-form-field>
+        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" name="Password" formControlName="password"
+          required>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" [disabled]="loginForm.invalid || loading" type="submit">Iniciar Sesión</button>
+    </form>
+  </app-container>
+</section>

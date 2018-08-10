@@ -3,7 +3,7 @@
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  max-width: 80%;
+  /* max-width: 80%; */
   margin: 1rem auto;
   padding: 20px;
   position: relative;

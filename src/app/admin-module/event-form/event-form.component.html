@@ -1,47 +1,49 @@
-<app-container>
-  <h1 class="container-title">Añadir Evento</h1>
-  <app-loading-bar [isLoading]="isLoading"></app-loading-bar>
-  <form [formGroup]="eventForm" (ngSubmit)="addEvent(eventForm.value)" autocomplete="off" novalidate>
-    <!-- Name field -->
-    <mat-form-field>
-      <input formControlName="name" matInput placeholder="Nombre" required>
-    </mat-form-field>
-    <!-- Description field -->
-    <mat-form-field>
-      <textarea formControlName="description" matInput placeholder="Descripción" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
-        required></textarea>
-    </mat-form-field>
-    <!-- Cost field -->
-    <mat-form-field>
-      <input formControlName="cost" matInput placeholder="Costo">
-    </mat-form-field>
-    <!-- Location field -->
-    <mat-form-field>
-      <input formControlName="location" matInput placeholder="Ubicación" required>
-    </mat-form-field>
-    <!-- Date pickers for desk and mobile-->
-    <mat-form-field *ngIf="!isMobile">
-      <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Choose a date" required>
-      <mat-error *ngIf="date.invalid">{{getDateErrorMessage()}}</mat-error>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field *ngIf="isMobile">
-      <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Choose a date" required>
-      <mat-error *ngIf="date.invalid">{{getDateErrorMessage()}}</mat-error>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker touchUi="true" #picker></mat-datepicker>
-    </mat-form-field>
+<section class="section">
+  <app-container>
+    <h1 class="container-title">Añadir Evento</h1>
+    <app-loading-bar [isLoading]="isLoading"></app-loading-bar>
+    <form [formGroup]="eventForm" (ngSubmit)="addEvent(eventForm.value)" autocomplete="off" novalidate>
+      <!-- Name field -->
+      <mat-form-field>
+        <input formControlName="name" matInput placeholder="Nombre" required>
+      </mat-form-field>
+      <!-- Description field -->
+      <mat-form-field>
+        <textarea formControlName="description" matInput placeholder="Descripción" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
+          required></textarea>
+      </mat-form-field>
+      <!-- Cost field -->
+      <mat-form-field>
+        <input formControlName="cost" matInput placeholder="Costo">
+      </mat-form-field>
+      <!-- Location field -->
+      <mat-form-field>
+        <input formControlName="location" matInput placeholder="Ubicación" required>
+      </mat-form-field>
+      <!-- Date pickers for desk and mobile-->
+      <mat-form-field *ngIf="!isMobile">
+        <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Choose a date" required>
+        <mat-error *ngIf="date.invalid">{{getDateErrorMessage()}}</mat-error>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field *ngIf="isMobile">
+        <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Choose a date" required>
+        <mat-error *ngIf="date.invalid">{{getDateErrorMessage()}}</mat-error>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi="true" #picker></mat-datepicker>
+      </mat-form-field>
 
-    <!-- Hour field -->
-    <!-- TODO: Crear dos input y un radio button para el input de la hora -->
-    <mat-form-field>
-      <input formControlName="hour" matInput placeholder="Hora ej 12:00 p.m." required>
-    </mat-form-field>
-    <div class="actions">
-      <button class="button" [disabled]="eventForm.invalid || isLoading" type="submit" mat-button color="primary">Guardar</button>
-      <button type="button" class="button" (click)="cancel()" mat-button>Cancelar</button>
-      <button type="button" class="button" (click)="deleteEvent()" *ngIf="id" mat-button color="warn">Eliminar</button>
-    </div>
-  </form>
-</app-container>
+      <!-- Hour field -->
+      <!-- TODO: Crear dos input y un radio button para el input de la hora -->
+      <mat-form-field>
+        <input formControlName="hour" matInput placeholder="Hora ej 12:00 p.m." required>
+      </mat-form-field>
+      <div class="actions">
+        <button class="button" [disabled]="eventForm.invalid || isLoading" type="submit" mat-button color="primary">Guardar</button>
+        <button type="button" class="button" (click)="cancel()" mat-button>Cancelar</button>
+        <button type="button" class="button" (click)="deleteEvent()" *ngIf="id" mat-button color="warn">Eliminar</button>
+      </div>
+    </form>
+  </app-container>
+</section>
