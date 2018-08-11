@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { RecordService } from '../../_services';
-import { Record, Stats } from '../../_models';
-import { map, concatMap, switchMap, mergeMap } from 'rxjs/operators';
+import { Record, Stats, RecordResponse } from '../../_models';
+import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -22,25 +22,21 @@ export class UseChartComponent implements OnInit {
     this.borderColors = BORDER_COLORS;
   }
 
-  private getDataSets(records: Stats[]): Object[] {
-    return records.reduce((data, record, i) => {
-      const colorIndex = i % FILL_COLORS.length;
-      const dataSet = {
-        label: record.user.name,
-        data: [record.count],
-        backgroundColor: FILL_COLORS[colorIndex],
-        borderColor: BORDER_COLORS[colorIndex],
-        borderWidth: 1
-      };
-      data.push(dataSet);
-      return data;
-    }, []);
+  ngOnInit() {
+    this.getRecords().subscribe(recordResponse => {
+      this.chart = this.createChart(this.dataSets);
+    });
+  }
+
+  getRecords(): Observable<RecordResponse> {
+    return this.recordService.getRecords('limit=100&fields=user')
+      .pipe(tap(recordResponse => {
+        this.dataSets = this.getDataSetsFromResponse(recordResponse.stats);
+    }));
   }
 
   updateChart(): void {
-    this.recordService.getRecords('limit=100&fields=user')
-      .subscribe(recordResponse => {
-        this.dataSets = this.getDataSets(recordResponse.stats);
+    this.getRecords().subscribe(_ => {
         this.chart.data.datasets = this.dataSets;
         this.chart.update();
     });
@@ -65,12 +61,19 @@ export class UseChartComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.recordService.getRecords('limit=100&fields=user')
-      .subscribe(recordResponse => {
-        this.dataSets = this.getDataSets(recordResponse.stats);
-        this.chart = this.createChart(this.dataSets);
-    });
+  private getDataSetsFromResponse(records: Stats[]): Object[] {
+    return records.reduce((data, record, i) => {
+      const colorIndex = i % FILL_COLORS.length;
+      const dataSet = {
+        label: record.user.name,
+        data: [record.count],
+        backgroundColor: FILL_COLORS[colorIndex],
+        borderColor: BORDER_COLORS[colorIndex],
+        borderWidth: 1
+      };
+      data.push(dataSet);
+      return data;
+    }, []);
   }
 }
 
