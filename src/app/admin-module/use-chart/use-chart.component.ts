@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { RecordService } from '../../_services';
+import { Record } from '../../_models';
+import { map, concatMap, switchMap, mergeMap } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-use-chart',
@@ -9,62 +12,81 @@ import { RecordService } from '../../_services';
 })
 export class UseChartComponent implements OnInit {
 
-  chart = [];
+  chart;
   fillColors: string[];
   borderColors: string[];
+  dataSet = [];
 
   constructor(private recordService: RecordService) {
     this.fillColors = FILL_COLORS;
     this.borderColors = BORDER_COLORS;
   }
 
-  ngOnInit() {
-    this.recordService.getRecords('limit=100&fields=user')
-    .subscribe(records => {
-      const result = records.reduce((objSum, record) => {
-        const id = record.user.id;
-        if (!objSum[id]) {
-          objSum[id] = {
-            count: 1,
-            name: record.user.name
-          };
-        } else {
-          objSum[id].count += 1;
-        }
-        return objSum;
-      }, {});
+  getRecords(): Observable<Record[]> {
+    return this.recordService.getRecords('limit=100&fields=user')
+      .pipe(
+        map(records => {
+          this.dataSet = this.getRecordCount(records);
+          console.log('pipe');
+          console.log(this.dataSet);
+          // this.updateChart();
+          return records;
+        })
+      );
+  }
 
-      const arrayData = Object.keys(result).reduce((arr, key, i) => {
-        const record = result[key];
-        const colorIndex = i % FILL_COLORS.length;
-          const dataSet = {
-          label: record.name,
-          data: [record.count],
-          backgroundColor: FILL_COLORS[colorIndex],
-          borderColor: BORDER_COLORS[colorIndex],
-          borderWidth: 1
+  private getRecordCount(records: Record[]): Object[] {
+    const result = records.reduce((objSum, record) => {
+    const id = record.user.id;
+      if (!objSum[id]) {
+        objSum[id] = {
+          count: 1,
+          name: record.user.name
         };
-        arr.push(dataSet);
-        return arr;
-      }, []);
+      } else {
+        objSum[id].count += 1;
+      }
+      return objSum;
+    }, {});
 
-      this.chart = new Chart('canvas', {
-        type: 'bar',
-        data: {
-          labels: ['Hoy'],
-          datasets: arrayData
+    const arrayData = Object.keys(result).reduce((arr, key, i) => {
+      const record = result[key];
+      const colorIndex = i % FILL_COLORS.length;
+      const dataSet = {
+        label: record.name,
+        data: [record.count],
+        backgroundColor: FILL_COLORS[colorIndex],
+        borderColor: BORDER_COLORS[colorIndex],
+        borderWidth: 1
+      };
+      arr.push(dataSet);
+      return arr;
+    }, []);
+    return arrayData;
+  }
+
+  updateChart(): void {
+    this.chart.data.datasets = this.dataSet;
+  }
+
+  ngOnInit() {
+    this.chart = new Chart('canvas', {
+      type: 'bar',
+      data: {
+        labels: ['Hoy'],
+        datasets: []
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
         },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }]
-          },
-        }
-      });
+      }
     });
+    this.getRecords();
   }
 
 

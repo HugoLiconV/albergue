@@ -1,4 +1,5 @@
 <app-container>
+  <button (click)="getRecords()" mat-button>Actualizar</button>
   <div [hidden]="!chart">
     <canvas id="canvas">{{ chart }}</canvas>
   </div>

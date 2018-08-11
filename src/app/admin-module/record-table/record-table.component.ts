@@ -33,11 +33,10 @@ export class RecordTableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
   populateTable(): void {
-    console.log('populateTable Record');
     this.isLoadingResults = true;
     this.recordService.getRecords().subscribe(records => {
       console.log(records);
-      this.dataSource.data = records;
+      this.dataSource.data = records.records;
     },
     error => {},
     () => this.isLoadingResults = false);

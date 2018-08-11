@@ -16,8 +16,8 @@ export class RecordService {
     private handleErrorService: HandleErrorService
     ) { }
 
-  getRecords(query = ''): Observable<Record[]> {
-    return this.http.get<Record[]>(`${this.url}?${query}`)
+  getRecords(query = ''): Observable<any> {
+    return this.http.get<any>(`${this.url}?${query}`)
       .pipe(catchError(this.handleErrorService.handleError<Record[]>('obteniendo registros', [])));
   }
 
