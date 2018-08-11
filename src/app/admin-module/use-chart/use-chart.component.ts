@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { RecordService } from '../../_services';
-import { Record } from '../../_models';
+import { Record, Stats } from '../../_models';
 import { map, concatMap, switchMap, mergeMap } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 
@@ -15,66 +15,43 @@ export class UseChartComponent implements OnInit {
   chart;
   fillColors: string[];
   borderColors: string[];
-  dataSet = [];
+  dataSets = [];
 
   constructor(private recordService: RecordService) {
     this.fillColors = FILL_COLORS;
     this.borderColors = BORDER_COLORS;
   }
 
-  getRecords(): Observable<Record[]> {
-    return this.recordService.getRecords('limit=100&fields=user')
-      .pipe(
-        map(records => {
-          this.dataSet = this.getRecordCount(records);
-          console.log('pipe');
-          console.log(this.dataSet);
-          // this.updateChart();
-          return records;
-        })
-      );
-  }
-
-  private getRecordCount(records: Record[]): Object[] {
-    const result = records.reduce((objSum, record) => {
-    const id = record.user.id;
-      if (!objSum[id]) {
-        objSum[id] = {
-          count: 1,
-          name: record.user.name
-        };
-      } else {
-        objSum[id].count += 1;
-      }
-      return objSum;
-    }, {});
-
-    const arrayData = Object.keys(result).reduce((arr, key, i) => {
-      const record = result[key];
+  private getDataSets(records: Stats[]): Object[] {
+    return records.reduce((data, record, i) => {
       const colorIndex = i % FILL_COLORS.length;
       const dataSet = {
-        label: record.name,
+        label: record.user.name,
         data: [record.count],
         backgroundColor: FILL_COLORS[colorIndex],
         borderColor: BORDER_COLORS[colorIndex],
         borderWidth: 1
       };
-      arr.push(dataSet);
-      return arr;
+      data.push(dataSet);
+      return data;
     }, []);
-    return arrayData;
   }
 
   updateChart(): void {
-    this.chart.data.datasets = this.dataSet;
+    this.recordService.getRecords('limit=100&fields=user')
+      .subscribe(recordResponse => {
+        this.dataSets = this.getDataSets(recordResponse.stats);
+        this.chart.data.datasets = this.dataSets;
+        this.chart.update();
+    });
   }
 
-  ngOnInit() {
-    this.chart = new Chart('canvas', {
+  createChart(dataSets: Object[]) {
+    return new Chart('canvas', {
       type: 'bar',
       data: {
         labels: ['Hoy'],
-        datasets: []
+        datasets: dataSets
       },
       options: {
         scales: {
@@ -86,10 +63,15 @@ export class UseChartComponent implements OnInit {
         },
       }
     });
-    this.getRecords();
   }
 
-
+  ngOnInit() {
+    this.recordService.getRecords('limit=100&fields=user')
+      .subscribe(recordResponse => {
+        this.dataSets = this.getDataSets(recordResponse.stats);
+        this.chart = this.createChart(this.dataSets);
+    });
+  }
 }
 
 export const FILL_COLORS: string[] = [

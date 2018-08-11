@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { HandleErrorService } from './handle.error.service';
 import { Observable } from 'rxjs/Observable';
+import { RecordResponse } from '../_models/record.response';
 @Injectable()
 export class RecordService {
   private url = `${environment.API_URL}/registros`;  // URL to web api
@@ -16,9 +17,9 @@ export class RecordService {
     private handleErrorService: HandleErrorService
     ) { }
 
-  getRecords(query = ''): Observable<any> {
-    return this.http.get<any>(`${this.url}?${query}`)
-      .pipe(catchError(this.handleErrorService.handleError<Record[]>('obteniendo registros', [])));
+  getRecords(query = ''): Observable<RecordResponse> {
+    return this.http.get<RecordResponse>(`${this.url}?${query}`)
+      .pipe(catchError(this.handleErrorService.handleError<RecordResponse>('obteniendo registros')));
   }
 
   getRecordById(id: string): Observable<Record> {

@@ -35,7 +35,6 @@ export class RecordTableComponent implements OnInit, AfterViewInit {
   populateTable(): void {
     this.isLoadingResults = true;
     this.recordService.getRecords().subscribe(records => {
-      console.log(records);
       this.dataSource.data = records.records;
     },
     error => {},
