@@ -5,13 +5,12 @@
       Actualizar
     </button>
     <mat-form-field>
-      <mat-select [(value)]="selected" (selectionChange)="setChartPeriod($event.value)" placeholder="Periodo">
+      <mat-select [(value)]="selected" (selectionChange)="periodSelectorChange($event.value)" placeholder="Periodo">
         <mat-option *ngFor="let period of periods" [value]="period.value">
           {{ period.viewValue }}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    {{selected}}
   </div>
   <div [hidden]="!chart">
     <canvas id="canvas">{{ chart }}</canvas>

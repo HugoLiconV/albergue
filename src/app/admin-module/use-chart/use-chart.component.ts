@@ -34,7 +34,8 @@ export class UseChartComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getRecords().subscribe(recordResponse => {
+    const query = this.getPeriodQuery(this.selected);
+    this.getRecords(query).subscribe(_ => {
       this.chart = this.createChart(this.dataSets);
     });
   }
@@ -50,7 +51,6 @@ export class UseChartComponent implements OnInit {
   updateChart(query: string): void {
     this.getRecords(query).subscribe(_ => {
         this.chart.data.datasets = this.dataSets;
-        this.chart.data.labels = [this.selected];
         this.chart.update();
     });
   }
@@ -89,13 +89,22 @@ export class UseChartComponent implements OnInit {
     }, []);
   }
 
-  setChartPeriod(period) {
+  periodSelectorChange(period) {
+    let label: string;
+    this.periods.forEach(_period => {
+      if (_period.value === period) {
+       label = _period.viewValue;
+       return;
+      }
+    });
+    this.chart.data.labels = [label];
+    this.updateChart(this.getPeriodQuery(period));
+  }
+
+  getPeriodQuery(period) {
     let startDate;
     let endDate;
     let query: QueryBuilder;
-    // const date = new Date(), y = date.getFullYear(), m = date.getMonth(), d = date.getDay();
-    // const firstDay = new Date(y, m , 1);
-    // const lastDay = new Date(y, m + 1, 0);
     switch (period) {
       case 'today':
         startDate = _moment().startOf('day').toISOString();
@@ -117,10 +126,10 @@ export class UseChartComponent implements OnInit {
         endDate   = _moment().endOf('year').toISOString();
         break;
     }
-    console.log(`start: ${startDate} end: ${endDate}`);
     query = new QueryBuilder.Builder().afterDate(startDate).beforeDate(endDate).build();
-    this.updateChart(query.getQuery());
+    return query.getQuery();
   }
+
 }
 
 export const FILL_COLORS: string[] = [
