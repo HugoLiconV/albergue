@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { RecordService } from '../../_services';
-import { Record, Stats, RecordResponse } from '../../_models';
+import {  Stats, RecordResponse } from '../../_models';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
+import * as _moment from 'moment';
+import 'moment/locale/es';
 
+_moment.locale('es');
 @Component({
   selector: 'app-use-chart',
   templateUrl: './use-chart.component.html',
@@ -17,6 +20,14 @@ export class UseChartComponent implements OnInit {
   borderColors: string[];
   dataSets = [];
 
+  periods = [
+    {value: 'today', viewValue: 'Hoy'},
+    {value: 'week', viewValue: 'Semana'},
+    {value: 'month', viewValue: 'Mes'},
+    {value: 'year', viewValue: 'Año'}
+  ];
+  selected = 'today';
+
   constructor(private recordService: RecordService) {
     this.fillColors = FILL_COLORS;
     this.borderColors = BORDER_COLORS;
@@ -28,16 +39,18 @@ export class UseChartComponent implements OnInit {
     });
   }
 
-  getRecords(): Observable<RecordResponse> {
-    return this.recordService.getRecords('limit=100&fields=user')
+  getRecords(query = ''): Observable<RecordResponse> {
+    return this.recordService.getRecords(query)
       .pipe(tap(recordResponse => {
+        console.log(recordResponse);
         this.dataSets = this.getDataSetsFromResponse(recordResponse.stats);
     }));
   }
 
-  updateChart(): void {
-    this.getRecords().subscribe(_ => {
+  updateChart(query: string): void {
+    this.getRecords(query).subscribe(_ => {
         this.chart.data.datasets = this.dataSets;
+        this.chart.data.labels = [this.selected];
         this.chart.update();
     });
   }
@@ -75,6 +88,39 @@ export class UseChartComponent implements OnInit {
       return data;
     }, []);
   }
+
+  setChartPeriod(period) {
+    let startDate;
+    let endDate;
+    let query: QueryBuilder;
+    // const date = new Date(), y = date.getFullYear(), m = date.getMonth(), d = date.getDay();
+    // const firstDay = new Date(y, m , 1);
+    // const lastDay = new Date(y, m + 1, 0);
+    switch (period) {
+      case 'today':
+        startDate = _moment().startOf('day').toISOString();
+        endDate   = _moment().endOf('day').toISOString();
+        break;
+
+      case 'week':
+        startDate = _moment().startOf('week').toISOString();
+        endDate   = _moment().endOf('week').toISOString();
+        break;
+
+      case 'month':
+        startDate = _moment().startOf('month').toISOString();
+        endDate   = _moment().endOf('month').toISOString();
+        break;
+
+      case 'year':
+        startDate = _moment().startOf('year').toISOString();
+        endDate   = _moment().endOf('year').toISOString();
+        break;
+    }
+    console.log(`start: ${startDate} end: ${endDate}`);
+    query = new QueryBuilder.Builder().afterDate(startDate).beforeDate(endDate).build();
+    this.updateChart(query.getQuery());
+  }
 }
 
 export const FILL_COLORS: string[] = [
@@ -102,3 +148,38 @@ export const BORDER_COLORS: string[] = [
   'rgba(148, 148, 148, 1)',
   'rgba(91, 50, 173, 1)'
 ];
+export class QueryBuilder {
+  before: string;
+  after: string;
+  constructor(build) {
+    this.before = build.before;
+    this.after = build.after;
+  }
+  getQuery(): string {
+    let query = '';
+    query += this.before ? `before=${this.before}&` : '';
+    query += this.after ? `after=${this.after}&` : '';
+    return query;
+  }
+   static get Builder() {
+    class Builder {
+      private before;
+      private after;
+
+      beforeDate(date: Date) {
+        console.log(date);
+        this.before = date;
+        return this;
+      }
+      afterDate(date: Date) {
+        console.log(date);
+        this.after = date;
+        return this;
+      }
+      build() {
+        return new QueryBuilder(this);
+      }
+    }
+    return Builder;
+  }
+}
