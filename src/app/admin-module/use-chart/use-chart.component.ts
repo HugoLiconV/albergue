@@ -43,12 +43,12 @@ export class UseChartComponent implements OnInit {
   getRecords(query = ''): Observable<RecordResponse> {
     return this.recordService.getRecords(query)
       .pipe(tap(recordResponse => {
-        console.log(recordResponse);
         this.dataSets = this.getDataSetsFromResponse(recordResponse.stats);
     }));
   }
 
   updateChart(query: string): void {
+    console.log(query);
     this.getRecords(query).subscribe(_ => {
         this.chart.data.datasets = this.dataSets;
         this.chart.update();
@@ -177,12 +177,10 @@ export class QueryBuilder {
       private after;
 
       beforeDate(date: Date) {
-        console.log(date);
         this.before = date;
         return this;
       }
       afterDate(date: Date) {
-        console.log(date);
         this.after = date;
         return this;
       }
