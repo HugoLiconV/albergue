@@ -63,6 +63,7 @@ export class UseChartComponent implements OnInit {
         datasets: dataSets
       },
       options: {
+        maintainAspectRatio: false,
         scales: {
           yAxes: [{
             ticks: {
