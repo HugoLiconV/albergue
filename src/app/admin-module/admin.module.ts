@@ -17,6 +17,7 @@ import { UserFormDialogComponent } from './user-form-dialog/user-form-dialog.com
 
 import { UseChartComponent } from './use-chart/use-chart.component';
 import { ChartComponent } from './chart/chart.component';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { ChartComponent } from './chart/chart.component';
     RecordDashboardComponent,
     UserFormDialogComponent,
     UseChartComponent,
-    ChartComponent
+    ChartComponent,
+    PieChartComponent
   ],
   providers: [],
   entryComponents: [UserFormDialogComponent]

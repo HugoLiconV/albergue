@@ -39,7 +39,8 @@ import {
   PersonService,
   RecordService,
   DeviceTypeService,
-  DataRefreshService
+  DataRefreshService,
+  ChartService
   } from './_services';
 // Guards
 import { AuthGuard } from './_guards/auth-guard';
@@ -91,6 +92,7 @@ registerLocaleData(es);
     HandleErrorService,
     DeviceTypeService,
     DataRefreshService,
+    ChartService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { RecordService } from '../../_services';
-import {  Stats, RecordResponse } from '../../_models';
+import { Stats, RecordResponse } from '../../_models';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import * as _moment from 'moment';
 import 'moment/locale/es';
+import { PERIODS, COLORS } from '../../_data/chart-data';
 
 _moment.locale('es');
 @Component({
@@ -16,21 +17,15 @@ _moment.locale('es');
 export class UseChartComponent implements OnInit {
 
   chart;
-  fillColors: string[];
-  borderColors: string[];
   dataSets = [];
 
-  periods = [
-    {value: 'today', viewValue: 'Hoy'},
-    {value: 'week', viewValue: 'Semana'},
-    {value: 'month', viewValue: 'Mes'},
-    {value: 'year', viewValue: 'Año'}
-  ];
+  Colors: Object[];
+  periods: Object[];
   selected = 'today';
 
   constructor(private recordService: RecordService) {
-    this.fillColors = FILL_COLORS;
-    this.borderColors = BORDER_COLORS;
+    this.Colors = COLORS;
+    this.periods = PERIODS;
   }
 
   ngOnInit() {
@@ -48,7 +43,6 @@ export class UseChartComponent implements OnInit {
   }
 
   updateChart(query: string): void {
-    console.log(query);
     this.getRecords(query).subscribe(_ => {
         this.chart.data.datasets = this.dataSets;
         this.chart.update();
@@ -78,12 +72,12 @@ export class UseChartComponent implements OnInit {
 
   private getDataSetsFromResponse(records: Stats[]): Object[] {
     return records.reduce((data, record, i) => {
-      const colorIndex = i % FILL_COLORS.length;
+      const colorIndex = i % this.Colors.length;
       const dataSet = {
         label: record.user.name,
         data: [record.count],
-        backgroundColor: FILL_COLORS[colorIndex],
-        borderColor: BORDER_COLORS[colorIndex],
+        backgroundColor: this.Colors[colorIndex]['fill'],
+        borderColor: this.Colors[colorIndex]['border'],
         borderWidth: 1
       };
       data.push(dataSet);
@@ -94,8 +88,8 @@ export class UseChartComponent implements OnInit {
   periodSelectorChange(period) {
     let label: string;
     this.periods.forEach(_period => {
-      if (_period.value === period) {
-       label = _period.viewValue;
+      if (_period['value'] === period) {
+       label = _period['viewValue'];
        return;
       }
     });
@@ -133,32 +127,6 @@ export class UseChartComponent implements OnInit {
   }
 
 }
-
-export const FILL_COLORS: string[] = [
-  'rgba(243, 58, 48, 0.2)',
-  'rgba(233, 30, 99, 0.2)',
-  'rgba(106, 27, 154, 0.2)',
-  'rgba(55, 72, 172, 0.2)',
-  'rgba(29, 139, 241, 0.2)',
-  'rgba(0, 139, 125, 0.2)',
-  'rgba(255, 185, 13, 0.2)',
-  'rgba(255, 76, 32, 0.2)',
-  'rgba(148, 148, 148, 0.2)',
-  'rgba(91, 50, 173, 0.2)'
-];
-
-export const BORDER_COLORS: string[] = [
-  'rgba(243, 58, 48, 1)',
-  'rgba(233, 30, 99, 1)',
-  'rgba(106, 27, 154, 1)',
-  'rgba(55, 72, 172, 1)',
-  'rgba(29, 139, 241, 1)',
-  'rgba(0, 139, 125, 1)',
-  'rgba(255, 185, 13, 1)',
-  'rgba(255, 76, 32, 1)',
-  'rgba(148, 148, 148, 1)',
-  'rgba(91, 50, 173, 1)'
-];
 export class QueryBuilder {
   before: string;
   after: string;
