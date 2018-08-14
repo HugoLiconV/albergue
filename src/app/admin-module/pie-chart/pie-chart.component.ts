@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Chart } from 'chart.js';
 import { RecordService } from '../../_services';
 import { Stats, RecordResponse } from '../../_models';
@@ -8,19 +8,23 @@ import * as _moment from 'moment';
 import 'moment/locale/es';
 import { PERIODS, COLORS } from '../../_data/chart-data';
 import { QueryBuilder } from '../use-chart/use-chart.component';
+import { ISubscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
   styleUrls: ['./pie-chart.component.css']
 })
-export class PieChartComponent implements OnInit {
+export class PieChartComponent implements OnInit, OnDestroy {
   chart;
   data = {};
 
   colors: Object[];
   periods: Object[];
   selected = 'today';
+
+  getSubscription: ISubscription;
+  updateSubscription: ISubscription;
 
   constructor(private recordService: RecordService) {
     this.periods = PERIODS;
@@ -53,7 +57,7 @@ export class PieChartComponent implements OnInit {
       }
     });
     const query = this.getPeriodQuery(this.selected);
-    this.getRecords(query).subscribe(_ => {
+    this.getSubscription = this.getRecords(query).subscribe(_ => {
       this.chart = this.createChart(this.data);
     });
   }
@@ -69,7 +73,7 @@ export class PieChartComponent implements OnInit {
   }
 
   updateChart(query: string): void {
-    this.getRecords(query).subscribe(_ => {
+    this.updateSubscription = this.getRecords(query).subscribe(_ => {
         this.chart.data = this.data;
         this.chart.update();
     });
@@ -140,5 +144,14 @@ export class PieChartComponent implements OnInit {
     }
     query = new QueryBuilder.Builder().afterDate(startDate).beforeDate(endDate).build();
     return query.getQuery();
+  }
+
+  ngOnDestroy(): void {
+    if (this.getSubscription) {
+      this.getSubscription.unsubscribe();
+    }
+    if (this.updateSubscription) {
+      this.updateSubscription.unsubscribe();
+    }
   }
 }

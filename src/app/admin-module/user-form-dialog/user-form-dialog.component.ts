@@ -38,7 +38,7 @@ export class UserFormDialogComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     const isNewUser = this.data === null || this.data === undefined;
     if (isNewUser) {
-      this.personService.addPerson(person).subscribe(_person => {
+      this.subscription = this.personService.addPerson(person).subscribe(_person => {
         if (_person) {
           this.alertService.success('Usuario creado con éxito');
           this.isLoading = false;

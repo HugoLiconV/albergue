@@ -4,6 +4,7 @@ import {
   AlertService } from '../../../_services';
 import { Project } from '../../../_models';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-project-card',
@@ -11,25 +12,15 @@ import { Router } from '@angular/router';
   styleUrls: ['../cards.css']
 })
 export class ProjectCardComponent implements OnInit {
-  projects: Project[];
+  projects: Observable<Project[]>;
   loading = false;
 
   constructor(
   private projectService: ProjectService,
-  private alertService: AlertService,
   private router: Router) {}
 
   ngOnInit() {
-    this.getProjects();
-  }
-
-  getProjects(): void {
-    this.loading = true;
-    this.projectService.getProjects().subscribe(projects => {
-      this.projects = projects;
-    }, error => {
-      this.alertService.error('Error en servidor');
-    }, () => this.loading = false);
+    this.projects = this.projectService.getProjects();
   }
 
   handleClick(id) {

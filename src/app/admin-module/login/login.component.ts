@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { AlertService, AuthenticationService } from '../../_services';
 import { Router } from '@angular/router';
+import { ISubscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+  subscription: ISubscription;
 
   constructor(
     private router: Router,
@@ -44,9 +46,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(formValues) {
-    console.log(formValues);
     this.loading = true;
-    this.authService.login(formValues.email, formValues.password).subscribe(data => {
+    this.subscription = this.authService.login(formValues.email, formValues.password).subscribe(data => {
       if (data) {
         this.router.navigate(['/admin']);
       }
@@ -62,5 +63,11 @@ export class LoginComponent implements OnInit {
       }
     });
     this.loading = false;
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

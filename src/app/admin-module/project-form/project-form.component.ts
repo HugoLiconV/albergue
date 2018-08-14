@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatChipInputEvent, MatDialog } from '@angular/material';
 import {ENTER, COMMA} from '@angular/cdk/keycodes';
 import { ProjectService, AlertService, DeviceTypeService } from '../../_services';
@@ -6,13 +6,13 @@ import { Project } from '../../_models';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
+import { ISubscription } from 'rxjs/Subscription';
 @Component({
   selector: 'app-project-form',
   templateUrl: './project-form.component.html',
   styleUrls: ['../forms.css']
 })
-export class ProjectFormComponent implements OnInit {
-
+export class ProjectFormComponent implements OnInit, OnDestroy {
   constructor(
     private projectService: ProjectService,
     private router: Router,
@@ -21,6 +21,10 @@ export class ProjectFormComponent implements OnInit {
     private deviceTypeService: DeviceTypeService,
     public dialog: MatDialog,
     private route: ActivatedRoute) { }
+
+  getSubscription: ISubscription;
+  actionSubscription: ISubscription;
+  dialogSubscription: ISubscription;
 
   projectForm: FormGroup;
   separatorKeysCodes = [ENTER, COMMA];
@@ -46,7 +50,7 @@ export class ProjectFormComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     if (this.id) {
       this.isLoading = true;
-      this.projectService.getProjectById(this.id).subscribe(project => {
+      this.getSubscription = this.projectService.getProjectById(this.id).subscribe(project => {
         if (project) {
           this.project = project;
           this.projectForm.setValue({
@@ -93,14 +97,14 @@ export class ProjectFormComponent implements OnInit {
     };
     const isNewProject = this.id === undefined;
     if  (isNewProject) {
-      this.projectService.addProject(project).subscribe(_project => {
+      this.actionSubscription = this.projectService.addProject(project).subscribe(_project => {
         if (_project) {
           this.alertService.success('Proyecto Creado con éxito');
           this.router.navigate(['/admin/dashboard']);
         }
       });
     } else {
-      this.projectService.editProject(project, this.id).subscribe(_project => {
+      this.actionSubscription = this.projectService.editProject(project, this.id).subscribe(_project => {
         if (_project) {
           this.alertService.success('Proyecto Editado con éxito');
           this.router.navigate(['/admin/dashboard']);
@@ -123,15 +127,27 @@ export class ProjectFormComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(confirmation => {
+    this.dialogSubscription = dialogRef.afterClosed().subscribe(confirmation => {
     if (confirmation) {
       this.isLoading = true;
-      this.projectService.deleteProject(this.id).subscribe(_ => {
+      this.actionSubscription = this.projectService.deleteProject(this.id).subscribe(_ => {
         this.alertService.success('Proyecto eliminado con éxito');
         this.router.navigate(['/admin/dashboard']);
       }, error => {},
       () => this.isLoading = false);
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.getSubscription) {
+      this.getSubscription.unsubscribe();
+    }
+    if (this.actionSubscription) {
+      this.actionSubscription.unsubscribe();
+    }
+    if (this.dialogSubscription) {
+      this.dialogSubscription.unsubscribe();
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Chart } from 'chart.js';
 import { RecordService } from '../../_services';
 import { Stats, RecordResponse } from '../../_models';
@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import * as _moment from 'moment';
 import 'moment/locale/es';
 import { PERIODS, COLORS } from '../../_data/chart-data';
+import { ISubscription } from 'rxjs/Subscription';
 
 _moment.locale('es');
 @Component({
@@ -14,7 +15,7 @@ _moment.locale('es');
   templateUrl: './use-chart.component.html',
   styleUrls: ['./use-chart.component.css']
 })
-export class UseChartComponent implements OnInit {
+export class UseChartComponent implements OnInit, OnDestroy {
 
   chart;
   dataSets = [];
@@ -23,6 +24,8 @@ export class UseChartComponent implements OnInit {
   periods: Object[];
   selected = 'today';
 
+  getSubscription: ISubscription;
+  updateSubscription: ISubscription;
   constructor(private recordService: RecordService) {
     this.Colors = COLORS;
     this.periods = PERIODS;
@@ -30,7 +33,7 @@ export class UseChartComponent implements OnInit {
 
   ngOnInit() {
     const query = this.getPeriodQuery(this.selected);
-    this.getRecords(query).subscribe(_ => {
+    this.getSubscription = this.getRecords(query).subscribe(_ => {
       this.chart = this.createChart(this.dataSets);
     });
   }
@@ -43,7 +46,7 @@ export class UseChartComponent implements OnInit {
   }
 
   updateChart(query: string): void {
-    this.getRecords(query).subscribe(_ => {
+    this.updateSubscription = this.getRecords(query).subscribe(_ => {
         this.chart.data.datasets = this.dataSets;
         this.chart.update();
     });
@@ -126,6 +129,14 @@ export class UseChartComponent implements OnInit {
     return query.getQuery();
   }
 
+  ngOnDestroy(): void {
+    if (this.getSubscription) {
+      this.getSubscription.unsubscribe();
+    }
+    if (this.updateSubscription) {
+      this.updateSubscription.unsubscribe();
+    }
+  }
 }
 export class QueryBuilder {
   before: string;

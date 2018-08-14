@@ -2,7 +2,7 @@
   <mat-spinner [diameter]="50" *ngIf="loading"></mat-spinner>
 </div>
 <div class="cards-container">
-  <app-card (cardClick)="handleClick($event)" [id]="project.id" *ngFor="let project of projects" class="card">
+  <app-card (cardClick)="handleClick($event)" [id]="project.id" *ngFor="let project of projects | async" class="card">
     <div card-title>{{ project.name }}</div>
     <div card-details>
       <span class="acent">Area: </span> {{ project.area }}

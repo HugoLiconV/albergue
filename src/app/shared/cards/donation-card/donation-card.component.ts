@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DonationService, AlertService } from '../../../_services';
 import { Donation } from '../../../_models';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-donation-card',
@@ -9,25 +10,15 @@ import { Router } from '@angular/router';
   styleUrls: ['../cards.css']
 })
 export class DonationCardComponent implements OnInit {
-  donations: Donation[];
+  donations: Observable<Donation[]>;
   loading = false;
 
   constructor(
     private donationService: DonationService,
-    private router: Router,
-    private alertService: AlertService) { }
+    private router: Router) { }
 
   ngOnInit() {
-    this.getDonations();
-  }
-
-  getDonations(): void {
-    this.loading = true;
-    this.donationService.getDonations().subscribe(donations => {
-      this.donations = donations;
-    }, error => {
-      this.alertService.error('Error en servidor');
-    }, () => this.loading = false);
+    this.donations = this.donationService.getDonations();
   }
 
   handleClick(id) {

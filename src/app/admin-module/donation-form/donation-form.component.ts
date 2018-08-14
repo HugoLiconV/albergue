@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DonationService, AlertService, DeviceTypeService } from '../../_services';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -6,14 +6,14 @@ import { Donation } from '../../_models';
 import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
 import 'rxjs/add/observable/forkJoin';
 import { MatDialog } from '@angular/material';
+import { ISubscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-donation-form',
   templateUrl: './donation-form.component.html',
   styleUrls: ['../forms.css']
 })
-export class DonationFormComponent implements OnInit {
-
+export class DonationFormComponent implements OnInit, OnDestroy {
   constructor(
     private donationService: DonationService,
     private router: Router,
@@ -22,6 +22,10 @@ export class DonationFormComponent implements OnInit {
     public dialog: MatDialog,
     private route: ActivatedRoute
   ) { }
+
+  getSubscription: ISubscription;
+  actionSubscription: ISubscription;
+  dialogSubscription: ISubscription;
 
   donation: Donation;
   donationForm: FormGroup;
@@ -41,7 +45,7 @@ export class DonationFormComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     if (this.id) {
       this.isLoading = true;
-      this.donationService.getDonationById(this.id).subscribe(donation => {
+      this.getSubscription = this.donationService.getDonationById(this.id).subscribe(donation => {
         if (donation) {
           this.donation = donation;
           this.donationForm.setValue({
@@ -58,7 +62,7 @@ export class DonationFormComponent implements OnInit {
     this.isLoading = true;
     const isNewDonation = this.id === undefined;
     if (isNewDonation) {
-      this.donationService.addDonations(formValues).subscribe(_donation => {
+      this.actionSubscription = this.donationService.addDonations(formValues).subscribe(_donation => {
         if (_donation) {
           this.alertService.success('Donación agregada con éxito');
           this.isLoading = false;
@@ -66,7 +70,7 @@ export class DonationFormComponent implements OnInit {
         }
       });
     } else {
-      this.donationService.editDonation(formValues, this.id).subscribe(_donation => {
+      this.actionSubscription = this.donationService.editDonation(formValues, this.id).subscribe(_donation => {
         if (_donation) {
           this.alertService.success('Donación Modificada con éxito');
           this.isLoading = false;
@@ -91,15 +95,27 @@ export class DonationFormComponent implements OnInit {
       }
     });
 
-     dialogRef.afterClosed().subscribe(confirmation => {
+     this.dialogSubscription = dialogRef.afterClosed().subscribe(confirmation => {
       if (confirmation) { // recibe true si se editó
         this.isLoading = true;
-        this.donationService.deleteDonation(this.id).subscribe(_ => {
+        this.actionSubscription = this.donationService.deleteDonation(this.id).subscribe(_ => {
             this.alertService.success('Donación eliminada con éxito');
             this.router.navigate(['/admin/dashboard']);
         }, error => {},
         () => this.isLoading = false);
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.getSubscription) {
+      this.getSubscription.unsubscribe();
+    }
+    if (this.actionSubscription) {
+      this.actionSubscription.unsubscribe();
+    }
+    if (this.dialogSubscription) {
+      this.dialogSubscription.unsubscribe();
+    }
   }
 }

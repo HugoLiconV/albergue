@@ -1,7 +1,9 @@
-<app-container>
-  <h1 class="container-title">{{donation?.name}}</h1>
-  <p>
-    <span class="acent">Descripción: </span> {{donation?.description}}</p>
-  <p>
-</app-container>
-<app-contact-card [subject]="donation?.name"></app-contact-card>
+<section class="section">
+  <app-container>
+    <h1 class="container-title">{{donation?.name}}</h1>
+    <p>
+      <span class="acent">Descripción: </span> {{donation?.description}}
+    </p>
+  </app-container>
+  <app-contact-card [subject]="donation?.name"></app-contact-card>
+</section>

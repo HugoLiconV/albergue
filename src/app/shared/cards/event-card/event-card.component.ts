@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Event} from '../../../_models';
-import {
-  EventsService,
-  AlertService} from '../../../_services';
+import { EventsService, AlertService} from '../../../_services';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-event-card',
@@ -11,26 +10,16 @@ import { Router } from '@angular/router';
   styleUrls: ['../cards.css']
 })
 export class EventCardComponent implements OnInit {
-  events: Event[];
+  events: Observable<Event[]>;
   loading = false;
 
   constructor(
     private eventService: EventsService,
-    private router: Router,
-    private alertService: AlertService) {
+    private router: Router) {
   }
 
   ngOnInit() {
-    this.getEvents();
-  }
-
-  getEvents(): void {
-    this.loading = true;
-    this.eventService.getEvents().subscribe(events => {
-      this.events = events;
-    }, error => {
-      this.alertService.error('Error en servidor');
-    }, () => this.loading = false);
+    this.events = this.eventService.getEvents();
   }
 
   handleClick(id) {

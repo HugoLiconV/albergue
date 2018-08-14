@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {MomentDateAdapter} from '@angular/material-moment-adapter';
@@ -12,6 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Event } from '../../_models';
 import { MatDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
+import { ISubscription } from 'rxjs/Subscription';
 const moment = _rollupMoment || _moment;
 
 export const MY_FORMATS = {
@@ -36,7 +37,10 @@ export const MY_FORMATS = {
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS}
   ]
 })
-export class EventFormComponent implements OnInit {
+export class EventFormComponent implements OnInit, OnDestroy {
+  getSubscription: ISubscription;
+  actionSubscription: ISubscription;
+  dialogSubscription: ISubscription;
 
   innerWidth: any;
   isMobile: boolean;
@@ -73,7 +77,7 @@ export class EventFormComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     if (this.id) {
       this.isLoading = true;
-      this.eventService.getEventById(this.id).subscribe(event => {
+      this.getSubscription = this.eventService.getEventById(this.id).subscribe(event => {
         if (event) {
           this.event = event;
           this.eventForm.setValue({
@@ -100,7 +104,7 @@ export class EventFormComponent implements OnInit {
     this.isLoading = true;
     const isNewEvent = this.id === undefined;
     if (isNewEvent) {
-      this.eventService.addEvent(formValues).subscribe(_event => {
+      this.actionSubscription = this.eventService.addEvent(formValues).subscribe(_event => {
         if (_event) {
           this.alertService.success('Se agregó Evento con éxito');
           this.isLoading = false;
@@ -108,7 +112,7 @@ export class EventFormComponent implements OnInit {
         }
       });
     } else {
-      this.eventService.editEvent(formValues, this.id).subscribe(_event => {
+      this.actionSubscription = this.eventService.editEvent(formValues, this.id).subscribe(_event => {
         if (_event) {
           this.alertService.success('Se Modificó Evento con éxito');
           this.isLoading = false;
@@ -133,15 +137,27 @@ export class EventFormComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(confirmation => {
+    this.dialogSubscription = dialogRef.afterClosed().subscribe(confirmation => {
       if (confirmation) {
         this.isLoading = true;
-        this.eventService.deleteEvent(this.id).subscribe(_ => {
+        this.actionSubscription = this.eventService.deleteEvent(this.id).subscribe(_ => {
             this.router.navigate(['/admin/dashboard']);
             this.alertService.success('Evento eliminado con éxito');
         }, error => {},
         () => this.isLoading = false);
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.getSubscription) {
+      this.getSubscription.unsubscribe();
+    }
+    if (this.actionSubscription) {
+      this.actionSubscription.unsubscribe();
+    }
+    if (this.dialogSubscription) {
+      this.dialogSubscription.unsubscribe();
+    }
   }
 }
