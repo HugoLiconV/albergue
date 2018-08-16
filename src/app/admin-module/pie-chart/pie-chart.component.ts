@@ -39,23 +39,7 @@ export class PieChartComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    Chart.plugins.register({
-      afterDraw: function(chart) {
-      if (chart.data.datasets.length === 0) {
-        // No data is present
-        const ctx = chart.chart.ctx;
-        const width = chart.chart.width;
-        const height = chart.chart.height;
-        chart.clear();
-        ctx.save();
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.font = '24px Roboto';
-        ctx.fillText('Aun no hay datos suficientes 😔', width / 2, height / 2);
-        ctx.restore();
-        }
-      }
-    });
+
     const query = this.getPeriodQuery(this.selected);
     this.getSubscription = this.getRecords(query).subscribe(_ => {
       this.chart = this.createChart(this.data);
