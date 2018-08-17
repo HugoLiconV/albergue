@@ -1,0 +1,9 @@
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.actions > * {
+  margin: 0 0.5rem;
+}

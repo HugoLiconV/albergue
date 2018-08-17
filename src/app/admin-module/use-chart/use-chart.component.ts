@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Chart } from 'chart.js';
-import { RecordService } from '../../_services';
+import { RecordService, ChartService } from '../../_services';
 import { Stats, RecordResponse } from '../../_models';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
@@ -18,7 +18,7 @@ _moment.locale('es');
 export class UseChartComponent implements OnInit, OnDestroy {
 
   chart;
-  dataSets = [];
+  data: Object;
 
   Colors: Object[];
   periods: Object[];
@@ -26,39 +26,40 @@ export class UseChartComponent implements OnInit, OnDestroy {
 
   getSubscription: ISubscription;
   updateSubscription: ISubscription;
-  constructor(private recordService: RecordService) {
-    this.Colors = COLORS;
-    this.periods = PERIODS;
+
+  constructor(
+    private recordService: RecordService,
+    private chartService: ChartService) {
+    this.Colors = [...COLORS];
+    this.periods = [...PERIODS];
   }
 
   ngOnInit() {
-    const query = this.getPeriodQuery(this.selected);
+    const query = this.chartService.getPeriodQuery(this.selected);
     this.getSubscription = this.getRecords(query).subscribe(_ => {
-      this.chart = this.createChart(this.dataSets);
+      this.chart = this.createChart(this.data);
     });
   }
 
   getRecords(query = ''): Observable<RecordResponse> {
     return this.recordService.getRecords(query)
       .pipe(tap(recordResponse => {
-        this.dataSets = this.getDataSetsFromResponse(recordResponse.stats);
+        this.data = this.getDataSetsFromResponse(recordResponse.stats);
     }));
   }
 
-  updateChart(query: string): void {
+  updateChart(): void {
+    const query = this.chartService.getPeriodQuery(this.selected);
     this.updateSubscription = this.getRecords(query).subscribe(_ => {
-        this.chart.data.datasets = this.dataSets;
+        this.chart.data = this.data;
         this.chart.update();
     });
   }
 
-  createChart(dataSets: Object[]) {
+  createChart(data: Object) {
     return new Chart('canvas', {
       type: 'bar',
-      data: {
-        labels: ['Hoy'],
-        datasets: dataSets
-      },
+      data,
       options: {
         maintainAspectRatio: false,
         scales: {
@@ -73,8 +74,8 @@ export class UseChartComponent implements OnInit, OnDestroy {
     });
   }
 
-  private getDataSetsFromResponse(records: Stats[]): Object[] {
-    return records.reduce((data, record, i) => {
+  private getDataSetsFromResponse(records: Stats[]): Object {
+    const datasets = records.reduce((data, record, i) => {
       const colorIndex = i % this.Colors.length;
       const dataSet = {
         label: record.user.name,
@@ -86,47 +87,25 @@ export class UseChartComponent implements OnInit, OnDestroy {
       data.push(dataSet);
       return data;
     }, []);
+    return {
+        labels: this.getLabel(this.selected),
+        datasets
+    };
   }
 
-  periodSelectorChange(period) {
-    let label: string;
+  private getLabel(period): string[] {
+    let label: string[];
     this.periods.forEach(_period => {
       if (_period['value'] === period) {
-       label = _period['viewValue'];
-       return;
+        label = [_period['viewValue']];
+        return;
       }
     });
-    this.chart.data.labels = [label];
-    this.updateChart(this.getPeriodQuery(period));
+    return label;
   }
-
-  getPeriodQuery(period) {
-    let startDate;
-    let endDate;
-    let query: QueryBuilder;
-    switch (period) {
-      case 'today':
-        startDate = _moment().startOf('day').toISOString();
-        endDate   = _moment().endOf('day').toISOString();
-        break;
-
-      case 'week':
-        startDate = _moment().startOf('week').toISOString();
-        endDate   = _moment().endOf('week').toISOString();
-        break;
-
-      case 'month':
-        startDate = _moment().startOf('month').toISOString();
-        endDate   = _moment().endOf('month').toISOString();
-        break;
-
-      case 'year':
-        startDate = _moment().startOf('year').toISOString();
-        endDate   = _moment().endOf('year').toISOString();
-        break;
-    }
-    query = new QueryBuilder.Builder().afterDate(startDate).beforeDate(endDate).build();
-    return query.getQuery();
+  periodSelectorChange(period) {
+    this.chart.data.labels = this.getLabel(period);
+    this.updateChart();
   }
 
   ngOnDestroy(): void {
@@ -136,38 +115,5 @@ export class UseChartComponent implements OnInit, OnDestroy {
     if (this.updateSubscription) {
       this.updateSubscription.unsubscribe();
     }
-  }
-}
-export class QueryBuilder {
-  before: string;
-  after: string;
-  constructor(build) {
-    this.before = build.before;
-    this.after = build.after;
-  }
-  getQuery(): string {
-    let query = '';
-    query += this.before ? `before=${this.before}&` : '';
-    query += this.after ? `after=${this.after}&` : '';
-    return query;
-  }
-   static get Builder() {
-    class Builder {
-      private before;
-      private after;
-
-      beforeDate(date: Date) {
-        this.before = date;
-        return this;
-      }
-      afterDate(date: Date) {
-        this.after = date;
-        return this;
-      }
-      build() {
-        return new QueryBuilder(this);
-      }
-    }
-    return Builder;
   }
 }

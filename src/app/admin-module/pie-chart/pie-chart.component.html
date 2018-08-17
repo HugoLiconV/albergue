@@ -1,11 +1,11 @@
 <app-container>
   <div class="actions">
-    <button mat-button (click)="updateChart(getPeriodQuery(selected))">
+    <button mat-button (click)="updateChart()">
       <mat-icon class="example-icon">refresh</mat-icon>
       Actualizar
     </button>
     <mat-form-field>
-      <mat-select [(value)]="selected" (selectionChange)="periodSelectorChange($event.value)" placeholder="Periodo">
+      <mat-select [(value)]="selected" (selectionChange)="updateChart()" placeholder="Periodo">
         <mat-option *ngFor="let period of periods" [value]="period['value']">
           {{ period['viewValue']}}
         </mat-option>

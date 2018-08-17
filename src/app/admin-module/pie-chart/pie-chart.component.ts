@@ -1,13 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Chart } from 'chart.js';
-import { RecordService } from '../../_services';
+import { RecordService, ChartService } from '../../_services';
 import { Stats, RecordResponse } from '../../_models';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import * as _moment from 'moment';
 import 'moment/locale/es';
 import { PERIODS, COLORS } from '../../_data/chart-data';
-import { QueryBuilder } from '../use-chart/use-chart.component';
 import { ISubscription } from 'rxjs/Subscription';
 
 @Component({
@@ -26,9 +25,11 @@ export class PieChartComponent implements OnInit, OnDestroy {
   getSubscription: ISubscription;
   updateSubscription: ISubscription;
 
-  constructor(private recordService: RecordService) {
-    this.periods = PERIODS;
-    this.colors = COLORS;
+  constructor(
+    private recordService: RecordService,
+    private chartService: ChartService) {
+    this.periods = [...PERIODS];
+    this.colors = [...COLORS];
   }
 
   getRecords(query = ''): Observable < RecordResponse > {
@@ -39,7 +40,7 @@ export class PieChartComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    const query = this.getPeriodQuery(this.selected);
+    const query = this.chartService.getPeriodQuery(this.selected);
     this.getSubscription = this.getRecords(query).subscribe(_ => {
       this.chart = this.createChart(this.data);
     });
@@ -55,7 +56,8 @@ export class PieChartComponent implements OnInit, OnDestroy {
     });
   }
 
-  updateChart(query: string): void {
+  updateChart(): void {
+    const query = this.chartService.getPeriodQuery(this.selected);
     this.updateSubscription = this.getRecords(query).subscribe(_ => {
         this.chart.data = this.data;
         this.chart.update();
@@ -75,7 +77,6 @@ export class PieChartComponent implements OnInit, OnDestroy {
         borderColor: [],
       }]
     };
-    console.log(records);
     records.map((record, i) => {
       const colorIndex = i % this.colors.length;
       data.labels.push(record.user.name);
@@ -86,47 +87,6 @@ export class PieChartComponent implements OnInit, OnDestroy {
     console.log(data);
 
     return data;
-  }
-
-  periodSelectorChange(period) {
-    let label: string;
-    this.periods.forEach(_period => {
-      if (_period['value'] === period) {
-       label = _period['viewValue'];
-       return;
-      }
-    });
-    this.chart.data.labels = [label];
-    this.updateChart(this.getPeriodQuery(period));
-  }
-
-  getPeriodQuery(period) {
-    let startDate;
-    let endDate;
-    let query: QueryBuilder;
-    switch (period) {
-      case 'today':
-        startDate = _moment().startOf('day').toISOString();
-        endDate   = _moment().endOf('day').toISOString();
-        break;
-
-      case 'week':
-        startDate = _moment().startOf('week').toISOString();
-        endDate   = _moment().endOf('week').toISOString();
-        break;
-
-      case 'month':
-        startDate = _moment().startOf('month').toISOString();
-        endDate   = _moment().endOf('month').toISOString();
-        break;
-
-      case 'year':
-        startDate = _moment().startOf('year').toISOString();
-        endDate   = _moment().endOf('year').toISOString();
-        break;
-    }
-    query = new QueryBuilder.Builder().afterDate(startDate).beforeDate(endDate).build();
-    return query.getQuery();
   }
 
   ngOnDestroy(): void {
