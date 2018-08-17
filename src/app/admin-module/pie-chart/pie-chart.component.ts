@@ -39,7 +39,6 @@ export class PieChartComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-
     const query = this.getPeriodQuery(this.selected);
     this.getSubscription = this.getRecords(query).subscribe(_ => {
       this.chart = this.createChart(this.data);

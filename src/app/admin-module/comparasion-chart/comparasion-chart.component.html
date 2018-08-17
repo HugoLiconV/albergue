@@ -1,0 +1,18 @@
+<app-container>
+  <div class="actions">
+    <button mat-button (click)="updateChart(getPeriodQuery(selected))">
+      <mat-icon class="example-icon">refresh</mat-icon>
+      Actualizar
+    </button>
+    <mat-form-field>
+      <mat-select [(value)]="selected" (selectionChange)="periodSelectorChange($event.value)" placeholder="Periodo">
+        <mat-option *ngFor="let period of periods" [value]="period['value']">
+          {{ period['viewValue'] }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div [hidden]="!chart" style="height:40vh;">
+    <canvas id="line-canvas">{{ chart }}</canvas>
+  </div>
+</app-container>
