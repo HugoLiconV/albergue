@@ -16,7 +16,6 @@ import { RecordDashboardComponent } from './record-dashboard/record-dashboard.co
 import { UserFormDialogComponent } from './user-form-dialog/user-form-dialog.component';
 
 import { UseChartComponent } from './use-chart/use-chart.component';
-import { ChartComponent } from './chart/chart.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { ComparasionChartComponent } from './comparasion-chart/comparasion-chart.component';
 
@@ -38,7 +37,6 @@ import { ComparasionChartComponent } from './comparasion-chart/comparasion-chart
     RecordDashboardComponent,
     UserFormDialogComponent,
     UseChartComponent,
-    ChartComponent,
     PieChartComponent,
     ComparasionChartComponent
   ],

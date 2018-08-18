@@ -4,7 +4,6 @@ import { MatDialog } from '@angular/material';
 import { UserFormDialogComponent } from '../user-form-dialog/user-form-dialog.component';
 import { DeviceTypeService } from '../../_services';
 import { RecordTableComponent } from '../record-table/record-table.component';
-import { ChartTypes } from '../chart/chart.component';
 import { ISubscription } from 'rxjs/Subscription';
 
 @Component({
@@ -17,7 +16,6 @@ export class RecordDashboardComponent implements OnInit, OnDestroy {
   @ViewChild(UserTableComponent) userTableInstance;
   @ViewChild(RecordTableComponent) recordComponent;
   private isMobile: boolean;
-  charTypes: typeof ChartTypes = ChartTypes;
 
   subscription: ISubscription;
   constructor(
@@ -45,7 +43,7 @@ export class RecordDashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if(this.subscription) {
+    if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }
