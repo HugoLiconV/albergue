@@ -6,7 +6,7 @@ import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import * as _moment from 'moment';
 import 'moment/locale/es';
-import { PERIODS, COLORS } from '../../_data/chart-data';
+import { periods, colors, generalOptions } from '../../_data/chart-data';
 import { ISubscription } from 'rxjs/Subscription';
 
 _moment.locale('es');
@@ -19,6 +19,7 @@ export class UseChartComponent implements OnInit, OnDestroy {
 
   chart;
   data: Object;
+  options: Object;
 
   Colors: Object[];
   periods: Object[];
@@ -30,8 +31,9 @@ export class UseChartComponent implements OnInit, OnDestroy {
   constructor(
     private recordService: RecordService,
     private chartService: ChartService) {
-    this.Colors = [...COLORS];
-    this.periods = [...PERIODS];
+    this.Colors = [...colors];
+    this.periods = [...periods];
+    this.options = { ...generalOptions };
   }
 
   ngOnInit() {
@@ -61,7 +63,7 @@ export class UseChartComponent implements OnInit, OnDestroy {
       type: 'bar',
       data,
       options: {
-        maintainAspectRatio: false,
+        ...this.options,
         scales: {
           yAxes: [{
             ticks: {

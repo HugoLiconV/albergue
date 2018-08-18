@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { PERIODS, COLORS } from '../../_data/chart-data';
+import { periods, colors, generalOptions } from '../../_data/chart-data';
 import { RecordService, ChartService } from '../../_services';
 import { ISubscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
@@ -18,6 +18,7 @@ import { forkJoin } from 'rxjs/observable/forkJoin';
 export class ComparasionChartComponent implements OnInit, OnDestroy {
   chart;
   data = {};
+  options: Object;
 
   colors: Object[];
   periods: Object[];
@@ -32,9 +33,10 @@ export class ComparasionChartComponent implements OnInit, OnDestroy {
   constructor(
     private recordService: RecordService,
     private chartService: ChartService) {
-    this.periods = [...PERIODS];
+    this.periods = [...periods];
     this.periods.shift();
-    this.colors = COLORS;
+    this.colors = [...colors];
+    this.options = { ...generalOptions };
   }
 
   getRecords(): Observable<any> {
@@ -59,7 +61,7 @@ export class ComparasionChartComponent implements OnInit, OnDestroy {
       type: 'line',
       data,
       options: {
-        maintainAspectRatio: false,
+        ...this.options,
         scales: {
           yAxes: [{
             ticks: {

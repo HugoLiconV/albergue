@@ -9,7 +9,7 @@ function shuffle(a) {
   return a;
 }
 
-export const PERIODS: Object[] = [{
+export const periods: Object[] = [{
     value: 'today',
     viewValue: 'Hoy'
   },
@@ -27,7 +27,7 @@ export const PERIODS: Object[] = [{
   }
 ];
 
-export const COLORS: string[] = shuffle([{
+export const colors: Color[] = shuffle([{
     fill: 'rgba(243, 58, 48, 0.2)',
     border: 'rgba(243, 58, 48, 1)',
   },
@@ -68,3 +68,18 @@ export const COLORS: string[] = shuffle([{
     border: 'rgba(91, 50, 173, 1)'
   },
 ]);
+
+class Color {
+  fill: string;
+  border: string;
+}
+
+export const generalOptions = {
+  maintainAspectRatio: false,
+  legend: {
+    position: 'bottom',
+    labels: {
+      fontSize: 16,
+    }
+  }
+};

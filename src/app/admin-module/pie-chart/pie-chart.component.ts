@@ -6,7 +6,7 @@ import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import * as _moment from 'moment';
 import 'moment/locale/es';
-import { PERIODS, COLORS } from '../../_data/chart-data';
+import { periods, colors, generalOptions } from '../../_data/chart-data';
 import { ISubscription } from 'rxjs/Subscription';
 
 @Component({
@@ -17,6 +17,7 @@ import { ISubscription } from 'rxjs/Subscription';
 export class PieChartComponent implements OnInit, OnDestroy {
   chart;
   data = {};
+  options: Object;
 
   colors: Object[];
   periods: Object[];
@@ -28,8 +29,9 @@ export class PieChartComponent implements OnInit, OnDestroy {
   constructor(
     private recordService: RecordService,
     private chartService: ChartService) {
-    this.periods = [...PERIODS];
-    this.colors = [...COLORS];
+    this.periods = [...periods];
+    this.colors = [...colors];
+    this.options = {...generalOptions };
   }
 
   getRecords(query = ''): Observable < RecordResponse > {
@@ -51,7 +53,18 @@ export class PieChartComponent implements OnInit, OnDestroy {
       type: 'doughnut',
       data,
       options: {
-        maintainAspectRatio: false,
+        ...this.options,
+        tooltips: {
+          callbacks: {
+            label: function(tooltipItem, _data) {
+              const dataset = _data.datasets[tooltipItem.datasetIndex];
+              const total = dataset.data.reduce((previous, current) => previous + current);
+              const currentValue = dataset.data[tooltipItem.index];
+              const percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+              return percentage + '%';
+            }
+          }
+        }
       }
     });
   }
@@ -79,7 +92,7 @@ export class PieChartComponent implements OnInit, OnDestroy {
     };
     records.map((record, i) => {
       const colorIndex = i % this.colors.length;
-      data.labels.push(record.user.name);
+      data.labels.push(`${record.user.name}: ${record.count} usos`);
       data.datasets[0]['data'].push(record.count);
       data.datasets[0]['backgroundColor'].push(this.colors[colorIndex]['fill']);
       data.datasets[0]['borderColor'].push(this.colors[colorIndex]['border']);
