@@ -19,6 +19,8 @@ export class ComparasionChartComponent implements OnInit, OnDestroy {
   chart;
   data = {};
   options: Object;
+  fecha;
+  semana;
 
   colors: Object[];
   periods: Object[];
@@ -51,6 +53,8 @@ export class ComparasionChartComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.fecha = _moment();
+    this.semana = this.weekOfMonth(this.fecha) + 1;
     this.getSubscription = this.getRecords().subscribe(_ => {
       this.chart = this.createChart(this.data);
     });
@@ -62,6 +66,13 @@ export class ComparasionChartComponent implements OnInit, OnDestroy {
       data,
       options: {
         ...this.options,
+        elements: {
+        point: {
+            radius: 6,
+            hitRadius: 6,
+            hoverRadius: 6
+          }
+        },
         scales: {
           yAxes: [{
             ticks: {
@@ -87,17 +98,26 @@ export class ComparasionChartComponent implements OnInit, OnDestroy {
     const months = [
       'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
       'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
     const datasets = [
       {
-      label: 'Actual',
-      data: null,
-      backgroundColor: this.colors[0]['fill'],
-      borderColor: this.colors[0]['border']
+        label: 'Actual',
+        data: null,
+        backgroundColor: this.colors[0]['fill'],
+      borderColor: this.colors[0]['border'],
+      pointBackgroundColor: this.colors[0]['fill'],
+      pointBorderColor: this.colors[0]['border'],
+      pointBorderWidth: 2,
+      pointHoverBackgroundColor: this.colors[0]['border'],
       }, {
-      label: 'Anterior',
-      data: null,
-      backgroundColor: this.colors[1]['fill'],
-      borderColor: this.colors[1]['border']
+        label: 'Anterior',
+        data: null,
+        backgroundColor: this.colors[1]['fill'],
+        borderColor: this.colors[1]['border'],
+        pointBackgroundColor: this.colors[1]['fill'],
+        pointBorderColor: this.colors[1]['border'],
+        pointBorderWidth: 2,
+        pointHoverBackgroundColor: this.colors[1]['border'],
       }
     ];
 

@@ -1,5 +1,8 @@
 <app-container>
   <div class="actions">
+    Fecha: {{fecha | date: 'longDate': 'America/Chihuahua' : 'es' }}
+    <span *ngIf="selected === 'month'">semana: {{semana}}</span>
+    <div class="flex-spacer"></div>
     <button mat-button (click)="updateChart()">
       <mat-icon class="example-icon">refresh</mat-icon>
       Actualizar
