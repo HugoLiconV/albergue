@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://0.0.0.0:9000',
+  API_URL: 'http://localhost:9000',
   ACCESS_TOKEN: '87QMEbJvVTgbG62wkdBHdJkr9XNTzt6j'
 };

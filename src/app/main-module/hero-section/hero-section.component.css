@@ -2,31 +2,77 @@
 
 /* Landing container */
 #landing {
-  /* height: 100vh; */
+  /*height: 100vh;  */
   background-position: center;
+  background-color: #c43235;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   z-index: -1;
 }
 
-.intro h1{
-  font-family: var(--main-font);
-  margin-top: 15vh;
-  color: var(--main-color);
-  font-size: 3.5rem;
-  text-align: center;
+ h1 {
+  font-size: 12px;
+  color: white;
 }
+
+#titulo {
+  color: white;
+  font-size: 14px;
+  text-align: left;
+  margin-top: 2px;
+}
+
+ #titulo2{
+  /*font-family: var(--main-font); */
+  /* color: var(--main-color); */
+  color: white;
+  font-size: 40px;
+  text-align: left;
+}
+
+p {
+  font-size: 15px;
+  color: white;
+  line-height: 28px;
+}
+
+.right {
+  display: inline-block;
+}
+
+.section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.section>* {
+  flex: 1 1 160px;
+}
+
+.intro img {
+  height: 300px;
+  border-radius: 25px;
+
+}
+
+/*h1 {
+  color: cornsilk;
+  font-size: 28px;;
+  font-family: var(--main-font);
+} */
+
 
 .intro .strapline-container {
   max-width: 80%;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
   .intro h1{
     margin-top: 1rem;
+    text-align: center;
   }
 }
 /* .intro .strapline-container p {
