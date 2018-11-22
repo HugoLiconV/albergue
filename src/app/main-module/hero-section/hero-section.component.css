@@ -11,6 +11,16 @@
   z-index: -1;
 }
 
+.left {
+  width: 50%;
+  float: left;
+}
+
+.right {
+  width: 50%;
+  float: right;
+}
+
  h1 {
   font-size: 12px;
   color: white;
@@ -74,6 +84,7 @@ p {
     margin-top: 1rem;
     text-align: center;
   }
+
 }
 /* .intro .strapline-container p {
   margin-top: 60px;
