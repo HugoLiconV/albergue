@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 
 export class HeroSectionComponent implements OnInit {
 
+  
+
   constructor() { }
 
   ngOnInit() {
